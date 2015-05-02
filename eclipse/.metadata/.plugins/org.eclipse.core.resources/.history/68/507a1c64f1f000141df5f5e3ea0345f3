@@ -1,0 +1,5 @@
+package com.mods.combatzak.mojo.alchemism.client;
+
+public class ClientProxy {
+
+}
