@@ -94,6 +94,16 @@ public class AddShapedAction extends CraftingAction {
 		return true; //if we get here, the pattern is valid
 	}
 	
+	@Override
+	public boolean apply() {
+		if (!this.isInputValid()) //validate the input
+			throw new IllegalStateException("Cannot add recipe with invalid input");
+		if (!this.isPatternValid()) //validate the recipe pattern
+			throw new IllegalStateException("Cannot add recipe with invalid pattern");
+		if (this.output == null) //validate the output
+			throw new IllegalStateException("Cannot add recipe with empty output");
+	}
+	
 	/**
 	 * Creates a new AddShapedAction instance
 	 * 
