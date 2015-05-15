@@ -29,7 +29,10 @@ public class RemoveRecipesAction extends CraftingAction {
 			IRecipe recipe = (IRecipe)recipeObj; //cast the object as a recipe
 			ItemStack recipeOutput = recipe.getRecipeOutput(); //get the recipe's output
 			
-			if (!target.getUnlocalizedName().equals(recipeOutput.getUnlocalizedName())) //if the item names do not match...
+			if (recipeOutput == null) //some recipes do weird things and don't have output skip these
+				continue;
+			
+			if (target.getItem() != recipeOutput.getItem()) //if the item names do not match...
 				continue; //skip the item; it's not a match
 			
 			if (target.getHasSubtypes() && target.getItemDamage() != recipeOutput.getItemDamage()) //if the target item has subitems and the metadata does not match...

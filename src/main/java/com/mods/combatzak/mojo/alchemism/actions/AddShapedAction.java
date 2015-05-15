@@ -1,11 +1,14 @@
 package com.mods.combatzak.mojo.alchemism.actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.IShapedIngredient;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AddShapedAction extends CraftingAction {
 	
@@ -94,14 +97,32 @@ public class AddShapedAction extends CraftingAction {
 		return true; //if we get here, the pattern is valid
 	}
 	
+	/**
+	 * Applies the action, adding a shaped recipe to the game
+	 * 
+	 * @throws IllegalStateException thrown when the input or pattern is valid or there is no output item
+	 */
 	@Override
-	public boolean apply() {
+	public boolean apply() throws IllegalStateException {
 		if (!this.isInputValid()) //validate the input
 			throw new IllegalStateException("Cannot add recipe with invalid input");
 		if (!this.isPatternValid()) //validate the recipe pattern
 			throw new IllegalStateException("Cannot add recipe with invalid pattern");
 		if (this.output == null) //validate the output
 			throw new IllegalStateException("Cannot add recipe with empty output");
+		
+		ArrayList ingredientObjects = new ArrayList(); //stores the ingredients and their labels
+		ingredientObjects.add(this.pattern); //insert pattern first
+		for (IIngredient input : inputs) {
+			IShapedIngredient shapedInput = (IShapedIngredient)input; //cast the element to a shaped ingredient
+			ingredientObjects.add(shapedInput.getLabel());
+			ingredientObjects.add(shapedInput.getIngredient());
+		}
+		
+		GameRegistry.addRecipe(this.output, ingredientObjects.toArray()); //register the recipe
+		
+		this.setIsApplied(true); //set the applied flag
+		return true;
 	}
 	
 	/**
@@ -133,6 +154,13 @@ public class AddShapedAction extends CraftingAction {
 	 */
 	public AddShapedAction(String[] pattern) {
 		this(null, null, pattern);
+	}
+	
+	/**
+	 * Default constructor
+	 */
+	public AddShapedAction() {
+		this(null, null, null);
 	}
 	
 	/**

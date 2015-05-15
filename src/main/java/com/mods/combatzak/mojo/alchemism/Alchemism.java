@@ -1,5 +1,7 @@
 package com.mods.combatzak.mojo.alchemism;
 
+import com.mods.combatzak.mojo.alchemism.crafting.CraftingUpdates;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -20,7 +22,7 @@ public class Alchemism {
 	public static final String MODID = "mojo-alchemism"; //Unique mod id
 	public static final String MOD_NAME = "Mojo-Alchemism"; //Mod friendly name
 	public static final String MOD_VERSION = "3.0.0"; //Mod version
-	public static final String DEPENDENCIES = "required-after:ThermalFoundation"; //mod dependencies
+	public static final String DEPENDENCIES = "required-after:ThermalFoundation;required-after:Forestry"; //mod dependencies
 	
 	@Instance
 	public static Alchemism instance; //Mod singleton instance
@@ -55,6 +57,6 @@ public class Alchemism {
 	 */
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		CraftingUpdates.getInstance().register();
 	}
 }
