@@ -9,6 +9,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import com.mods.combatzak.mojo.MojoAction;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.IShapedIngredient;
+import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
 
 /**
  * An action that affects standard crafting
@@ -29,11 +30,28 @@ public abstract class CraftingAction extends MojoAction {
 	}
 	
 	/**
+	 * Indicates that the ingredient list uses at least one ore dictionary entry
+	 * 
+	 * @return true if any ingredient uses the ore dictionary, false otherwise
+	 */
+	protected boolean hasOreIngredient() {
+		if (this.inputs == null || this.inputs.isEmpty())
+			return false; //check for empty input list
+		
+		for (IIngredient input : this.inputs) { //go through all the ingredients
+			if (input instanceof OreIngredient)
+				return true; //if any of them is an ore dictionary ingredient, stop here
+		}
+		
+		return false; //if we get here, there are no ore ingredients
+	}
+	
+	/**
 	 * Gets the inputs for the crafting recipe
 	 * 
 	 * @return set of ingredients in input
 	 */
-	public  List<? extends IIngredient> getInputs() { return this.inputs; }
+	public List<IIngredient> getInputs() { return this.inputs; }
 	
 	/**
 	 * Sets the inputs for the crafting recipe

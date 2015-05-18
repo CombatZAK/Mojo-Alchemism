@@ -24,6 +24,18 @@ public class ItemIngredient implements IIngredient {
 	}
 	
 	/**
+	 * Determines if an itemstack matches the ingredient
+	 */
+	@Override
+	public boolean matches(ItemStack target) {
+		if (target == null) return false; //null test
+		if (this.ingredient.getItem() != target.getItem()) return false; //check item reference
+		if (this.ingredient.getHasSubtypes() && this.ingredient.getItemDamage() != target.getItemDamage()) return false; //check metadata
+		
+		return true; //if we get here, the ingredient matches
+	}
+	
+	/**
 	 * Sets the recipe ingredient
 	 * 
 	 * @param value

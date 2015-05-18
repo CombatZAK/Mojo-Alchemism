@@ -3,6 +3,8 @@ package com.mods.combatzak.mojo.alchemism.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -46,7 +48,13 @@ public class AddShapelessAction extends CraftingAction {
 			ingredientObjects.add(input.getIngredient()); //add each input to the list otherwise
 		}
 		
-		GameRegistry.addShapelessRecipe(this.getOutput(), ingredientObjects.toArray()); //add the recipe to the game
+		if (this.hasOreIngredient()) { //if the recipe uses the ore dictionary...
+			GameRegistry.addRecipe(new ShapelessOreRecipe(this.getOutput(), ingredientObjects.toArray())); //add a shapeless ore recipe
+		}
+		else { //otherwise...
+			GameRegistry.addShapelessRecipe(this.getOutput(), ingredientObjects.toArray()); //add the recipe to the game
+		}
+		
 		this.setIsApplied(true); //set the applied flag
 		return true;
 	}

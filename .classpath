@@ -64,11 +64,19 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/CombatZAK/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.3.1401-1710ls/start"/>
 	<classpathentry kind="lib" path="lib/CoFHCore-[1.7.10]3.0.2-262-dev.jar"/>
 	<classpathentry kind="lib" path="lib/forestry_1.7.10-3.5.6.15-dev.jar"/>
-	<classpathentry kind="lib" path="lib/Mantle-1.7.10-0.3.2.DEV.e7ba871-deobf.jar"/>
-	<classpathentry kind="lib" path="lib/TConstruct-1.7.10-1.8.5.DEV.485ae7e-deobf.jar"/>
-	<classpathentry kind="lib" path="lib/ThermalFoundation-[1.7.10]1.0.0-81-dev.jar"/>
 	<classpathentry kind="lib" path="lib/GalacticraftCore-Dev-BETA-1.7-3.0.1.8.jar"/>
 	<classpathentry kind="lib" path="lib/industrialcraft-2-2.2.720-experimental-dev.jar"/>
+	<classpathentry kind="lib" path="lib/Mantle-1.7.10-0.3.2.DEV.e7ba871-deobf.jar"/>
+	<classpathentry kind="lib" path="lib/MicdoodleCore-Dev-BETA-1.7-3.0.1.8.jar"/>
 	<classpathentry kind="lib" path="lib/Railcraft_1.7.10-9.6.1.0-dev.jar"/>
+	<classpathentry kind="lib" path="lib/TConstruct-1.7.10-1.8.5.DEV.485ae7e-deobf.jar"/>
+	<classpathentry kind="lib" path="lib/ThermalFoundation-[1.7.10]1.0.0-81-dev.jar"/>
+	<classpathentry kind="lib" path="lib/Thaumcraft-deobf-1.7.10-4.2.3.5.jar"/>
+	<classpathentry kind="lib" path="lib/Botania r1.6-189-deobf.jar"/>
+	<classpathentry kind="lib" path="lib/ThermalExpansion-[1.7.10]4.0.0-176-dev.jar"/>
+	<classpathentry kind="lib" path="lib/Baubles-deobf-1.7.10-1.0.1.10.jar"/>
+	<classpathentry kind="lib" path="lib/CodeChickenCore-1.7.10-1.0.4.29-universal.jar"/>
+	<classpathentry kind="lib" path="lib/CodeChickenLib-1.7.10-1.1.3.136-universal.jar"/>
+	<classpathentry kind="lib" path="lib/NotEnoughItems-1.7.10-1.0.3.74-universal.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

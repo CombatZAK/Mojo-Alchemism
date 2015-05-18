@@ -1,5 +1,7 @@
 package com.mods.combatzak.mojo.alchemism.recipes;
 
+import net.minecraft.item.ItemStack;
+
 /**
  * Represents a recipe ingredient
  * 
@@ -13,4 +15,12 @@ public interface IIngredient {
 	 * @return Ingredient for recipe
 	 */
 	public Object getIngredient();
+	
+	/**
+	 * Determines if an item matches the ingredient; ignores count, checks metadata
+	 * 
+	 * @param target target itemstack
+	 * @return true if the target item matches the ingredient; false otherwise
+	 */
+	public boolean matches(ItemStack target);
 }

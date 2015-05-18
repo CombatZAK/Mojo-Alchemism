@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.IShapedIngredient;
@@ -15,7 +16,7 @@ public class AddShapedAction extends CraftingAction {
 	/**
 	 * Character pattern for the shaped recipe
 	 */
-	private String[] pattern;
+	protected String[] pattern;
 	
 	/**
 	 * Gets the shaped recipe pattern
@@ -39,7 +40,7 @@ public class AddShapedAction extends CraftingAction {
 	 * 
 	 * @return false if the inputs are null or empty, or contain any unshaped ingredients; true otherwise
 	 */
-	private boolean isInputValid() {
+	protected boolean isInputValid() {
 		if (inputs == null || inputs.isEmpty()) //check for empty input
 			return false;
 		
@@ -55,7 +56,7 @@ public class AddShapedAction extends CraftingAction {
 	 * Validates the recipe pattern
 	 * @return
 	 */
-	private boolean isPatternValid() {
+	protected boolean isPatternValid() {
 		if (pattern == null || pattern.length == 0 || pattern.length > 3) //validate the size of the array
 			return false;
 		
@@ -119,7 +120,12 @@ public class AddShapedAction extends CraftingAction {
 			ingredientObjects.add(shapedInput.getIngredient());
 		}
 		
-		GameRegistry.addRecipe(this.output, ingredientObjects.toArray()); //register the recipe
+		if (this.hasOreIngredient()) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(this.output, ingredientObjects.toArray()));
+		}
+		else {
+			GameRegistry.addRecipe(this.output, ingredientObjects.toArray()); //register the recipe
+		}
 		
 		this.setIsApplied(true); //set the applied flag
 		return true;
