@@ -54,8 +54,12 @@ public class PulverizerUpdates {
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustCharcoal, TFItems.dustCharcoal));
 		
 		//replace ore cluster recipes
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 16), newStackQuanity(TFItems.dustIron, 3), TFItems.dustIron, 25));
-		
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 16), newStackQuantity(TFItems.dustIron, 3), TFItems.dustIron, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 17), newStackQuantity(TFItems.dustCopper, 3), TFItems.dustCopper, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 18), newStackQuantity(TFItems.dustTin, 3), TFItems.dustTin, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 19), newStackQuantity(TFItems.dustSilver, 3), TFItems.dustSilver, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 20), newStackQuantity(TFItems.dustLead, 3), TFItems.dustLead, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 31), newStackQuantity(TFItems.dustGold, 3), TFItems.dustGold, 25));
 	}
 	
 	/**
@@ -65,7 +69,7 @@ public class PulverizerUpdates {
 	 * @param quantity amount in stack
 	 * @return copy of item stack (or same reference if argument quantity is equal) with specified quantity (clipped to max stack size)
 	 */
-	private static ItemStack newStackQuanity(ItemStack target, int quantity) {
+	private static ItemStack newStackQuantity(ItemStack target, int quantity) {
 		if (target == null || quantity <= 0) return null;
 		if (quantity > target.getMaxStackSize()) quantity = target.getMaxStackSize();
 		if (quantity == target.getMaxStackSize()) return target;
