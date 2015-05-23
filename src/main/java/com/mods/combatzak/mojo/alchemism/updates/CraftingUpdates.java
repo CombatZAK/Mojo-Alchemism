@@ -21,10 +21,10 @@ import net.minecraft.item.ItemStack;
 import cofh.thermalexpansion.item.TEItems;
 
 import com.mods.combatzak.mojo.GroupAction;
-import com.mods.combatzak.mojo.alchemism.actions.AddShapedAction;
-import com.mods.combatzak.mojo.alchemism.actions.AddShapedEnchantmentAction;
-import com.mods.combatzak.mojo.alchemism.actions.CraftingAction;
-import com.mods.combatzak.mojo.alchemism.actions.RemoveRecipesAction;
+import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapedAction;
+import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapedEnchantmentAction;
+import com.mods.combatzak.mojo.alchemism.actions.crafting.CraftingAction;
+import com.mods.combatzak.mojo.alchemism.actions.crafting.RemoveRecipesAction;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ShapedItemIngredient;
 

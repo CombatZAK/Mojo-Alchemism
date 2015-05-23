@@ -1,4 +1,4 @@
-package com.mods.combatzak.mojo.alchemism.actions;
+package com.mods.combatzak.mojo.alchemism.actions.furnace;
 
 import java.util.ArrayList;
 import java.util.List;

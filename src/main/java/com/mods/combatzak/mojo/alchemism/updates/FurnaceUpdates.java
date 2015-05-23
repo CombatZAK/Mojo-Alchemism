@@ -8,7 +8,7 @@ import cofh.thermalfoundation.block.TFBlocks;
 import cofh.thermalfoundation.item.TFItems;
 
 import com.mods.combatzak.mojo.GroupAction;
-import com.mods.combatzak.mojo.alchemism.actions.ReplaceFurnaceAction;
+import com.mods.combatzak.mojo.alchemism.actions.furnace.ReplaceFurnaceAction;
 import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
 
 public class FurnaceUpdates {

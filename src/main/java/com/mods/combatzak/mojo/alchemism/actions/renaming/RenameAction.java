@@ -1,4 +1,4 @@
-package com.mods.combatzak.mojo.alchemism.actions;
+package com.mods.combatzak.mojo.alchemism.actions.renaming;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
@@ -86,7 +86,7 @@ public abstract class RenameAction extends MojoAction {
 		try {
 			StringTranslate.inject(new ByteArrayInputStream(instruction.getBytes("UTF8")));
 		}
-		catch (UnsupportedEncodingException ex) {
+		catch (UnsupportedEncodingException ex) { //this shouldn't happen since encoding type is hardcoded
 			ex.printStackTrace();
 			return false; //fail the action on an error
 		}

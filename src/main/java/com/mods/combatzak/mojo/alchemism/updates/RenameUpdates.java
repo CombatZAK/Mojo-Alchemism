@@ -1,12 +1,18 @@
 package com.mods.combatzak.mojo.alchemism.updates;
 
+import ic2.core.Ic2Items;
 import cofh.thermalexpansion.item.TEItems;
 import cofh.thermalfoundation.block.TFBlocks;
 import cofh.thermalfoundation.item.Equipment;
 import cofh.thermalfoundation.item.TFItems;
 
 import com.mods.combatzak.mojo.GroupAction;
-import com.mods.combatzak.mojo.alchemism.actions.RenameItemAction;
+import com.mods.combatzak.mojo.alchemism.actions.renaming.RenameFluidAction;
+import com.mods.combatzak.mojo.alchemism.actions.renaming.RenameGenericAction;
+import com.mods.combatzak.mojo.alchemism.actions.renaming.RenameItemAction;
+import com.mods.combatzak.mojo.alchemism.actions.renaming.RenameTConstructCompatAction;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Manages the updates to component display names
@@ -56,5 +62,41 @@ public class RenameUpdates {
 		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolPickaxe, "Bronze Pickaxe"));
 		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolShovel, "Bronze Shovel"));
 		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolHoe, "Bronze Hoe"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolShears, "Bronze Shears"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolFishingRod, "Bronze Fishing Rod"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolBow, "Bronze Reinforced Bow"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.toolSickle, "Bronze Sickle"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.armorHelmet, "Bronze Helmet"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.armorPlate, "Bronze Chestplate"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.armorLegs, "Bronze Leggings"));
+		this.renameActions.add(new RenameItemAction(Equipment.Bronze.armorBoots, "Bronze Boots"));
+		
+		//rename Thermal Foundation Shiny to Platinum
+		this.renameActions.add(new RenameItemAction(TFItems.dustPlatinum, "Pulverized Platinum"));
+		this.renameActions.add(new RenameItemAction(TFItems.ingotPlatinum, "Platinum Ingot"));
+		this.renameActions.add(new RenameItemAction(TFItems.nuggetPlatinum, "Platinum Nugget"));
+		this.renameActions.add(new RenameItemAction(TFItems.gearPlatinum, "Platinum Gear"));
+		this.renameActions.add(new RenameItemAction(TFBlocks.blockStorage.blockPlatinum, "Platinum Block"));
+		this.renameActions.add(new RenameItemAction(TFBlocks.blockOre.orePlatinum, "Platinum Ore"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolSword, "Platinum Sword"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolAxe, "Platinum Axe"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolPickaxe, "Platinum Pickaxe"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolShovel, "Platinum Shovel"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolHoe, "Platinum Hoe"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolShears, "Platinum Shears"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolFishingRod, "Platinum Fishing Rod"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolBow, "Platinum Reinforced Bow"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.toolSickle, "Platinum Sickle"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.armorHelmet, "Platinum Helmet"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.armorPlate, "Platinum Chestplate"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.armorLegs, "Platinum Leggings"));
+		this.renameActions.add(new RenameItemAction(Equipment.Platinum.armorBoots, "Platinum Boots"));
+		this.renameActions.add(new RenameTConstructCompatAction("platinum", "Platinum"));
+		this.renameActions.add(new RenameFluidAction("platinum.molten", "Molten Platinum"));
+		this.renameActions.add(new RenameGenericAction("tile.fluid.molten.shiny.name", "Molten Platinum"));
+		this.renameActions.add(new RenameGenericAction("item.tconstruct.bucket.Shiny.name", "Molten Platinum Bucket"));
+		
+		this.renameActions.add(new RenameItemAction(Ic2Items.advIronIngot, "Steel Ingot"));
+		
 	}
 }

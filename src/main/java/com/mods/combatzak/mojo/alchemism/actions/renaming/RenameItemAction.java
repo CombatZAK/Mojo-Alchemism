@@ -1,4 +1,4 @@
-package com.mods.combatzak.mojo.alchemism.actions;
+package com.mods.combatzak.mojo.alchemism.actions.renaming;
 
 import net.minecraft.item.ItemStack;
 
@@ -61,6 +61,11 @@ public class RenameItemAction extends RenameAction {
 	@Override
 	public String getUnlocalizedNameField() {
 		if (this.targetItem == null) return null; //perform a null test
-		else return this.targetItem.getUnlocalizedName() + ".name"; //return the name field if not null
+
+		String label = this.targetItem.getUnlocalizedName() + ".name"; //get the unlocalized name for the item stack
+		if (label.endsWith(".name.name")) //check for double name suffix
+			label = label.substring(0, label.length() - 5); //cut the last .name out
+		
+		return label;
 	}
 }

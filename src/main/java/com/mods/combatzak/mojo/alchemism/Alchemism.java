@@ -2,6 +2,7 @@ package com.mods.combatzak.mojo.alchemism;
 
 import com.mods.combatzak.mojo.alchemism.updates.CraftingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
 
 import cpw.mods.fml.common.Mod;
@@ -73,6 +74,7 @@ public class Alchemism {
 	public void postLoad(FMLLoadCompleteEvent event) {
 		CraftingUpdates.getInstance().register();
 		FurnaceUpdates.getInstance().register();
+		PulverizerUpdates.getInstance().register();
 	}
 	
 	/**
