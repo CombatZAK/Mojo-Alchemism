@@ -19,13 +19,17 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import cofh.thermalexpansion.item.TEItems;
+import cofh.thermalfoundation.item.TFItems;
 
 import com.mods.combatzak.mojo.GroupAction;
 import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapedAction;
 import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapedEnchantmentAction;
+import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapelessAction;
 import com.mods.combatzak.mojo.alchemism.actions.crafting.CraftingAction;
 import com.mods.combatzak.mojo.alchemism.actions.crafting.RemoveRecipesAction;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
+import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
+import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ShapedItemIngredient;
 
 import forestry.core.config.ForestryBlock;
@@ -68,6 +72,7 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(ForestryBlock.resourceStorage.getItemStack(1, 1)));
 		recipeActions.add(new RemoveRecipesAction(ForestryBlock.resourceStorage.getItemStack(1, 2)));
 		recipeActions.add(new RemoveRecipesAction(ForestryBlock.resourceStorage.getItemStack(1, 3)));
+		recipeActions.addAll(getPyrotheumRecipes());
 		
 		//deletion of TConstruct metal nuggets/ingots/blocks
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 19))); //iron nugget
@@ -148,6 +153,36 @@ public class CraftingUpdates {
 		ItemStack mossball = new ItemStack(TinkerTools.materials, 1, 6);
 		result.add(new AddShapedEnchantmentAction(ingredients, mossball, new String[] { "ab ", "cdc", " ba" }));
 		result.add(new AddShapedEnchantmentAction(ingredients, mossball, new String[] { "ac ", "bdb", " ca" }));
+		
+		return result;
+	}
+	
+	/**
+	 * Gets a set of any pyrotheum recipes removed as part of the crafting unification
+	 * 
+	 * @return shapeless pyrotheum recipes
+	 */
+	private static List<AddShapelessAction> getPyrotheumRecipes() {
+		List<AddShapelessAction> result = new ArrayList<AddShapelessAction>();
+		List<IIngredient> inputs = new ArrayList<IIngredient>();
+		inputs.add(new OreIngredient("oreCopper"));
+		inputs.add(new ItemIngredient(TFItems.dustPyrotheum));
+		result.add(new AddShapelessAction(inputs, TFItems.ingotCopper));
+		
+		inputs = new ArrayList<IIngredient>();
+		inputs.add(new OreIngredient("oreTin"));
+		inputs.add(new ItemIngredient(TFItems.dustPyrotheum));
+		result.add(new AddShapelessAction(inputs, TFItems.ingotTin));
+		
+		inputs = new ArrayList<IIngredient>();
+		inputs.add(new OreIngredient("oreLead"));
+		inputs.add(new ItemIngredient(TFItems.dustPyrotheum));
+		result.add(new AddShapelessAction(inputs, TFItems.ingotLead));
+		
+		inputs = new ArrayList<IIngredient>();
+		inputs.add(new OreIngredient("oreSilver"));
+		inputs.add(new ItemIngredient(TFItems.dustPyrotheum));
+		result.add(new AddShapelessAction(inputs, TFItems.ingotSilver));
 		
 		return result;
 	}

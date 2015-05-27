@@ -96,7 +96,14 @@ public class RenameUpdates {
 		this.renameActions.add(new RenameGenericAction("tile.fluid.molten.shiny.name", "Molten Platinum"));
 		this.renameActions.add(new RenameGenericAction("item.tconstruct.bucket.Shiny.name", "Molten Platinum Bucket"));
 		
-		this.renameActions.add(new RenameItemAction(Ic2Items.advIronIngot, "Steel Ingot"));
+		//Rename IC2 steel to industrial steel
+		this.renameActions.add(new RenameGenericAction("ic2.itemIngotAdvIron", "Industrial Steel Ingot"));
+		this.renameActions.add(new RenameGenericAction("ic2.itemAdvIronBlockCuttingBlade", "Block Cutting Blade (Industrial Steel)"));
+		this.renameActions.add(new RenameGenericAction("ic2.blockMetalAdvIron", "Industrial Steel Block"));
+		this.renameActions.add(new RenameGenericAction("ic2.itemPlateAdvIron", "Industrial Steel Plate"));
+		this.renameActions.add(new RenameGenericAction("ic2.itemDensePlateAdvIron", "Dense Industrial Steel Plate"));
+		this.renameActions.add(new RenameGenericAction("ic2.itemCasingAdvIron", "Industrial Steel Item Casing"));
+		this.renameActions.add(new RenameGenericAction("ic2.AdvIronBlockCuttingBlade.info", "cuts materials softer than Industrial Steel"));
 		
 	}
 }

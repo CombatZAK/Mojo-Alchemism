@@ -3,6 +3,7 @@ package com.mods.combatzak.mojo.alchemism.actions.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
@@ -16,6 +17,23 @@ import cpw.mods.fml.common.registry.GameRegistry;
  *
  */
 public class AddShapelessAction extends CraftingAction {
+	/**
+	 * Creates a new AddShapelessAction instance
+	 * 
+	 * @param inputs recipe inputs
+	 * @param output recipe output
+	 */
+	public AddShapelessAction(List<IIngredient> inputs, ItemStack output) {
+		super(inputs, output);
+	}
+	
+	/**
+	 * Default constructor
+	 */
+	public AddShapelessAction() {
+		this(null, null);
+	}
+	
 	/**
 	 * Sets the recipe input ingredients
 	 * @param value input ingredients

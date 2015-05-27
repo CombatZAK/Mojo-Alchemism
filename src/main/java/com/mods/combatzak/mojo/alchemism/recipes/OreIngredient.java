@@ -37,7 +37,7 @@ public class OreIngredient implements IIngredient {
 		
 		for (ItemStack item : entry) { //go through all the items in the entry
 			boolean itemMatches = item.getItem() == target.getItem();
-			boolean metaMatches = item.getHasSubtypes() && item.getItemDamage() == target.getItemDamage();
+			boolean metaMatches = !item.getHasSubtypes() || item.getItemDamage() == target.getItemDamage();
 			
 			if (itemMatches && metaMatches) return true; //if the item and metadata match any entry, the target matches the ingredient
 		}

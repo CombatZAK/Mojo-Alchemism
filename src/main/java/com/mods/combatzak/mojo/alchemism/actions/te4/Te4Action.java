@@ -15,6 +15,57 @@ import com.mods.combatzak.mojo.MojoAction;
  *
  */
 public abstract class Te4Action extends MojoAction {
+	
+	/**
+	 * Energy cost of the operation
+	 */
+	protected int energy;
+	
+	/**
+	 * Gets the energy cost
+	 * 
+	 * @return operation energy cost
+	 */
+	public int getEnergy() {
+		return this.energy;
+	}
+	
+	/**
+	 * Sets the energy cost
+	 * 
+	 * @param value energy cost
+	 */
+	public void setEnergy(int value) {
+		this.energy = value;
+	}
+	
+	/**
+	 * Self referentially sets the energy cost
+	 * 
+	 * @param value energy cost
+	 * @return self-reference
+	 */
+	public Te4Action withEnergy(int value) {
+		this.setEnergy(value);
+		return this;
+	}
+	
+	/**
+	 * Creates a new Te4Action instance
+	 * 
+	 * @param energy operation energy cost
+	 */
+	public Te4Action(int energy) {
+		this.energy = energy;
+	}
+	
+	/**
+	 * Default constructor
+	 */
+	public Te4Action() {
+		this(0);
+	}
+	
 	/**
 	 * Checks if an ItemStack matches another using the ore dictionary
 	 * 

@@ -3,6 +3,8 @@ package com.mods.combatzak.mojo.alchemism.updates;
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 
+import tconstruct.tools.TinkerTools;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StringTranslate;
 import cofh.thermalfoundation.block.TFBlocks;
 import cofh.thermalfoundation.item.TFItems;
@@ -52,5 +54,6 @@ public class FurnaceUpdates {
 		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("oreTin"), TFBlocks.blockOre.oreTin));
 		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("oreSilver"), TFBlocks.blockOre.oreSilver));
 		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("oreLead"), TFBlocks.blockOre.oreLead));
+		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("ingotAluminum"), new ItemStack(TinkerTools.materials, 1, 11)));
 	}
 }

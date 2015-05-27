@@ -1,5 +1,12 @@
 package com.mods.combatzak.mojo.alchemism.updates;
 
+import powercrystals.netherores.ores.Ores;
+import ganymedes01.aobd.lib.CompatType;
+import ganymedes01.aobd.ore.Ore;
+import ganymedes01.aobd.recipes.ModulesHandler;
+import ganymedes01.aobd.recipes.RecipesModule;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ItemApi;
 import cofh.thermalfoundation.item.TFItems;
@@ -43,6 +50,25 @@ public class PulverizerUpdates {
 	 * Private constructor initializes the singleton
 	 */
 	private PulverizerUpdates() {
+		//replace ore cluster recipes
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 16), newStackQuantity(TFItems.dustIron, 3), TFItems.dustIron, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 17), newStackQuantity(TFItems.dustCopper, 3), TFItems.dustCopper, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 18), newStackQuantity(TFItems.dustTin, 3), TFItems.dustTin, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 19), newStackQuantity(TFItems.dustSilver, 3), TFItems.dustSilver, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 20), newStackQuantity(TFItems.dustLead, 3), TFItems.dustLead, 25));
+		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 31), newStackQuantity(TFItems.dustGold, 3), TFItems.dustGold, 25));
+		
+		//replace recipes for aobd clusters
+		for (Ore ore : Ore.ores) {
+			if (ore.isCompatEnabled(CompatType.THAUMCRAFT)) {
+				this.pulverizerActions.add(new ReplacePulverizerAction(4800, RecipesModule.getOreStack("cluster", ore), RecipesModule.getOreStack("dust", ore, 3), RecipesModule.getOreStack("dust", ore), 25));
+			}
+		}
+		
+		//fix lapis and diamond nether ore recipes
+		this.pulverizerActions.add(new ReplacePulverizerAction(3200, Ores.Diamond.getItemStack(1), new ItemStack(Items.diamond, 5), new ItemStack(Blocks.netherrack), 15));
+		this.pulverizerActions.add(new ReplacePulverizerAction(3200, Ores.Lapis.getItemStack(1), new ItemStack(Items.dye, 24, 4), new ItemStack(Blocks.netherrack), 15));
+				
 		//unify ore dictionary outputs
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustCopper, TFItems.dustCopper));
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustTin, TFItems.dustTin));
@@ -52,14 +78,8 @@ public class PulverizerUpdates {
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustLead, TFItems.dustLead));
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustCoal, TFItems.dustCoal));
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustCharcoal, TFItems.dustCharcoal));
-		
-		//replace ore cluster recipes
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 16), newStackQuantity(TFItems.dustIron, 3), TFItems.dustIron, 25));
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 17), newStackQuantity(TFItems.dustCopper, 3), TFItems.dustCopper, 25));
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 18), newStackQuantity(TFItems.dustTin, 3), TFItems.dustTin, 25));
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 19), newStackQuantity(TFItems.dustSilver, 3), TFItems.dustSilver, 25));
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 20), newStackQuantity(TFItems.dustLead, 3), TFItems.dustLead, 25));
-		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 31), newStackQuantity(TFItems.dustGold, 3), TFItems.dustGold, 25));
+		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustSulfur, TFItems.dustSulfur));
+		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustNiter, TFItems.dustNiter));
 	}
 	
 	/**
@@ -72,7 +92,7 @@ public class PulverizerUpdates {
 	private static ItemStack newStackQuantity(ItemStack target, int quantity) {
 		if (target == null || quantity <= 0) return null;
 		if (quantity > target.getMaxStackSize()) quantity = target.getMaxStackSize();
-		if (quantity == target.getMaxStackSize()) return target;
+		if (quantity == target.stackSize) return target;
 		
 		ItemStack result = target.copy();
 		result.stackSize = quantity;

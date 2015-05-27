@@ -78,5 +78,7 @@
 	<classpathentry kind="lib" path="lib/CodeChickenCore-1.7.10-1.0.4.29-universal.jar"/>
 	<classpathentry kind="lib" path="lib/CodeChickenLib-1.7.10-1.1.3.136-universal.jar"/>
 	<classpathentry kind="lib" path="lib/NotEnoughItems-1.7.10-1.0.3.74-universal.jar"/>
+	<classpathentry kind="lib" path="lib/AOBD-2.6.2.jar"/>
+	<classpathentry kind="lib" path="lib/NetherOres-[1.7.10]2.3.1B1-14-dev.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

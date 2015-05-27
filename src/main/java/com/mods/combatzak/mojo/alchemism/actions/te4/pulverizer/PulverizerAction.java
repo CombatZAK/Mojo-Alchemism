@@ -12,11 +12,6 @@ import net.minecraft.item.ItemStack;
  */
 public abstract class PulverizerAction extends Te4Action {
 	/**
-	 * Energy cost for operation
-	 */
-	protected int energy;
-	
-	/**
 	 * Input ingredient (ore-dictionary compatible)
 	 */
 	protected ItemStack input;
@@ -35,24 +30,6 @@ public abstract class PulverizerAction extends Te4Action {
 	 * percentage chance to produce secondary output
 	 */
 	protected int secondaryChance;
-	
-	/**
-	 * Gets the energy cost
-	 * 
-	 * @return RF cost per operation 
-	 */
-	public int getEnergy() {
-		return this.energy;
-	}
-	
-	/**
-	 * Sets the energy cost
-	 * 
-	 * @param value RF energy value
-	 */
-	public void setEnergy(int value) {
-		this.energy = value;
-	}
 	
 	/**
 	 * Gets the input ingredient
@@ -191,7 +168,7 @@ public abstract class PulverizerAction extends Te4Action {
 	 * @param secondaryChance percentage chance for secondary output
 	 */
 	public PulverizerAction(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance) {
-		this.energy = energy;
+		super(energy);
 		this.input = input;
 		this.primaryOutput = primaryOutput;
 		this.secondaryOutput = secondaryOutput;
