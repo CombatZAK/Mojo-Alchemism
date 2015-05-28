@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 
 import tconstruct.tools.TinkerTools;
+import mods.railcraft.common.items.ItemIngot;
+import mods.railcraft.common.items.ItemIngot.EnumIngot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StringTranslate;
 import cofh.thermalfoundation.block.TFBlocks;
@@ -55,5 +57,6 @@ public class FurnaceUpdates {
 		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("oreSilver"), TFBlocks.blockOre.oreSilver));
 		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("oreLead"), TFBlocks.blockOre.oreLead));
 		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("ingotAluminum"), new ItemStack(TinkerTools.materials, 1, 11)));
+		furnaceActions.add(new ReplaceFurnaceAction(new OreIngredient("ingotSteel"), ItemIngot.getIngot(EnumIngot.STEEL)));
 	}
 }

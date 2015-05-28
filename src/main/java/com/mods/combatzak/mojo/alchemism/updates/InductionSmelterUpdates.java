@@ -2,12 +2,18 @@ package com.mods.combatzak.mojo.alchemism.updates;
 
 import ic2.core.Ic2Items;
 import tconstruct.tools.TinkerTools;
+import mods.railcraft.common.items.ItemIngot;
+import mods.railcraft.common.items.ItemIngot.EnumIngot;
 import net.minecraft.item.ItemStack;
+import cofh.thermalexpansion.item.TEItems;
 import cofh.thermalfoundation.block.TFBlocks;
+import cofh.thermalfoundation.item.TFItems;
 
 import com.mods.combatzak.mojo.GroupAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.smelter.RemoveSmelterAction;
+import com.mods.combatzak.mojo.alchemism.actions.te4.smelter.ReplaceSmelterAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.smelter.SubstituteSmelterAction;
+import com.mods.combatzak.mojo.alchemism.items.AlchemismItems;
 
 /**
  * Manages updates to Induction Smelter recipes
@@ -52,5 +58,7 @@ public class InductionSmelterUpdates {
 		this.smelterActions.add(new SubstituteSmelterAction(TFBlocks.blockOre.oreLead, TFBlocks.blockOre.oreLead));
 		this.smelterActions.add(new SubstituteSmelterAction(new ItemStack(TinkerTools.materials, 1, 11), new ItemStack(TinkerTools.materials, 1, 11)));
 		this.smelterActions.add(new RemoveSmelterAction().withPrimaryOutput(Ic2Items.advIronIngot));
+		
+		this.smelterActions.add(new ReplaceSmelterAction(8000, new ItemStack(AlchemismItems.dustSteel, 2), TFItems.dustPyrotheum, ItemIngot.getIngot(EnumIngot.STEEL, 2), TEItems.slag, 50));
 	}
 }

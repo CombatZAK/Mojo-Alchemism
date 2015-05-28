@@ -27,6 +27,7 @@ import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapedEnchantmentAc
 import com.mods.combatzak.mojo.alchemism.actions.crafting.AddShapelessAction;
 import com.mods.combatzak.mojo.alchemism.actions.crafting.CraftingAction;
 import com.mods.combatzak.mojo.alchemism.actions.crafting.RemoveRecipesAction;
+import com.mods.combatzak.mojo.alchemism.items.AlchemismItems;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
@@ -123,6 +124,8 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 26))); //silky jewel
 		recipeActions.add(addSilkyJewelRecipe());
 		recipeActions.addAll(addMossballRecipes());
+		
+		recipeActions.add(getSteelDustRecipe());
 	}
 	
 	private CraftingAction addSilkyJewelRecipe() {
@@ -185,5 +188,26 @@ public class CraftingUpdates {
 		result.add(new AddShapelessAction(inputs, TFItems.ingotSilver));
 		
 		return result;
+	}
+	
+	/**
+	 * Gets a shapeless recipe for making steel precursor dust
+	 * 
+	 * @return shapeless recipe for making unblasted steel dust
+	 */
+	private static AddShapelessAction getSteelDustRecipe() {
+		List<IIngredient> inputs = new ArrayList<IIngredient>();
+		inputs.add(new OreIngredient("dustIron"));
+		OreIngredient dustCharcoal = new OreIngredient("dustCharcoal");
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		inputs.add(dustCharcoal);
+		
+		return new AddShapelessAction(inputs, new ItemStack(AlchemismItems.dustSteel));
 	}
 }

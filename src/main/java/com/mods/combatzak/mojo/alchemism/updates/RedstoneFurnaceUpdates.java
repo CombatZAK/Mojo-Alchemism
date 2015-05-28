@@ -1,5 +1,8 @@
 package com.mods.combatzak.mojo.alchemism.updates;
 
+import ic2.core.Ic2Items;
+import mods.railcraft.common.items.ItemIngot;
+import mods.railcraft.common.items.ItemIngot.EnumIngot;
 import net.minecraft.item.ItemStack;
 import tconstruct.tools.TinkerTools;
 import cofh.thermalfoundation.block.TFBlocks;
@@ -39,7 +42,8 @@ public class RedstoneFurnaceUpdates {
 		this.furnaceActions.add(new ReplaceFurnaceAction(TFItems.ingotBronze, TFItems.ingotBronze));
 		this.furnaceActions.add(new ReplaceFurnaceAction(TFItems.ingotSilver, TFItems.ingotSilver));
 		this.furnaceActions.add(new ReplaceFurnaceAction(TFItems.ingotLead, TFItems.ingotLead));
-		this.furnaceActions.add(new ReplaceFurnaceAction(new ItemStack(TinkerTools.materials, 1, 11), new ItemStack(TinkerTools.materials, 1, 11)));
+		this.furnaceActions.add(new ReplaceFurnaceAction(new ItemStack(TinkerTools.materials, 1, 11), new ItemStack(TinkerTools.materials, 1, 11))); //aluminum
+		this.furnaceActions.add(new ReplaceFurnaceAction(Ic2Items.advIronIngot, ItemIngot.getIngot(EnumIngot.STEEL)));
 		
 		//unify ore smelting
 		this.furnaceActions.add(new ReplaceFurnaceAction(TFBlocks.blockOre.oreCopper, TFBlocks.blockOre.oreCopper));

@@ -22,7 +22,7 @@ public class ReplaceSmelterAction extends SmelterAction {
 	 * @param secondaryOutputChance percentage chance for secondary output
 	 */
 	public ReplaceSmelterAction(int energy, ItemStack primaryInput, ItemStack secondaryInput, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryOutputChance) {
-		super(0, primaryInput, secondaryInput, primaryOutput, secondaryOutput, secondaryOutputChance);
+		super(energy, primaryInput, secondaryInput, primaryOutput, secondaryOutput, secondaryOutputChance);
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class ReplaceSmelterAction extends SmelterAction {
 	 * @param primaryOutput primary operation output
 	 */
 	public ReplaceSmelterAction(int energy, ItemStack primaryInput, ItemStack secondaryInput, ItemStack primaryOutput) {
-		this(0, primaryInput, secondaryInput, primaryOutput, null, 0);
+		this(energy, primaryInput, secondaryInput, primaryOutput, null, 0);
 	}
 	
 	/**

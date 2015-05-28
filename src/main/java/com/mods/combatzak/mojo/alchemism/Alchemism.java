@@ -1,8 +1,10 @@
 package com.mods.combatzak.mojo.alchemism;
 
+import com.mods.combatzak.mojo.alchemism.items.AlchemismItems;
 import com.mods.combatzak.mojo.alchemism.updates.CraftingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RedstoneFurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
@@ -44,7 +46,7 @@ public class Alchemism {
 	 */
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+		AlchemismItems.registerItems(); //register any new items with the game
 	}
 	
 	/**
@@ -79,6 +81,7 @@ public class Alchemism {
 		PulverizerUpdates.getInstance().register();
 		RedstoneFurnaceUpdates.getInstance().register();
 		InductionSmelterUpdates.getInstance().register();
+		IngotCompressorUpdates.getInstance().register();
 	}
 	
 	/**
