@@ -1,8 +1,12 @@
 package com.mods.combatzak.mojo.alchemism;
 
+import codechicken.nei.guihook.GuiContainerManager;
+
 import com.mods.combatzak.mojo.alchemism.items.AlchemismItems;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.DurabilityTooltipHandler;
 import com.mods.combatzak.mojo.alchemism.updates.CraftingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
@@ -82,6 +86,9 @@ public class Alchemism {
 		RedstoneFurnaceUpdates.getInstance().register();
 		InductionSmelterUpdates.getInstance().register();
 		IngotCompressorUpdates.getInstance().register();
+		GrinderUpdates.getInstance().register();
+		
+		GuiContainerManager.addTooltipHandler(new DurabilityTooltipHandler());
 	}
 	
 	/**

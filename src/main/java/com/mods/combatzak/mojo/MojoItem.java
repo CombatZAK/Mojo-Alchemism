@@ -138,9 +138,9 @@ public class MojoItem extends Item {
 	 */
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean para4) {
-		if (this.tooltip == null || this.tooltip.equals("")) return;
-		String[] tokens = tooltip.split("\n");
+		if (this.tooltip == null || this.tooltip.equals("")) return; //check for no tooltip
+		String[] tokens = tooltip.split("\n"); //get the individual tooltip lines
 		for (String token : tokens)
-			list.add(token);
+			list.add(token); //add each line sequentially
 	}
 }

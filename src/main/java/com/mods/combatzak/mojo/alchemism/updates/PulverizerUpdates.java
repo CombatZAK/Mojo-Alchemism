@@ -9,9 +9,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ItemApi;
+import appeng.items.materials.MaterialType;
 import cofh.thermalfoundation.item.TFItems;
 
 import com.mods.combatzak.mojo.GroupAction;
+import com.mods.combatzak.mojo.alchemism.actions.te4.pulverizer.RemovePulverizerAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.pulverizer.ReplacePulverizerAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.pulverizer.SubstitutePulverizerAction;
 
@@ -80,6 +82,10 @@ public class PulverizerUpdates {
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustCharcoal, TFItems.dustCharcoal));
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustSulfur, TFItems.dustSulfur));
 		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustNiter, TFItems.dustNiter));
+		this.pulverizerActions.add(new SubstitutePulverizerAction(TFItems.dustObsidian, TFItems.dustObsidian));
+		
+		//remove recipe for creating AE silicon
+		this.pulverizerActions.add(new RemovePulverizerAction(MaterialType.Silicon.stack(1)));
 	}
 	
 	/**

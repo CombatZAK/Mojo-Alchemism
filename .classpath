@@ -80,5 +80,6 @@
 	<classpathentry kind="lib" path="lib/NotEnoughItems-1.7.10-1.0.3.74-universal.jar"/>
 	<classpathentry kind="lib" path="lib/AOBD-2.6.2.jar"/>
 	<classpathentry kind="lib" path="lib/NetherOres-[1.7.10]2.3.1B1-14-dev.jar"/>
+	<classpathentry kind="lib" path="lib/appliedenergistics2-rv2-stable-3-dev.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
