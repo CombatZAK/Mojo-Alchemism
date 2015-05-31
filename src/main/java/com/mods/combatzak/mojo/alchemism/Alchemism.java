@@ -9,6 +9,7 @@ import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RedstoneFurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
@@ -98,5 +99,6 @@ public class Alchemism {
 	@EventHandler
 	public void serverStarted(FMLServerStartedEvent event) {
 		RenameUpdates.getInstance().register();
+		NeiItemUpdates.getInstance().register();
 	}
 }

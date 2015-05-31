@@ -104,6 +104,7 @@ public class RenameUpdates {
 		this.renameActions.add(new RenameGenericAction("ic2.itemDensePlateAdvIron", "Dense Industrial Steel Plate"));
 		this.renameActions.add(new RenameGenericAction("ic2.itemCasingAdvIron", "Industrial Steel Item Casing"));
 		this.renameActions.add(new RenameGenericAction("ic2.AdvIronBlockCuttingBlade.info", "cuts materials softer than Industrial Steel"));
+		this.renameActions.add(new RenameGenericAction("ic2.itemsteelshaft", "Shaft (Industrial Steel)"));
 		
 	}
 }
