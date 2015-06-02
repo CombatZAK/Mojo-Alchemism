@@ -49,9 +49,10 @@ public class NeiItemUpdates {
 	 */
 	private NeiItemUpdates() {
 		//hide all entries for non TF ores with a few other exceptions
-		this.itemActions.add(new HideNeiAction("oreCopper", TFBlocks.blockOre.oreCopper, Ic2Items.copperOre));
-		this.itemActions.add(new HideNeiAction("oreTin", TFBlocks.blockOre.oreTin, Ic2Items.tinOre));
+		this.itemActions.add(new HideNeiAction("oreCopper", TFBlocks.blockOre.oreCopper, Ic2Items.copperOre, new ItemStack(TinkerWorld.oreGravel, 1, 2)));
+		this.itemActions.add(new HideNeiAction("oreTin", TFBlocks.blockOre.oreTin, Ic2Items.tinOre, new ItemStack(TinkerWorld.oreGravel, 1, 3)));
 		this.itemActions.add(new HideNeiAction("oreLead", TFBlocks.blockOre.oreLead, Ic2Items.leadOre));
+		this.itemActions.add(new HideNeiAction("oreAluminum", new ItemStack(TinkerWorld.oreSlag, 1, 5), new ItemStack(TinkerWorld.oreGravel, 1, 4)));
 		this.itemActions.add(new HideNeiAction("oreSilver", TFBlocks.blockOre.oreSilver));
 		
 		//hide all entries for non TF ingots
@@ -70,14 +71,14 @@ public class NeiItemUpdates {
 		this.itemActions.add(new HideNeiAction("blockBronze", TFBlocks.blockStorage.blockBronze));
 		this.itemActions.add(new HideNeiAction("blockLead", TFBlocks.blockStorage.blockLead));
 		this.itemActions.add(new HideNeiAction("blockSilver", TFBlocks.blockStorage.blockSilver));
-		this.itemActions.add(new HideNeiAction("blockAluminum", new ItemStack(TinkerWorld.metalBlock, 1, 11)));
+		this.itemActions.add(new HideNeiAction("blockAluminum", new ItemStack(TinkerWorld.metalBlock, 1, 6)));
 		
 		//hide non-TF nuggets
-		this.itemActions.add(new HideNeiAction("nuggetCopper", TFItems.nuggetCopper));
-		this.itemActions.add(new HideNeiAction("nuggetTin", TFItems.nuggetTin));
+		this.itemActions.add(new HideNeiAction("nuggetCopper", TFItems.nuggetCopper, new ItemStack(TinkerWorld.oreBerries, 1, 2)));
+		this.itemActions.add(new HideNeiAction("nuggetTin", TFItems.nuggetTin, new ItemStack(TinkerWorld.oreBerries, 1, 3)));
 		this.itemActions.add(new HideNeiAction("nuggetBronze", TFItems.nuggetBronze));
 		this.itemActions.add(new HideNeiAction("nuggetLead", TFItems.nuggetLead));
 		this.itemActions.add(new HideNeiAction("nuggetSilver", TFItems.nuggetSilver));
-		this.itemActions.add(new HideNeiAction("nuggetIron", TFItems.nuggetIron));
+		this.itemActions.add(new HideNeiAction("nuggetIron", TFItems.nuggetIron, new ItemStack(TinkerWorld.oreBerries, 1, 0)));
 	}
 }

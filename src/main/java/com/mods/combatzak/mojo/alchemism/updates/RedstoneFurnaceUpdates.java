@@ -5,6 +5,7 @@ import mods.railcraft.common.items.ItemIngot;
 import mods.railcraft.common.items.ItemIngot.EnumIngot;
 import net.minecraft.item.ItemStack;
 import tconstruct.tools.TinkerTools;
+import tconstruct.world.TinkerWorld;
 import cofh.thermalfoundation.block.TFBlocks;
 import cofh.thermalfoundation.item.TFItems;
 
