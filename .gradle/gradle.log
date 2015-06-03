@@ -7,19 +7,11 @@
 ****************************
 Found AccessTransformer in main resources: CoFH_at.cfg
 Found AccessTransformer in main resources: micdoodlecore_at.cfg
-:eclipseClasspath[Fatal Error] :6:2: The content of elements must consist of well-formed character data or markup.
- FAILED
+:eclipseClasspath
+:eclipseJdt
+:eclipseProject
+:eclipse
 
-FAILURE: Build failed with an exception.
+BUILD SUCCESSFUL
 
-* What went wrong:
-Execution failed for task ':eclipseClasspath'.
-> Cannot parse file 'C:\Users\CombatZAK\Mojo-Alchemism\.classpath'.
-       Perhaps this file was tinkered with? In that case try delete this file and then retry.
-
-* Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
-
-BUILD FAILED
-
-Total time: 11.783 secs
+Total time: 12.33 secs
