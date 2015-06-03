@@ -9,6 +9,7 @@ import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.MeltingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RedstoneFurnaceUpdates;
@@ -88,6 +89,7 @@ public class Alchemism {
 		InductionSmelterUpdates.getInstance().register();
 		IngotCompressorUpdates.getInstance().register();
 		GrinderUpdates.getInstance().register();
+		MeltingUpdates.getInstance().register();
 		
 		GuiContainerManager.addTooltipHandler(new DurabilityTooltipHandler());
 	}

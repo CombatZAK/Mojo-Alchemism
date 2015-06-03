@@ -78,10 +78,19 @@ public class RemoveMeltingAction extends MeltingAction {
 		setIsApplied(true); //set the applied flag
 		return true;
 	}
-
+	
+	/**
+	 * Checks if a particular melting recipe matches the i/o pattern
+	 * 
+	 * @param recipe melting recipe to check
+	 * @return true if the recipe matches the pattern; false otherwise
+	 */
 	private boolean isPatternMatch(Map.Entry<ItemMetaWrapper, FluidStack> recipe) {
 		if (recipe == null) return false;
 		
-		boolean inputMatches = input == null || recipe.getKey().item == input.getItem()
+		boolean inputMatches = input == null || isDirectMatch(recipe.getKey(), input);
+		boolean outputMatches = output == null || isFluidMatch(recipe.getValue(), output);
+		
+		return inputMatches && outputMatches;
 	}
 }
