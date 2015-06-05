@@ -47,7 +47,6 @@ public class MeltingUpdates {
 		this.meltingActions.add(new RemoveMeltingAction(new FluidStack(TFFluids.fluidPyrotheum, 1)));
 		this.meltingActions.add(new RemoveMeltingAction(new FluidStack(TFFluids.fluidCoal, 1)));
 		this.meltingActions.add(new RemoveMeltingAction(new FluidStack(TFFluids.fluidCryotheum, 1)));
-		this.meltingActions.add(new RemoveMeltingAction(new FluidStack(TFFluids.fluidRedstone, 1)));
 		this.meltingActions.add(new RemoveMeltingAction(new FluidStack(TFFluids.fluidGlowstone, 1)));
 	}
 }
