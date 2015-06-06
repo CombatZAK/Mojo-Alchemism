@@ -1,5 +1,8 @@
 package com.mods.combatzak.mojo.alchemism.actions.tconstruct.smeltery.casting;
 
+import java.util.List;
+
+import tconstruct.library.crafting.CastingRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -9,27 +12,27 @@ public abstract class CastingAction extends SmelteryAction {
 	/**
 	 * Input item to cast over, if any
 	 */
-	private ItemStack cast;
+	protected ItemStack cast;
 	
 	/**
 	 * Fluid and amount to pour
 	 */
-	private FluidStack pour;
+	protected FluidStack pour;
 	
 	/**
 	 * Output of casting recipe
 	 */
-	private ItemStack output;
+	protected ItemStack output;
 	
 	/**
 	 * Indicates that the item being casted over should be removed as part of the cast
 	 */
-	private boolean consumeCast;
+	protected boolean consumeCast;
 	
 	/**
 	 * Amount of time to wait for cast to cool
 	 */
-	private int cooldown;
+	protected int cooldown;
 	
 	/**
 	 * Gets the input cast
@@ -231,4 +234,11 @@ public abstract class CastingAction extends SmelteryAction {
 	public CastingAction() {
 		this(null, null, null, false, 0);
 	}
+	
+	/**
+	 * Gets the registered list of casting recipes for this action
+	 * 
+	 * @return casting registry
+	 */
+	protected abstract List<CastingRecipe> getRegistry();
 }

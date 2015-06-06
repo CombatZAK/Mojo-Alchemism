@@ -4,6 +4,7 @@ import codechicken.nei.guihook.GuiContainerManager;
 
 import com.mods.combatzak.mojo.alchemism.items.AlchemismItems;
 import com.mods.combatzak.mojo.alchemism.nei.tooltip.DurabilityTooltipHandler;
+import com.mods.combatzak.mojo.alchemism.updates.CastingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.CraftingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
@@ -90,6 +91,7 @@ public class Alchemism {
 		IngotCompressorUpdates.getInstance().register();
 		GrinderUpdates.getInstance().register();
 		MeltingUpdates.getInstance().register();
+		CastingUpdates.getInstance().register();
 		
 		GuiContainerManager.addTooltipHandler(new DurabilityTooltipHandler());
 	}
