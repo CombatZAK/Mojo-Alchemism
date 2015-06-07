@@ -18,6 +18,7 @@ import mods.railcraft.common.items.ItemNugget.EnumNugget;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import buildcraft.BuildCraftCore;
 import cofh.thermalexpansion.item.TEItems;
 import cofh.thermalfoundation.item.TFItems;
 
@@ -118,6 +119,12 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(ItemApi.getItem("itemNugget", 2))); //tin nugget
 		recipeActions.add(new RemoveRecipesAction(ItemApi.getItem("itemNugget", 3))); //silver nugget
 		recipeActions.add(new RemoveRecipesAction(ItemApi.getItem("itemNugget", 4))); //lead nugget
+		
+		//deletion of unbalanced gear recipes
+		recipeActions.add(new RemoveRecipesAction(ForestryItem.gearCopper.getItemStack()));
+		recipeActions.add(new RemoveRecipesAction(ForestryItem.gearTin.getItemStack()));
+		recipeActions.add(new RemoveRecipesAction(ForestryItem.gearBronze.getItemStack()));
+		recipeActions.add(new RemoveRecipesAction(new ItemStack(BuildCraftCore.ironGearItem)));
 		
 		//deletion of TConstruct silky jewel and mossball
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 6))); //mossball

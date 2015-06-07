@@ -73,6 +73,13 @@ public class CastingUpdates {
 		this.castingActions.add(new ReplaceBasinCastingAction(new OreIngredient("blockLead"), TFBlocks.blockStorage.blockLead));
 		this.castingActions.add(new ReplaceBasinCastingAction(new OreIngredient("blockSilver"), TFBlocks.blockStorage.blockSilver));
 		
+		//fix gear casting
+		this.castingActions.add(new ReplaceTableCastingAction(new OreIngredient("gearCopper"), TFItems.gearCopper));
+		this.castingActions.add(new ReplaceTableCastingAction(new OreIngredient("gearTin"), TFItems.gearTin));
+		this.castingActions.add(new ReplaceTableCastingAction(new OreIngredient("gearBronze"), TFItems.gearBronze));
+		this.castingActions.add(new ReplaceTableCastingAction(new OreIngredient("gearIron"), TFItems.gearIron));
+		this.castingActions.add(new ReplaceTableCastingAction(new OreIngredient("gearGold"), TFItems.gearGold));
+		
 		//remove some recipes
 		this.castingActions.add(new RemoveBasinCastingAction(new ItemStack(TEBlocks.blockGlass)));
 	}
