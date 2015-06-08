@@ -1,6 +1,6 @@
 package com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers;
 
-public abstract class FuelTooltipHelper implements ITooltipHelper {
+public abstract class FuelTooltipHelper implements IItemTooltipHelper {
 	protected static final int MAX_SUFFIX_LEVEL = 5;
 
 	/**
@@ -50,7 +50,7 @@ public abstract class FuelTooltipHelper implements ITooltipHelper {
 	 * @param suffixLevel power of 1000
 	 * @return suffix appropriate for specified level
 	 */
-	public static String getSuffix(int suffixLevel) throws IllegalArgumentException {
+	private static String getSuffix(int suffixLevel) throws IllegalArgumentException {
 		String result = "";
 		switch (suffixLevel) {
 			case 0:

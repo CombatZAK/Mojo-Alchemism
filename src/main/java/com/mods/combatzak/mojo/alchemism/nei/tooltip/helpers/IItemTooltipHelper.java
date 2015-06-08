@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-public interface ITooltipHelper {
+public interface IItemTooltipHelper {
 	/**
 	 * Gets the tooltip to apply to the item
 	 * 
