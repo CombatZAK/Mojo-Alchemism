@@ -165,4 +165,28 @@ public abstract class TransposerAction extends Te4Action {
 		this.setMode(value);
 		return this;
 	}
+	
+	/**
+	 * Creates a new TransposerAction instance
+	 * 
+	 * @param energy energy cost for operation
+	 * @param inputItem item to fill or empty
+	 * @param transposeFluid fluid to add or extract
+	 * @param outputItem resulting item of operation
+	 * @param mode fluid direction
+	 */
+	public TransposerAction(int energy, ItemStack inputItem, FluidStack transposeFluid, ItemStack outputItem, TransposerMode mode) {
+		super(energy);
+		this.inputItem = inputItem;
+		this.transposeFluid = transposeFluid;
+		this.outputItem = outputItem;
+		this.mode = mode;
+	}
+	
+	/**
+	 * Default constructor
+	 */
+	public TransposerAction() {
+		this(0, null, null, null, TransposerMode.FILL);
+	}
 }

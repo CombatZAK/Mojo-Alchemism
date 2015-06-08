@@ -59,6 +59,8 @@ public class InductionSmelterUpdates {
 		this.smelterActions.add(new SubstituteSmelterAction(new ItemStack(TinkerTools.materials, 1, 11), new ItemStack(TinkerTools.materials, 1, 11)));
 		this.smelterActions.add(new RemoveSmelterAction().withPrimaryOutput(Ic2Items.advIronIngot));
 		
+		this.smelterActions.add(new SubstituteSmelterAction(TFItems.ingotTin, TFItems.ingotTin));
+		
 		this.smelterActions.add(new ReplaceSmelterAction(8000, new ItemStack(AlchemismItems.dustSteel, 2), TFItems.dustPyrotheum, ItemIngot.getIngot(EnumIngot.STEEL, 2), TEItems.slag, 50));
 	}
 }

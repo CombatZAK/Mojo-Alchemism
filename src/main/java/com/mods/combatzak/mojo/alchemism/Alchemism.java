@@ -15,6 +15,7 @@ import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RedstoneFurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.TransposerUpdates;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -88,6 +89,7 @@ public class Alchemism {
 		PulverizerUpdates.getInstance().register();
 		RedstoneFurnaceUpdates.getInstance().register();
 		InductionSmelterUpdates.getInstance().register();
+		TransposerUpdates.getInstance().register();
 		IngotCompressorUpdates.getInstance().register();
 		GrinderUpdates.getInstance().register();
 		MeltingUpdates.getInstance().register();
