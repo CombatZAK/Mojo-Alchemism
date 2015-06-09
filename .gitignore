@@ -3,6 +3,7 @@ bin/
 build/
 eclipse/
 .settings
+.classpath
 
 
 # Mobile Tools for Java (J2ME)

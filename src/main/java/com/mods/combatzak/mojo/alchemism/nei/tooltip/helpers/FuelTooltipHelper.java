@@ -39,7 +39,7 @@ public abstract class FuelTooltipHelper implements IItemTooltipHelper {
 		placeholder /= 100l; //cut off the next two digits
 		String numString = placeholder.toString(); //turn into a string
 		if (numString.length() == 1) numString = "0." + numString; //prepend a 0. in front of a single digit
-		else numString = numString.substring(0, numString.length() - 2) + "." + numString.charAt(numString.length() - 1); //insert the decimal before last digit
+		else numString = numString.substring(0, numString.length() - 1) + "." + numString.charAt(numString.length() - 1); //insert the decimal before last digit
 		
 		return numString + getSuffix(suffixLevel + 1);
 	}
@@ -62,19 +62,19 @@ public abstract class FuelTooltipHelper implements IItemTooltipHelper {
 				break;
 				
 			case 2:
-				result = "M";
+				result = "M ";
 				break;
 				
 			case 3:
-				result = "B";
+				result = "B ";
 				break;
 				
 			case 4:
-				result = "T";
+				result = "T ";
 				break;
 				
 			case 5:
-				result = "Q";
+				result = "Q ";
 				break;
 				
 			default:

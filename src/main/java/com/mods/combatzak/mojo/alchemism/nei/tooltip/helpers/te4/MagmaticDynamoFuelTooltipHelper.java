@@ -5,6 +5,7 @@ import java.util.List;
 
 import cofh.thermalexpansion.block.dynamo.TileDynamoMagmatic;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
@@ -21,10 +22,9 @@ public class MagmaticDynamoFuelTooltipHelper extends DynamoFuelTooltipHelper {
 	@Override
 	public List<String> getTooltip(ItemStack target) {
 		if (target == null) return null; //give up for null target
-		if (!(target.getItem() instanceof IFluidContainerItem)) return null; //give up if not a container
+		if (!FluidContainerRegistry.isContainer(target)) return null;
 		
-		IFluidContainerItem container = (IFluidContainerItem)target.getItem(); //get the container
-		FluidStack fluid = container.getFluid(target); //get the fluid
+		FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(target); //get the fluid
 		
 		int energyValue = TileDynamoMagmatic.getFuelEnergy(fluid); //energy output per 50mb
 		if (energyValue == 0) return null; //not a fuel

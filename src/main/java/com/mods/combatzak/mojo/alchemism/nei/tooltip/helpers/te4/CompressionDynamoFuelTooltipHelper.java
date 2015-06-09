@@ -5,6 +5,7 @@ import java.util.List;
 
 import cofh.thermalexpansion.block.dynamo.TileDynamoCompression;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
@@ -22,10 +23,9 @@ public class CompressionDynamoFuelTooltipHelper extends DynamoFuelTooltipHelper 
 	@Override
 	public List<String> getTooltip(ItemStack target) {
 		if (target == null) return null; //skip null args
-		if (!(target.getItem() instanceof IFluidContainerItem)) return null; //skip non-fluids
+		if (!FluidContainerRegistry.isContainer(target)) return null;
 		
-		IFluidContainerItem container = (IFluidContainerItem)target.getItem(); //get the fluid container
-		FluidStack fluid = container.getFluid(target); //get the fluid
+		FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(target); //get the fluid
 		
 		String fuelTip = getFuelTip(fluid);
 		String coolantTip = getCoolantTip(fluid);

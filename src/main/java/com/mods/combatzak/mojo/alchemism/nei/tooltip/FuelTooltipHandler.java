@@ -9,6 +9,15 @@ import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.te4.EnervationDynam
 import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.te4.MagmaticDynamoFuelTooltipHelper;
 import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.te4.ReactantDynamoFuelTooltipHelper;
 import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.te4.SteamDynamoFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.EnderGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.FoodGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.FurnaceGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.MagmaGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.NetherGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.PinkGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.RedstoneFluxGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.SurvivalistGeneratorFuelTooltipHelper;
+import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.TntGeneratorFuelTooltipHelper;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
@@ -53,10 +62,19 @@ public class FuelTooltipHandler implements IContainerTooltipHandler {
 	}
 	
 	/**
+	 * Not used
+	 */
+	@Deprecated
+	@Override
+	public List<String> handleItemTooltip(GuiContainer gui, ItemStack itemstack, int mousex, int mousey, List<String> currenttip) {
+		return currenttip;
+	}
+	
+	/**
 	 * Adds fuel values to item tooltips where appropraite
 	 */
 	@Override
-	public List<String> handleItemTooltip(GuiContainer gui, ItemStack itemstack, int mousex, int mousey, List<String> currenttip) {
+	public List<String> handleItemDisplayName(GuiContainer gui, ItemStack itemstack, List<String> currenttip) {
 		if (itemstack == null) return currenttip; //ignore null items
 		
 		boolean found = false;
@@ -71,16 +89,6 @@ public class FuelTooltipHandler implements IContainerTooltipHandler {
 			if (currenttip == null) currenttip = new ArrayList<String>(); //initialize the tooltip list if necessary
 			currenttip.addAll(helperTips); //add any found tips
 		}
-		
-		return currenttip;
-	}
-	
-	/**
-	 * Not used
-	 */
-	@Deprecated
-	@Override
-	public List<String> handleItemDisplayName(GuiContainer gui, ItemStack itemstack, List<String> currenttip) {
 		return currenttip;
 	}
 	
@@ -102,5 +110,15 @@ public class FuelTooltipHandler implements IContainerTooltipHandler {
 		this.addHelper(new MagmaticDynamoFuelTooltipHelper());
 		this.addHelper(new EnervationDynamoFuelTooltipHelper());
 		this.addHelper(new ReactantDynamoFuelTooltipHelper());
+		
+		this.addHelper(new SurvivalistGeneratorFuelTooltipHelper());
+		this.addHelper(new FurnaceGeneratorFuelTooltipHelper());
+		this.addHelper(new FoodGeneratorFuelTooltipHelper());
+		this.addHelper(new PinkGeneratorFuelTooltipHelper());
+		this.addHelper(new MagmaGeneratorFuelTooltipHelper());
+		this.addHelper(new RedstoneFluxGeneratorFuelTooltipHelper());
+		this.addHelper(new TntGeneratorFuelTooltipHelper());
+		this.addHelper(new EnderGeneratorFuelTooltipHelper());
+		this.addHelper(new NetherGeneratorFuelTooltipHelper());
 	}
 }

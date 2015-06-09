@@ -5,6 +5,7 @@ import java.util.List;
 
 import cofh.thermalexpansion.block.dynamo.TileDynamoReactant;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
@@ -45,10 +46,9 @@ public class ReactantDynamoFuelTooltipHelper extends DynamoFuelTooltipHelper {
 	 */
 	private String getFuelTip(ItemStack target) {
 		if (target == null) return null; //don' deal with null args
-		if (!(target.getItem() instanceof IFluidContainerItem)) return null; //give up if not a liquid container
+		if (!FluidContainerRegistry.isContainer(target)) return null;
 		
-		IFluidContainerItem container = (IFluidContainerItem)target.getItem(); //get the container
-		FluidStack fluid = container.getFluid(target); //get the fluid from the container
+		FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(target); //get the fluid from the container
 		int energyValue = TileDynamoReactant.getFuelEnergy(fluid); //get the energy value of the fluid per 50mB
 		
 		if (energyValue == 0) return null; //not a reactant fuel
