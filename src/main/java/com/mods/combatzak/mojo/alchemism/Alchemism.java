@@ -11,6 +11,7 @@ import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.MaceratorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.MeltingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
@@ -39,7 +40,7 @@ public class Alchemism {
 	
 	public static final String MODID = "mojo-alchemism"; //Unique mod id
 	public static final String MOD_NAME = "Mojo-Alchemism"; //Mod friendly name
-	public static final String MOD_VERSION = "3.0.0"; //Mod version
+	public static final String MOD_VERSION = "0.1.0"; //Mod version
 	public static final String DEPENDENCIES = "required-after:ThermalFoundation;required-after:ThermalExpansion;required-after:Forestry;required-after:GalacticraftCore;required-after:IC2;required-after:Thaumcraft;required-after:Botania;required-after:Railcraft;required-after:TConstruct;required-after:NetherOres"; //mod dependencies
 	
 	@Instance
@@ -88,6 +89,7 @@ public class Alchemism {
 		CraftingUpdates.getInstance().register();
 		FurnaceUpdates.getInstance().register();
 		PulverizerUpdates.getInstance().register();
+		MaceratorUpdates.getInstance().register();
 		RedstoneFurnaceUpdates.getInstance().register();
 		InductionSmelterUpdates.getInstance().register();
 		TransposerUpdates.getInstance().register();

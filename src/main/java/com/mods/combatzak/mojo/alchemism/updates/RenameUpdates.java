@@ -96,6 +96,12 @@ public class RenameUpdates {
 		this.renameActions.add(new RenameGenericAction("tile.fluid.molten.shiny.name", "Molten Platinum"));
 		this.renameActions.add(new RenameGenericAction("item.tconstruct.bucket.Shiny.name", "Molten Platinum Bucket"));
 		
+		//fix some fluid names
+		this.renameActions.add(new RenameFluidAction("tin.molten", "Molten Tin"));
+		this.renameActions.add(new RenameGenericAction("tile.fluid.molten.tin.name", "Molten Tin"));
+		this.renameActions.add(new RenameFluidAction("molten.unstableIngots", "Unstable Fluid"));
+		this.renameActions.add(new RenameFluidAction("molten.bedrockiumIngots", "Liquified Bedrockium"));
+		
 		//Rename IC2 steel to industrial steel
 		this.renameActions.add(new RenameGenericAction("ic2.itemIngotAdvIron", "Industrial Steel Ingot"));
 		this.renameActions.add(new RenameGenericAction("ic2.itemAdvIronBlockCuttingBlade", "Block Cutting Blade (Industrial Steel)"));

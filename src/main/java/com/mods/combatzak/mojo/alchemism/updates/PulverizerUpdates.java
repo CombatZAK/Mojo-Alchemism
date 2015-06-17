@@ -59,14 +59,15 @@ public class PulverizerUpdates {
 		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 19), newStackQuantity(TFItems.dustSilver, 3), TFItems.dustSilver, 25));
 		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 20), newStackQuantity(TFItems.dustLead, 3), TFItems.dustLead, 25));
 		this.pulverizerActions.add(new ReplacePulverizerAction(4800, ItemApi.getItem("itemNugget", 31), newStackQuantity(TFItems.dustGold, 3), TFItems.dustGold, 25));
-		
-		//replace recipes for aobd clusters
-		for (Ore ore : Ore.ores) {
-			if (ore.isCompatEnabled(CompatType.THAUMCRAFT)) {
-				this.pulverizerActions.add(new ReplacePulverizerAction(4800, RecipesModule.getOreStack("cluster", ore), RecipesModule.getOreStack("dust", ore, 3), RecipesModule.getOreStack("dust", ore), 25));
-			}
+		for (Ore ore : Ore.ores) { //go through all AOBD ores
+			if (ModulesHandler.isOreBlacklisted(CompatType.THAUMCRAFT, ore.name()) || !ore.isEnabled()) continue; //skip disabled ores
+			ItemStack cluster = RecipesModule.getOreStack("cluster", ore);
+			if (cluster.getItem() == ItemApi.getItem("itemNugget", 16).getItem()) continue; //skip the cluster if it's already done
+			ItemStack dustMain = RecipesModule.getOreStack("dust", ore, 3);
+			ItemStack dustSecondary = RecipesModule.getOreStack("dust", ore);
+			
+			this.pulverizerActions.add(new ReplacePulverizerAction(4800, cluster, dustMain, dustSecondary, 25));
 		}
-		
 		//fix lapis and diamond nether ore recipes
 		this.pulverizerActions.add(new ReplacePulverizerAction(3200, Ores.Diamond.getItemStack(1), new ItemStack(Items.diamond, 5), new ItemStack(Blocks.netherrack), 15));
 		this.pulverizerActions.add(new ReplacePulverizerAction(3200, Ores.Lapis.getItemStack(1), new ItemStack(Items.dye, 24, 4), new ItemStack(Blocks.netherrack), 15));

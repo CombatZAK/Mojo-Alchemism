@@ -5,6 +5,7 @@ import ic2.core.Ic2Items;
 import java.util.ArrayList;
 import java.util.List;
 
+import scala.actors.threadpool.Arrays;
 import tconstruct.tools.TinkerTools;
 import tconstruct.world.TinkerWorld;
 import thaumcraft.api.ItemApi;
@@ -133,6 +134,7 @@ public class CraftingUpdates {
 		recipeActions.addAll(addMossballRecipes());
 		
 		recipeActions.add(getSteelDustRecipe());
+		recipeActions.add(getUraniumBlockRecipe());
 	}
 	
 	private CraftingAction addSilkyJewelRecipe() {
@@ -216,5 +218,25 @@ public class CraftingUpdates {
 		inputs.add(dustCharcoal);
 		
 		return new AddShapelessAction(inputs, new ItemStack(AlchemismItems.dustSteel));
+	}
+	
+	/**
+	 * Gets a shapeless recipe for making uranium blocks from U235
+	 * 
+	 * @return shapless recipe for making U-blocks
+	 */
+	private AddShapelessAction getUraniumBlockRecipe() {
+		List<IIngredient> inputs = new ArrayList<IIngredient>();
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		inputs.add(new ItemIngredient(Ic2Items.Uran238));
+		
+		return new AddShapelessAction(inputs, Ic2Items.uraniumBlock);
 	}
 }
