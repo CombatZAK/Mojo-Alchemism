@@ -38,6 +38,8 @@ import com.mods.combatzak.mojo.alchemism.recipes.ShapedItemIngredient;
 import forestry.core.config.ForestryBlock;
 import forestry.core.config.ForestryItem;
 import mods.railcraft.common.items.ItemIngot;
+import mrtjp.projectred.core.PartDefs;
+import mrtjp.projectred.exploration.DecorativeStoneDefs;
 
 public class CraftingUpdates {
 	/**
@@ -113,6 +115,14 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(ItemIngot.getIngot(EnumIngot.COPPER)));
 		recipeActions.add(new RemoveRecipesAction(ItemIngot.getIngot(EnumIngot.LEAD)));
 		recipeActions.add(new RemoveRecipesAction(ItemIngot.getIngot(EnumIngot.TIN)));
+		
+		//deletion of ProjectRed ingots/blocks
+		recipeActions.add(new RemoveRecipesAction(PartDefs.COPPERINGOT().makeStack()));
+		recipeActions.add(new RemoveRecipesAction(PartDefs.TININGOT().makeStack()));
+		recipeActions.add(new RemoveRecipesAction(PartDefs.SILVERINGOT().makeStack()));
+		recipeActions.add(new RemoveRecipesAction(DecorativeStoneDefs.COPPERBLOCK().makeStack()));
+		recipeActions.add(new RemoveRecipesAction(DecorativeStoneDefs.TINBLOCK().makeStack()));
+		recipeActions.add(new RemoveRecipesAction(DecorativeStoneDefs.SILVERBLOCK().makeStack()));
 		
 		//deletion of Thaumcraft metal nuggets
 		recipeActions.add(new RemoveRecipesAction(ItemApi.getItem("itemNugget", 0))); //iron nugget
