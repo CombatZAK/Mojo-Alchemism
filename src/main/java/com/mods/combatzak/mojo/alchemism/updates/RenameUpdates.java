@@ -44,7 +44,8 @@ public class RenameUpdates {
 	 * Applies all the display name updates
 	 */
 	public void register() {
-		this.renameActions.apply();
+		if (!this.renameActions.getIsApplied())
+			this.renameActions.apply();
 	}
 	
 	/**

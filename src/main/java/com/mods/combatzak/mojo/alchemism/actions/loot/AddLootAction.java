@@ -51,7 +51,7 @@ public class AddLootAction extends LootAction {
 		if (lootType == null) throw new IllegalStateException("Cannot add loot to empty entry");
 		if (loot == null) throw new IllegalStateException("Cannot add null loot");
 		
-		ChestGenHooks.addItem(lootType, new WeightedRandomChestContent(loot, weight, min, max)); //add the item to the chest
+		ChestGenHooks.addItem(lootType, new WeightedRandomChestContent(loot, min, max, weight)); //add the item to the chest
 		
 		this.setIsApplied(true); //set applied flag
 		return true;

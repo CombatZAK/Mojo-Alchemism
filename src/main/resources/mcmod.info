@@ -1,7 +1,7 @@
 [
 {
-  "modid": "alchemism",
-  "name": "Alchemism",
+  "modid": "mojo-alchemism",
+  "name": "Mojo-Alchemism",
   "description": "Edits crafting recipes for sanity's sake",
   "version": "${version}",
   "mcversion": "${mcversion}",

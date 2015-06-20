@@ -21,6 +21,7 @@ import com.mods.combatzak.mojo.alchemism.nei.tooltip.helpers.xu.TntGeneratorFuel
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
+import codechicken.nei.guihook.GuiContainerManager;
 import codechicken.nei.guihook.IContainerTooltipHandler;
 
 public class FuelTooltipHandler implements IContainerTooltipHandler {
@@ -41,6 +42,18 @@ public class FuelTooltipHandler implements IContainerTooltipHandler {
 	 */
 	public static FuelTooltipHandler getInstance() {
 		return instance;
+	}
+	
+	private boolean isRegistered = false;
+	
+	/**
+	 * Registers the tooltip handler
+	 */
+	public void register() {
+		if (isRegistered) return;
+		
+		GuiContainerManager.addTooltipHandler(this);
+		isRegistered = true;
 	}
 	
 	/**

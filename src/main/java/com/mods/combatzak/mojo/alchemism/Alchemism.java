@@ -11,6 +11,7 @@ import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.LootUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.MaceratorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.MeltingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
@@ -40,7 +41,7 @@ public class Alchemism {
 	
 	public static final String MODID = "mojo-alchemism"; //Unique mod id
 	public static final String MOD_NAME = "Mojo-Alchemism"; //Mod friendly name
-	public static final String MOD_VERSION = "0.1.0"; //Mod version
+	public static final String MOD_VERSION = "0.1.2"; //Mod version
 	public static final String DEPENDENCIES = "required-after:ThermalFoundation;required-after:ThermalExpansion;required-after:Forestry;required-after:GalacticraftCore;required-after:IC2;required-after:Thaumcraft;required-after:Botania;required-after:Railcraft;required-after:TConstruct;required-after:NetherOres"; //mod dependencies
 	
 	@Instance
@@ -86,17 +87,7 @@ public class Alchemism {
 	 */
 	@EventHandler
 	public void postLoad(FMLLoadCompleteEvent event) {
-		CraftingUpdates.getInstance().register();
-		FurnaceUpdates.getInstance().register();
-		PulverizerUpdates.getInstance().register();
-		MaceratorUpdates.getInstance().register();
-		RedstoneFurnaceUpdates.getInstance().register();
-		InductionSmelterUpdates.getInstance().register();
-		TransposerUpdates.getInstance().register();
-		IngotCompressorUpdates.getInstance().register();
-		GrinderUpdates.getInstance().register();
-		MeltingUpdates.getInstance().register();
-		CastingUpdates.getInstance().register();
+		proxy.postLoad(); //call the proxy for environment post-load action
 	}
 	
 	/**
@@ -105,10 +96,6 @@ public class Alchemism {
 	 */
 	@EventHandler
 	public void serverStarted(FMLServerStartedEvent event) {
-		RenameUpdates.getInstance().register();
-		NeiItemUpdates.getInstance().register();
-		
-		GuiContainerManager.addTooltipHandler(new DurabilityTooltipHandler());
-		GuiContainerManager.addTooltipHandler(FuelTooltipHandler.getInstance());
+		proxy.serverStarted();
 	}
 }

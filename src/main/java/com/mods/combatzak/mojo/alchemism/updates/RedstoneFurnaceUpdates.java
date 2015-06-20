@@ -33,7 +33,8 @@ public class RedstoneFurnaceUpdates {
 	}
 	
 	public void register() {
-		this.furnaceActions.apply();
+		if (!this.furnaceActions.getIsApplied())
+				this.furnaceActions.apply();
 	}
 	
 	public RedstoneFurnaceUpdates() {

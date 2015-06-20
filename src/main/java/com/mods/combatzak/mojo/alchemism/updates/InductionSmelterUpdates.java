@@ -45,7 +45,8 @@ public class InductionSmelterUpdates {
 	 * Applies the Induction smelter updates
 	 */
 	public void register() {
-		this.smelterActions.apply();
+		if (!this.smelterActions.getIsApplied())
+			this.smelterActions.apply();
 	}
 	
 	/**

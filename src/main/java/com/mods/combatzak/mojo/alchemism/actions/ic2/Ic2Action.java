@@ -1,8 +1,8 @@
 package com.mods.combatzak.mojo.alchemism.actions.ic2;
 
+import java.util.Arrays;
 import java.util.List;
 
-import scala.actors.threadpool.Arrays;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import ic2.api.recipe.IRecipeInput;

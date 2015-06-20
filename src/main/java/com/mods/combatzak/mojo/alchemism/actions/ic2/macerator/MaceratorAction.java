@@ -2,10 +2,10 @@ package com.mods.combatzak.mojo.alchemism.actions.ic2.macerator;
 
 import ic2.api.recipe.IRecipeInput;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-import scala.actors.threadpool.Arrays;
 import net.minecraft.item.ItemStack;
 
 import com.mods.combatzak.mojo.alchemism.actions.ic2.Ic2Action;

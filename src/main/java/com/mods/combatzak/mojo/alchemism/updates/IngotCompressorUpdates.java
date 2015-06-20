@@ -45,7 +45,8 @@ public class IngotCompressorUpdates {
 	 * Registers all of the compressor updates
 	 */
 	public void register() {
-		this.compressorActions.apply();
+		if (!this.compressorActions.getIsApplied())
+			this.compressorActions.apply();
 	}
 	
 	/**

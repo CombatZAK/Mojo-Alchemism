@@ -2,8 +2,8 @@ package com.mods.combatzak.mojo.alchemism.nei;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
-import scala.actors.threadpool.Arrays;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import codechicken.nei.api.API;

@@ -45,7 +45,8 @@ public class PulverizerUpdates {
 	 * Registers the updates with the game
 	 */
 	public void register() {
-		this.pulverizerActions.apply();
+		if (!this.pulverizerActions.getIsApplied()) 
+			this.pulverizerActions.apply();
 	}
 	
 	/**

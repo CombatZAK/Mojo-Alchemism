@@ -51,13 +51,15 @@ public class LootUpdates {
 	private LootUpdates() {
 		this.lootActions.add(new RemoveLootAction("dungeonChest", new ItemIngredient(Ic2Items.copperIngot)));
 		this.lootActions.add(new RemoveLootAction("dungeonChest", new ItemIngredient(Ic2Items.tinIngot)));
-		this.lootActions.add(new AddLootAction("dungeonChest", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("dungetonChest", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new AddLootAction("dungeonChest", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("dungeonChest", TFItems.ingotTin, 2, 5, 100));
 		
 		this.lootActions.add(new RemoveLootAction("mineshaftCorridor", new ItemIngredient(Ic2Items.copperIngot)));
 		this.lootActions.add(new RemoveLootAction("mineshaftCorridor", new ItemIngredient(Ic2Items.tinIngot)));
-		this.lootActions.add(new AddLootAction("mineshaftCorridor", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("mineshaftCorridor", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new RemoveLootAction("mineshaftCorridor", new ItemIngredient(Ic2Items.bronzePickaxe)));
+		this.lootActions.add(new AddLootAction("mineshaftCorridor", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("mineshaftCorridor", TFItems.ingotTin, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("mineshaftCorridor", Equipment.Bronze.toolPickaxe, 1));
 		
 		this.lootActions.add(new RemoveLootAction("pyramidDesertyChest", new ItemIngredient(Ic2Items.bronzePickaxe)));
 		this.lootActions.add(new RemoveLootAction("pyramidDesertyChest", new ItemIngredient(Ic2Items.bronzeSword)));
@@ -72,8 +74,8 @@ public class LootUpdates {
 		this.lootActions.add(new RemoveLootAction("pyramidDesertyChest", new ItemIngredient(RailcraftToolItems.getSteelArmor())));
 		this.lootActions.add(new RemoveLootAction("pyramidDesertyChest", new ItemIngredient(RailcraftToolItems.getSteelLegs())));
 		this.lootActions.add(new RemoveLootAction("pyramidDesertyChest", new ItemIngredient(RailcraftToolItems.getSteelBoots())));
-		this.lootActions.add(new AddLootAction("pyramidDesertyChest", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("pyramidDesertyChest", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new AddLootAction("pyramidDesertyChest", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("pyramidDesertyChest", TFItems.ingotTin, 2, 5, 100));
 		this.lootActions.add(new AddLootAction("pyramidDesertyChest", Equipment.Bronze.toolPickaxe, 5));
 		this.lootActions.add(new AddLootAction("pyramidDesertyChest", Equipment.Bronze.toolSword, 5));
 		this.lootActions.add(new AddLootAction("pyramidDesertyChest", Equipment.Bronze.armorHelmet, 5));
@@ -99,8 +101,8 @@ public class LootUpdates {
 		this.lootActions.add(new RemoveLootAction("pyramidJungleChest", new ItemIngredient(RailcraftToolItems.getSteelArmor())));
 		this.lootActions.add(new RemoveLootAction("pyramidJungleChest", new ItemIngredient(RailcraftToolItems.getSteelLegs())));
 		this.lootActions.add(new RemoveLootAction("pyramidJungleChest", new ItemIngredient(RailcraftToolItems.getSteelBoots())));
-		this.lootActions.add(new AddLootAction("pyramidJungleChest", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("pyramidJungleChest", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new AddLootAction("pyramidJungleChest", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("pyramidJungleChest", TFItems.ingotTin, 2, 5, 100));
 		this.lootActions.add(new AddLootAction("pyramidJungleChest", Equipment.Bronze.toolPickaxe, 5));
 		this.lootActions.add(new AddLootAction("pyramidJungleChest", Equipment.Bronze.toolSword, 5));
 		this.lootActions.add(new AddLootAction("pyramidJungleChest", Equipment.Bronze.armorHelmet, 5));
@@ -126,8 +128,8 @@ public class LootUpdates {
 		this.lootActions.add(new RemoveLootAction("strongholdCorridor", new ItemIngredient(RailcraftToolItems.getSteelArmor())));
 		this.lootActions.add(new RemoveLootAction("strongholdCorridor", new ItemIngredient(RailcraftToolItems.getSteelLegs())));
 		this.lootActions.add(new RemoveLootAction("strongholdCorridor", new ItemIngredient(RailcraftToolItems.getSteelBoots())));
-		this.lootActions.add(new AddLootAction("strongholdCorridor", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("strongholdCorridor", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new AddLootAction("strongholdCorridor", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("strongholdCorridor", TFItems.ingotTin, 2, 5, 100));
 		this.lootActions.add(new AddLootAction("strongholdCorridor", Equipment.Bronze.toolPickaxe, 5));
 		this.lootActions.add(new AddLootAction("strongholdCorridor", Equipment.Bronze.toolSword, 5));
 		this.lootActions.add(new AddLootAction("strongholdCorridor", Equipment.Bronze.armorHelmet, 5));
@@ -153,8 +155,8 @@ public class LootUpdates {
 		this.lootActions.add(new RemoveLootAction("strongholdCrossing", new ItemIngredient(RailcraftToolItems.getSteelArmor())));
 		this.lootActions.add(new RemoveLootAction("strongholdCrossing", new ItemIngredient(RailcraftToolItems.getSteelLegs())));
 		this.lootActions.add(new RemoveLootAction("strongholdCrossing", new ItemIngredient(RailcraftToolItems.getSteelBoots())));
-		this.lootActions.add(new AddLootAction("strongholdCrossing", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("strongholdCrossing", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new AddLootAction("strongholdCrossing", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("strongholdCrossing", TFItems.ingotTin, 2, 5, 100));
 		this.lootActions.add(new AddLootAction("strongholdCrossing", Equipment.Bronze.toolPickaxe, 5));
 		this.lootActions.add(new AddLootAction("strongholdCrossing", Equipment.Bronze.toolSword, 5));
 		this.lootActions.add(new AddLootAction("strongholdCrossing", Equipment.Bronze.armorHelmet, 5));
@@ -175,13 +177,15 @@ public class LootUpdates {
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(Ic2Items.bronzeBoots)));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(Ic2Items.copperIngot)));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(Ic2Items.tinIngot)));
+		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(Ic2Items.bronzeIngot)));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(RailcraftToolItems.getSteelSword())));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(RailcraftToolItems.getSteelHelm())));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(RailcraftToolItems.getSteelArmor())));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(RailcraftToolItems.getSteelLegs())));
 		this.lootActions.add(new RemoveLootAction("villageBlacksmith", new ItemIngredient(RailcraftToolItems.getSteelBoots())));
-		this.lootActions.add(new AddLootAction("villageBlacksmith", TFItems.ingotCopper, 100, 2, 5));
-		this.lootActions.add(new AddLootAction("villageBlacksmith", TFItems.ingotTin, 100, 2, 5));
+		this.lootActions.add(new AddLootAction("villageBlacksmith", TFItems.ingotCopper, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("villageBlacksmith", TFItems.ingotTin, 2, 5, 100));
+		this.lootActions.add(new AddLootAction("villageBlackSmith", TFItems.ingotBronze, 2, 4, 5));
 		this.lootActions.add(new AddLootAction("villageBlacksmith", Equipment.Bronze.toolPickaxe, 5));
 		this.lootActions.add(new AddLootAction("villageBlacksmith", Equipment.Bronze.toolSword, 5));
 		this.lootActions.add(new AddLootAction("villageBlacksmith", Equipment.Bronze.armorHelmet, 5));
