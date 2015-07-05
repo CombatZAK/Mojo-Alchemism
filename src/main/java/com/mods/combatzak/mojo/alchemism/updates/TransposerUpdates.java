@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import appeng.items.materials.MaterialType;
 import cofh.thermalfoundation.fluid.TFFluids;
+import cofh.thermalfoundation.item.TFItems;
 
 import com.mods.combatzak.mojo.GroupAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.transposer.AddTransposerAction;
@@ -49,6 +50,7 @@ public class TransposerUpdates {
 	 */
 	private TransposerUpdates() {
 		//add recipe for AE silicon
-		this.transposerActions.add(new AddTransposerAction(2400, new ItemStack(Blocks.sand), new FluidStack(TFFluids.fluidRedstone, 200), MaterialType.Silicon.stack(1), TransposerMode.FILL));
+		this.transposerActions.add(new AddTransposerAction(2400, new ItemStack(Blocks.sand), new FluidStack(TFFluids.fluidPetrotheum, 50), MaterialType.Silicon.stack(1), TransposerMode.FILL));
+		this.transposerActions.add(new AddTransposerAction(2400, TFItems.dustObsidian, new FluidStack(TFFluids.fluidAerotheum, 50), MaterialType.Silicon.stack(1), TransposerMode.FILL));
 	}
 }

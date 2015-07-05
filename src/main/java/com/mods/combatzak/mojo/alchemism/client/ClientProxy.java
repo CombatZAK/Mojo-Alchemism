@@ -6,6 +6,8 @@ import com.mods.combatzak.mojo.alchemism.nei.tooltip.FuelTooltipHandler;
 import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+
 /**
  * Client-side proxy for the Alchemism mod
  * 
@@ -13,6 +15,12 @@ import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
  *
  */
 public class ClientProxy extends CommonProxy {
+	/**
+	 * 
+	 */
+	public void preInit() {
+		FMLCommonHandler.instance().bus().register(new ConnectionEventHandler());
+	}
 	
 	/**
 	 * initializer method; currently a stub
@@ -26,11 +34,15 @@ public class ClientProxy extends CommonProxy {
 	 * client actions to take when server is started 
 	 */
 	@Override
-	public void serverStarted() {
-		RenameUpdates.getInstance().register();
-		NeiItemUpdates.getInstance().register();
+	public void postLoad() {
+		super.postLoad();
 		
 		DurabilityTooltipHandler.getInstance().register();
 		FuelTooltipHandler.getInstance().register();
+	}
+	
+	@Override
+	public void serverStarted() {
+		
 	}
 }

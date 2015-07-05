@@ -19,7 +19,9 @@ import mods.railcraft.common.items.ItemNugget.EnumNugget;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import appeng.items.materials.MaterialType;
 import buildcraft.BuildCraftCore;
+import ckathode.weaponmod.BalkonsWeaponMod;
 import cofh.thermalexpansion.item.TEItems;
 import cofh.thermalfoundation.item.TFItems;
 
@@ -34,6 +36,7 @@ import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ShapedItemIngredient;
+import com.mods.combatzak.mojo.alchemism.recipes.ShapedOreIngredient;
 
 import forestry.core.config.ForestryBlock;
 import forestry.core.config.ForestryItem;
@@ -145,6 +148,13 @@ public class CraftingUpdates {
 		
 		recipeActions.add(getSteelDustRecipe());
 		recipeActions.add(getUraniumBlockRecipe());
+		
+		//replace Musket Shot with lead
+		recipeActions.add(new RemoveRecipesAction(new ItemStack(BalkonsWeaponMod.musketBullet)));
+		recipeActions.add(addMusketShotRecipe());
+		
+		//add some shapeless silicon recipes
+		recipeActions.addAll(getSiliconRecipes());
 	}
 	
 	private CraftingAction addSilkyJewelRecipe() {
@@ -235,7 +245,7 @@ public class CraftingUpdates {
 	 * 
 	 * @return shapless recipe for making U-blocks
 	 */
-	private AddShapelessAction getUraniumBlockRecipe() {
+	private static AddShapelessAction getUraniumBlockRecipe() {
 		List<IIngredient> inputs = new ArrayList<IIngredient>();
 		inputs.add(new ItemIngredient(Ic2Items.Uran238));
 		inputs.add(new ItemIngredient(Ic2Items.Uran238));
@@ -248,5 +258,30 @@ public class CraftingUpdates {
 		inputs.add(new ItemIngredient(Ic2Items.Uran238));
 		
 		return new AddShapelessAction(inputs, Ic2Items.uraniumBlock);
+	}
+	
+	private static AddShapedAction addMusketShotRecipe() {
+		List<IIngredient> inputs = new ArrayList<IIngredient>();
+		inputs.add(new ShapedOreIngredient("ingotLead", 'l'));
+		inputs.add(new ShapedItemIngredient(new ItemStack(Items.gunpowder), 'g'));
+		inputs.add(new ShapedItemIngredient(new ItemStack(Items.paper), 'p'));
+		
+		return new AddShapedAction(inputs, new ItemStack(BalkonsWeaponMod.musketBullet, 8), new String[] { "l", "g", "p" });
+	}
+	
+	private static List<AddShapelessAction> getSiliconRecipes() {
+		List<AddShapelessAction> result = new ArrayList<AddShapelessAction>();
+		
+		List<IIngredient> inputs = new ArrayList<IIngredient>();
+		inputs.add(new ItemIngredient(TFItems.dustBasalz));
+		inputs.add(new OreIngredient("sand"));
+		result.add(new AddShapelessAction(inputs, MaterialType.Silicon.stack(1)));
+		
+		inputs = new ArrayList<IIngredient>();
+		inputs.add(new ItemIngredient(TFItems.dustBlitz));
+		inputs.add(new OreIngredient("dustObsidian"));
+		result.add(new AddShapelessAction(inputs, MaterialType.Silicon.stack(1)));
+		
+		return result;
 	}
 }

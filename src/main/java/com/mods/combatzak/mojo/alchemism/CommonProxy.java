@@ -9,8 +9,10 @@ import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.LootUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.MaceratorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.MeltingUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.NeiItemUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.PulverizerUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RedstoneFurnaceUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.TransposerUpdates;
 
 /**
@@ -21,6 +23,10 @@ import com.mods.combatzak.mojo.alchemism.updates.TransposerUpdates;
  */
 public class CommonProxy {
 
+	public void preInit() {
+		
+	}
+	
 	/**
 	 * initializer method, currently a stub
 	 */
@@ -43,13 +49,13 @@ public class CommonProxy {
 		GrinderUpdates.getInstance().register();
 		MeltingUpdates.getInstance().register();
 		CastingUpdates.getInstance().register();
-		LootUpdates.getInstance().register();	
+		LootUpdates.getInstance().register();
 	}
 
 	/**
 	 * Actions to take after server is started up
 	 */
 	public void serverStarted() {
-		//stub
+		
 	}
 }

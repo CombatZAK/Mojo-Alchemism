@@ -58,6 +58,7 @@ public class Alchemism {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		AlchemismItems.registerItems(); //register any new items with the game
+		proxy.preInit();
 	}
 	
 	/**
@@ -77,7 +78,7 @@ public class Alchemism {
 	 */
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		//proxy.postInit();
 	}
 	
 	/**
