@@ -42,5 +42,4 @@ public class AddMaceratorAction extends MaceratorAction {
 		this.setIsApplied(true); //set applied flag
 		return true;
 	}
-
 }

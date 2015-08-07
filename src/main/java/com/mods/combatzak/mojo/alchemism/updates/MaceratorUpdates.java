@@ -10,7 +10,10 @@ import thaumcraft.api.ItemApi;
 
 import com.mods.combatzak.mojo.GroupAction;
 import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.AddMaceratorAction;
+import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.ReplaceMaceratorAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.pulverizer.ReplacePulverizerAction;
+
+import cofh.thermalfoundation.item.TFItems;
 
 /**
  * Manages updates to the IC2 macerator
@@ -50,6 +53,19 @@ public class MaceratorUpdates {
 	 * Private constructor initializes singleton
 	 */
 	private MaceratorUpdates() {
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustCopper));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustIron));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustGold));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustTin));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustLead));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustSilver));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustCoal));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustCharcoal));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustObsidian));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustBronze));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustSulfur));
+		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustNiter));
+		
 		this.maceratorActions.add(new AddMaceratorAction(new RecipeInputItemStack(ItemApi.getItem("itemNugget", 16)), resizeStack(Ic2Items.purifiedCrushedIronOre, 3)));
 		this.maceratorActions.add(new AddMaceratorAction(new RecipeInputItemStack(ItemApi.getItem("itemNugget", 17)), resizeStack(Ic2Items.purifiedCrushedCopperOre, 3)));
 		this.maceratorActions.add(new AddMaceratorAction(new RecipeInputItemStack(ItemApi.getItem("itemNugget", 18)), resizeStack(Ic2Items.purifiedCrushedTinOre, 3)));

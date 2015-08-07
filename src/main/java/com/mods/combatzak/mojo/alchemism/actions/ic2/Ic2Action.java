@@ -1,10 +1,12 @@
 package com.mods.combatzak.mojo.alchemism.actions.ic2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 import ic2.api.recipe.IRecipeInput;
 
 import com.mods.combatzak.mojo.MojoAction;
@@ -155,5 +157,41 @@ public abstract class Ic2Action extends MojoAction {
 	 */
 	public Ic2Action() {
 		this(null, null, null);
+	}
+	
+	/**
+	 * Indicates whether two item stacks represent the same item; ignoring quantity
+	 * 
+	 * @param stack1 first stack to compare
+	 * @param stack2 second stack to compare
+	 * @return true if the stack contain the same item
+	 */
+	protected static boolean isDirectMatch(ItemStack stack1, ItemStack stack2) {
+		if (stack1 == null && stack2 == null) return true;
+		if (stack1 == null || stack2 == null) return false;
+		
+		if (!stack1.getItem().equals(stack2.getItem())) return false;
+		
+		return !stack1.getHasSubtypes() || stack1.getItemDamage() == stack2.getItemDamage();
+	}
+	
+	/**
+	 * Indicates whether two item stacks match on ore dictionary entries
+	 * 
+	 * @param target item to compare against (including ore dicts)
+	 * @param other item to compare (must be in target's ore dict)
+	 * @return true if the items match on ore dictionary
+	 */
+	protected static boolean isOreDictMatch(ItemStack target, ItemStack other) {
+		if (isDirectMatch(target, other)) return true;
+		
+		List<ItemStack> oreDictItems = new ArrayList<ItemStack>();
+		for (int oreId : OreDictionary.getOreIDs(target))
+			oreDictItems.addAll(OreDictionary.getOres(oreId));
+			
+		for (ItemStack dictItem : oreDictItems)
+			if (isDirectMatch(dictItem, other)) return true;
+		
+		return false;
 	}
 }
