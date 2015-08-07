@@ -1,6 +1,8 @@
 package com.mods.combatzak.mojo.alchemism;
 
 import com.mods.combatzak.mojo.alchemism.updates.CastingUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.CentrifugeUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.CompressorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.CraftingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
@@ -50,6 +52,8 @@ public class CommonProxy {
 		MeltingUpdates.getInstance().register();
 		CastingUpdates.getInstance().register();
 		LootUpdates.getInstance().register();
+		CompressorUpdates.getInstance().register();
+		CentrifugeUpdates.getInstance().register();
 	}
 
 	/**

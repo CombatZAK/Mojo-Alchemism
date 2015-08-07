@@ -53,6 +53,7 @@ public class CompressorUpdates {
 		this.compressorActions.add(new ReplaceOutputAction(Recipes.compressor, TFItems.dustSilver));
 		this.compressorActions.add(new ReplaceOutputAction(Recipes.compressor, TFItems.dustBronze));
 		this.compressorActions.add(new ReplaceOutputAction(Recipes.compressor, TFItems.dustObsidian));
+		this.compressorActions.add(new ReplaceOutputAction(Recipes.compressor, TFItems.dustSulfur));
 		
 		this.compressorActions.add(new ReplaceOutputAction(Recipes.compressor, TFItems.ingotCopper));
 		this.compressorActions.add(new ReplaceOutputAction(Recipes.compressor, TFItems.ingotTin));
