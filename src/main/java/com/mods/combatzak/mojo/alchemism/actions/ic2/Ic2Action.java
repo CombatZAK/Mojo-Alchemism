@@ -194,4 +194,20 @@ public abstract class Ic2Action extends MojoAction {
 		
 		return false;
 	}
+	
+	/**
+	 * Creates a duplicate of an item stack with specified stack size
+	 * 
+	 * @param template item stack to copy
+	 * @param amount stack size to use
+	 * @return duplicate of template stack with new stack size
+	 */
+	protected static ItemStack newAmount(ItemStack template, int amount) {
+		if (template.stackSize == amount) return template;
+		
+		ItemStack result = template.copy();
+		result.stackSize = amount;
+		
+		return result;
+	}
 }

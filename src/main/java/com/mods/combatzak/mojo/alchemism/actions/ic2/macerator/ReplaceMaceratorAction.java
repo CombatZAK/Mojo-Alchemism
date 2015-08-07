@@ -9,6 +9,7 @@ import ic2.api.recipe.RecipeOutput;
 import ic2.api.recipe.Recipes;
 import net.minecraft.item.ItemStack;
 
+@Deprecated
 public class ReplaceMaceratorAction extends MaceratorAction {
 	/**
 	 * Output to replace

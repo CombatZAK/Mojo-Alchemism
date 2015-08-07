@@ -5,12 +5,13 @@ import ganymedes01.aobd.lib.CompatType;
 import ganymedes01.aobd.ore.Ore;
 import ganymedes01.aobd.recipes.RecipesModule;
 import ic2.api.recipe.RecipeInputItemStack;
+import ic2.api.recipe.Recipes;
 import ic2.core.Ic2Items;
 import thaumcraft.api.ItemApi;
 
 import com.mods.combatzak.mojo.GroupAction;
+import com.mods.combatzak.mojo.alchemism.actions.ic2.ReplaceOutputAction;
 import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.AddMaceratorAction;
-import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.ReplaceMaceratorAction;
 import com.mods.combatzak.mojo.alchemism.actions.te4.pulverizer.ReplacePulverizerAction;
 
 import cofh.thermalfoundation.item.TFItems;
@@ -53,18 +54,18 @@ public class MaceratorUpdates {
 	 * Private constructor initializes singleton
 	 */
 	private MaceratorUpdates() {
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustCopper));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustIron));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustGold));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustTin));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustLead));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustSilver));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustCoal));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustCharcoal));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustObsidian));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustBronze));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustSulfur));
-		this.maceratorActions.add(new ReplaceMaceratorAction(TFItems.dustNiter));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustCopper));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustTin));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustIron));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustGold));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustLead));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustSilver));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustCoal));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustCharcoal));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustSulfur));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustBronze));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustNiter));
+		this.maceratorActions.add(new ReplaceOutputAction(Recipes.macerator, TFItems.dustObsidian));
 		
 		this.maceratorActions.add(new AddMaceratorAction(new RecipeInputItemStack(ItemApi.getItem("itemNugget", 16)), resizeStack(Ic2Items.purifiedCrushedIronOre, 3)));
 		this.maceratorActions.add(new AddMaceratorAction(new RecipeInputItemStack(ItemApi.getItem("itemNugget", 17)), resizeStack(Ic2Items.purifiedCrushedCopperOre, 3)));
