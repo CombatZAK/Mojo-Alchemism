@@ -86,7 +86,7 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 19))); //iron nugget
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 20))); //copper nugget
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 21))); //tin nugget
-		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 22))); //aluminum nugget
+		//recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 22))); //aluminum nugget
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 31))); //bronze nugget
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 9)));
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(TinkerTools.materials, 1, 10)));
@@ -155,6 +155,9 @@ public class CraftingUpdates {
 		
 		//add some shapeless silicon recipes
 		recipeActions.addAll(getSiliconRecipes());
+		
+		//add a recipe to craft aluminum ingots from ore dict nuggets
+		recipeActions.add(getAluminumIngotRecipe());
 	}
 	
 	private CraftingAction addSilkyJewelRecipe() {
@@ -283,5 +286,17 @@ public class CraftingUpdates {
 		result.add(new AddShapelessAction(inputs, MaterialType.Silicon.stack(1)));
 		
 		return result;
+	}
+	
+	/**
+	 * Creates a shapeless recipe for aluminum ingots from nuggets (ore dict)
+	 * 
+	 * @return action to create shapeless recipe
+	 */
+	private static AddShapelessAction getAluminumIngotRecipe() {
+		ItemStack output = new ItemStack(TinkerTools.materials, 1, 11);
+		IIngredient input = new OreIngredient("nuggetAluminium"); //use IEEE name
+	
+		return new AddShapelessAction(Arrays.asList(new IIngredient[] { input, input, input, input, input, input, input, input, input }), output);
 	}
 }

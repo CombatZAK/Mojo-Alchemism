@@ -7,6 +7,7 @@ import com.mods.combatzak.mojo.alchemism.updates.CraftingUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.FurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.GrinderUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.InductionSmelterUpdates;
+import com.mods.combatzak.mojo.alchemism.updates.InfernalBlastFurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.IngotCompressorUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.LootUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.MaceratorUpdates;
@@ -54,6 +55,7 @@ public class CommonProxy {
 		LootUpdates.getInstance().register();
 		CompressorUpdates.getInstance().register();
 		CentrifugeUpdates.getInstance().register();
+		InfernalBlastFurnaceUpdates.getInstance().register();
 	}
 
 	/**
