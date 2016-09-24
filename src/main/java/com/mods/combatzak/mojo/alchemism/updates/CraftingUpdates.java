@@ -201,7 +201,7 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(RecipesModule.getOreStack("block", getMeteoricIronAOBDOre())));
 		
 		//remove all "decorate blocks" from crafting
-		for (int idx = 0; idx < 9; idx++) recipeActions.add(new RemoveRecipesAction(new ItemStack(GSBlocks.MetalsBlock, 1, idx)));
+		for (int idx = 0; idx <= 9; idx++) recipeActions.add(new RemoveRecipesAction(new ItemStack(GSBlocks.MetalsBlock, 1, idx)));
 		recipeActions.addAll(getDecorateBlockRecipes());
 		
 		
@@ -229,8 +229,11 @@ public class CraftingUpdates {
 		List<AddShapedAction> result = new ArrayList<AddShapedAction>();
 		
 		ShapedOreIngredient stoneIngredient = new ShapedOreIngredient("stone", 's');
-		String[] ingotNames = new String[] {"ingotLead", "ingotAdamantite", "ingotCobaltum", "ingotMagnesium", "ingotMithril", "ingotNickel", "ingotOriharukon", "ingotPlatinum", "ingotWolframium", "ingotCopper" };
-		for (int i = 0; i < ingotNames.length; i++) result.add(new AddShapedAction(Arrays.asList(new IIngredient[] { stoneIngredient, new ShapedOreIngredient(ingotNames[i], 'i') }), new ItemStack(GSBlocks.MetalsBlock, 1, i), new String[] { "iii", "isi", "iii" }));
+		String[] ingotNames = new String[] {"CompressedLead", "CompressedAdamantite", "CompressedCobaltum", "CompressedMagnesium", "CompressedMithril", "CompressedNickel", "CompressedOriharukon", "CompressedPlatinum", "CompressedWolframium", "compressedCopper" };
+		for (int i = 0; i < ingotNames.length; i++) {
+			if (i != 8) result.add(new AddShapedAction(Arrays.asList(new IIngredient[] { stoneIngredient, new ShapedOreIngredient(ingotNames[i], 'i') }), new ItemStack(GSBlocks.MetalsBlock, 4, i), new String[] { "si" }));
+			else result.add(new AddShapedAction(Arrays.asList(new IIngredient[] { stoneIngredient, new ShapedItemIngredient(new ItemStack(GSItems.CompressedPlates, 1, 9), 'i') }), new ItemStack(GSBlocks.MetalsBlock, 4, 8), new String[] { "si" }));
+		}
 		
 		return result;
 	}

@@ -41,7 +41,7 @@ public class Alchemism {
 	
 	public static final String MODID = "mojo-alchemism"; //Unique mod id
 	public static final String MOD_NAME = "Mojo-Alchemism"; //Mod friendly name
-	public static final String MOD_VERSION = "0.1.7"; //Mod version
+	public static final String MOD_VERSION = "0.1.8"; //Mod version
 	public static final String DEPENDENCIES = "required-after:ThermalFoundation;required-after:ThermalExpansion;required-after:Forestry;required-after:GalacticraftCore;required-after:IC2;required-after:Thaumcraft;required-after:Botania;required-after:Railcraft;required-after:TConstruct;required-after:NetherOres"; //mod dependencies
 	
 	@Instance
