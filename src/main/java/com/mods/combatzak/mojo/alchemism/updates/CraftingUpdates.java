@@ -1,6 +1,9 @@
 package com.mods.combatzak.mojo.alchemism.updates;
 
 import ic2.core.Ic2Items;
+import lc.LCRuntime;
+import lc.api.stargate.IrisType;
+import lc.items.ItemCraftingReagent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +25,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import powercrystals.netherores.ores.Ores;
 import appeng.items.materials.MaterialType;
-import binnie.extrabees.core.ExtraBeeItems;
-import binnie.genetics.item.ItemRegistry;
+//import binnie.extrabees.core.ExtraBeeItems;
+//import binnie.genetics.item.ItemRegistry;
 import biomesoplenty.api.content.BOPCBlocks;
 import biomesoplenty.api.content.BOPCItems;
 import buildcraft.BuildCraftCore;
@@ -96,6 +99,7 @@ public class CraftingUpdates {
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(BOPCBlocks.gemOre, 1, 3)));
 		recipeActions.add(new RemoveRecipesAction(new ItemStack(BOPCBlocks.gemOre, 1, 15)));
 		
+		/*
 		//replace some crafting recipes for sapphire/ruby/peridot/amber gems/blocks
 		recipeActions.add(new AddShapelessAction(Arrays.asList(new IIngredient[] { 
 					new ItemIngredient(ExtraBeeItems.SapphireShard.get(1)),
@@ -121,7 +125,7 @@ public class CraftingUpdates {
 				new ItemIngredient(ExtraBeeItems.RubyShard.get(1)),
 				new ItemIngredient(ExtraBeeItems.RubyShard.get(1)),
 			}),
-			new ItemStack(ProjectRedCore.itemPart(), 1, 37)));
+			new ItemStack(ProjectRedCore.itemPart(), 1, 37)));*/
 		
 		
 		//deletion of forestry metal ingots/blocks
@@ -223,6 +227,45 @@ public class CraftingUpdates {
 		
 		//add a recipe to craft aluminum ingots from ore dict nuggets
 		recipeActions.add(getAluminumIngotRecipe());
+		
+		//add a recipe for the DHD and iris
+		recipeActions.add(GetDHDRecipe());
+		recipeActions.addAll(GetIrisRecipes());
+		
+		//remove crafting recipes for LC crystals
+		recipeActions.add(new RemoveRecipesAction(new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.BLANKCRYSTAL.ordinal())));
+		recipeActions.add(new RemoveRecipesAction(new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.CORECRYSTAL.ordinal())));
+		recipeActions.add(new RemoveRecipesAction(new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.CONTROLCRYSTAL.ordinal())));
+	}
+	
+	/**
+	 * Adds a shaped recipe for the LanteaCraft DHD
+	 * 
+	 * @return DHD recipe
+	 */
+	private AddShapedAction GetDHDRecipe() {
+		ShapedItemIngredient naquadahPlate = new ShapedItemIngredient(new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.NAQUADAHPLATE.ordinal()), 'p');
+		ShapedOreIngredient compressedSteel = new ShapedOreIngredient("compressedSteel", 's');
+		ShapedItemIngredient controlCrystal = new ShapedItemIngredient(new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.CONTROLCRYSTAL.ordinal()), 'c');
+		return new AddShapedAction(Arrays.asList(new IIngredient[] { naquadahPlate, compressedSteel, controlCrystal }), LCRuntime.runtime.blocks().stargateDHDBlock.getStackOf(1), new String[] { "sss", "pcp", "p p" });
+	}
+	
+	/**
+	 * Gets recipes for crafting a stargate iris
+	 * 
+	 * @return recipes required to craft an iris
+	 */
+	private List<AddShapedAction> GetIrisRecipes() {
+		ShapedOreIngredient compressedSteel = new ShapedOreIngredient("compressedSteel", 's');
+		ShapedItemIngredient diamond = new ShapedItemIngredient(new ItemStack(Items.diamond), 'd');
+		ShapedItemIngredient naquadahPlate = new ShapedItemIngredient(new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.NAQUADAHPLATE.ordinal()), 'n');
+		ShapedItemIngredient irisBlade = new ShapedItemIngredient(new ItemStack(AlchemismItems.irisBlade), 'b');
+		ItemStack iris = new ItemStack(LCRuntime.runtime.items().lanteaStargateIris.getItem(), 1, IrisType.MECHANICAL.ordinal());
+		
+		AddShapedAction bladeRecipe = new AddShapedAction(Arrays.asList(new IIngredient[] { compressedSteel, naquadahPlate }), new ItemStack(AlchemismItems.irisBlade), new String[] { "sss", " ns", "  s" });
+		AddShapedAction irisRecipe = new AddShapedAction(Arrays.asList(new IIngredient[] {irisBlade, diamond }), iris, new String[] { "bbb", "bdb", "bbb" });
+		
+		return Arrays.asList(new AddShapedAction[] { bladeRecipe, irisRecipe });
 	}
 	
 	private List<AddShapedAction> getDecorateBlockRecipes() {

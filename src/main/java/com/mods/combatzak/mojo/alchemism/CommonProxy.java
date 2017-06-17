@@ -18,6 +18,11 @@ import com.mods.combatzak.mojo.alchemism.updates.RedstoneFurnaceUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.RenameUpdates;
 import com.mods.combatzak.mojo.alchemism.updates.TransposerUpdates;
 
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumic.tinkerer.common.item.ItemInfusedSeeds;
+
 /**
  * Server-side proxy for Alchemism
  * 
@@ -56,6 +61,8 @@ public class CommonProxy {
 		CompressorUpdates.getInstance().register();
 		CentrifugeUpdates.getInstance().register();
 		InfernalBlastFurnaceUpdates.getInstance().register();
+		
+		InfusionRecipe rec = ThaumcraftApi.getInfusionRecipe(ItemInfusedSeeds.getStackFromAspect(Aspect.FIRE));
 	}
 
 	/**

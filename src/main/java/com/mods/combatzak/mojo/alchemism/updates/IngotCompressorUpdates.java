@@ -1,6 +1,7 @@
 package com.mods.combatzak.mojo.alchemism.updates;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
@@ -14,6 +15,9 @@ import com.mods.combatzak.mojo.alchemism.actions.gc.compressor.RemoveCompressorA
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
+
+import lc.LCRuntime;
+import lc.items.ItemCraftingReagent;
 
 /**
  * Manages updates to the Galacticraft Ingot Compressor
@@ -59,6 +63,21 @@ public class IngotCompressorUpdates {
 		
 		//add restrictive recipes for above plates
 		this.compressorActions.addAll(getCompressedIngotRecipes());
+		
+		//add naquada alloy plate recipe
+		this.compressorActions.add(getNaquadahPlateRecipe());
+	}
+	
+	/**
+	 * Creates a recipe for compressing two naquadah alloy ingots into a naquadah plate
+	 * 
+	 * @return recipe for naquadah alloy plate
+	 */
+	private static CompressorAction getNaquadahPlateRecipe() {
+		ItemIngredient naquadahAlloy = new ItemIngredient(LCRuntime.runtime.items().lanteaAlloyItem.getStackOf(1));
+		ItemStack naquadahPlate = new ItemStack(LCRuntime.runtime.items().lanteaCraftingItem.getItem(), 1, ItemCraftingReagent.ReagentList.NAQUADAHPLATE.ordinal());
+		
+		return new AddShapelessCompressorAction(Arrays.asList(new IIngredient[] { naquadahAlloy, naquadahAlloy }), naquadahPlate);
 	}
 	
 	/**
