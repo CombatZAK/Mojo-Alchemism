@@ -9,8 +9,8 @@ import com.mods.combatzak.mojo.alchemism.actions.vanilla.AddShapelessRecipeActio
 import com.mods.combatzak.mojo.alchemism.actions.vanilla.RemoveRecipesAction;
 import com.mods.combatzak.mojo.alchemism.helpers.GCItemsHelper;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
-import com.mods.combatzak.mojo.alchemism.recipes.ShapedItemIngredient;
-import com.mods.combatzak.mojo.alchemism.recipes.ShapedOreIngredient;
+import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
+import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
 import erogenousbeef.bigreactors.init.BrBlocks;
 import erogenousbeef.bigreactors.init.BrItems;
 import forestry.core.ModuleCore;
@@ -34,74 +34,74 @@ import java.util.stream.Stream;
  * Created by CombatZAK on 4/22/2018.
  */
 public class CraftingUpdateManager extends UpdateManager {
-    private static final IIngredient dustPetrotheum = new ShapedItemIngredient(ItemMaterial.dustPetrotheum, 'e');
-    private static final IIngredient dustPyrotheum = new ShapedItemIngredient(ItemMaterial.dustPyrotheum, 'f');
+    private static final IIngredient dustPetrotheum = new ItemIngredient(ItemMaterial.dustPetrotheum);
+    private static final IIngredient dustPyrotheum = new ItemIngredient(ItemMaterial.dustPyrotheum);
 
-    private static final IIngredient dustCopper = new ShapedOreIngredient("dustCopper", 'c');
-    private static final IIngredient nuggetCopper = new ShapedOreIngredient("nuggetCopper", 'c');
-    private static final IIngredient ingotCopper = new ShapedOreIngredient("ingotCopper", 'c');
-    private static final IIngredient blockCopper = new ShapedOreIngredient("blockCopper", 'c');
-    private static final IIngredient oreCopper = new ShapedOreIngredient("oreCopper", 'c');
-    private static final IIngredient tinyCopper = new ShapedItemIngredient(IC2Items.getItem("dust", "small_copper"), 'c');
-    private static final IIngredient beeCopper = new ShapedItemIngredient(ExtraBeeItems.COPPER_DUST.get(1), 'c');
+    private static final IIngredient dustCopper = new OreIngredient("dustCopper");
+    private static final IIngredient nuggetCopper = new OreIngredient("nuggetCopper");
+    private static final IIngredient ingotCopper = new OreIngredient("ingotCopper");
+    private static final IIngredient blockCopper = new OreIngredient("blockCopper");
+    private static final IIngredient oreCopper = new OreIngredient("oreCopper");
+    private static final IIngredient tinyCopper = new ItemIngredient(IC2Items.getItem("dust", "small_copper"));
+    private static final IIngredient beeCopper = new ItemIngredient(ExtraBeeItems.COPPER_DUST.get(1));
 
-    private static final IIngredient dustTin = new ShapedOreIngredient("dustTin", 't');
-    private static final IIngredient nuggetTin = new ShapedOreIngredient("nuggetTin", 't');
-    private static final IIngredient ingotTin = new ShapedOreIngredient("ingotTin", 't');
-    private static final IIngredient blockTin = new ShapedOreIngredient("blockTin", 't');
-    private static final IIngredient oreTin = new ShapedOreIngredient("oreTin", 't');
-    private static final IIngredient tinyTin = new ShapedItemIngredient(IC2Items.getItem("dust", "small_tin"), 't');
-    private static final IIngredient beeTin = new ShapedItemIngredient(ExtraBeeItems.TIN_DUST.get(1), 't');
+    private static final IIngredient dustTin = new OreIngredient("dustTin");
+    private static final IIngredient nuggetTin = new OreIngredient("nuggetTin");
+    private static final IIngredient ingotTin = new OreIngredient("ingotTin");
+    private static final IIngredient blockTin = new OreIngredient("blockTin");
+    private static final IIngredient oreTin = new OreIngredient("oreTin");
+    private static final IIngredient tinyTin = new ItemIngredient(IC2Items.getItem("dust", "small_tin"));
+    private static final IIngredient beeTin = new ItemIngredient(ExtraBeeItems.TIN_DUST.get(1));
 
-    private static final IIngredient dustBronze = new ShapedOreIngredient("dustBronze", 'b');
-    private static final IIngredient nuggetBronze = new ShapedOreIngredient("nuggetBronze", 'b');
-    private static final IIngredient ingotBronze = new ShapedOreIngredient("ingotBronze", 'b');
-    private static final IIngredient blockBronze = new ShapedOreIngredient("blockBronze", 'b');
-    private static final IIngredient tinyBronze = new ShapedItemIngredient(IC2Items.getItem("dust", "small_bronze"), 'b');
+    private static final IIngredient dustBronze = new OreIngredient("dustBronze");
+    private static final IIngredient nuggetBronze = new OreIngredient("nuggetBronze");
+    private static final IIngredient ingotBronze = new OreIngredient("ingotBronze");
+    private static final IIngredient blockBronze = new OreIngredient("blockBronze");
+    private static final IIngredient tinyBronze = new ItemIngredient(IC2Items.getItem("dust", "small_bronze"));
 
-    private static final IIngredient dustLead = new ShapedOreIngredient("dustLead", 'l');
-    private static final IIngredient nuggetLead = new ShapedOreIngredient("nuggetLead", 'l');
-    private static final IIngredient ingotLead = new ShapedOreIngredient("ingotLead", 'l');
-    private static final IIngredient blockLead = new ShapedOreIngredient("blockLead", 'l');
-    private static final IIngredient oreLead = new ShapedOreIngredient("oreLead", 'l');
-    private static final IIngredient tinyLead = new ShapedItemIngredient(IC2Items.getItem("dust", "small_lead"), 'l');
-    private static final IIngredient beeLead = new ShapedItemIngredient(ExtraBeeItems.LEAD_DUST.get(1), 'l');
+    private static final IIngredient dustLead = new OreIngredient("dustLead");
+    private static final IIngredient nuggetLead = new OreIngredient("nuggetLead");
+    private static final IIngredient ingotLead = new OreIngredient("ingotLead");
+    private static final IIngredient blockLead = new OreIngredient("blockLead");
+    private static final IIngredient oreLead = new OreIngredient("oreLead");
+    private static final IIngredient tinyLead = new ItemIngredient(IC2Items.getItem("dust", "small_lead"));
+    private static final IIngredient beeLead = new ItemIngredient(ExtraBeeItems.LEAD_DUST.get(1));
 
-    private static final IIngredient dustIron = new ShapedOreIngredient("dustIron", 'i');
-    private static final IIngredient nuggetIron = new ShapedItemIngredient(new ItemStack(Items.IRON_NUGGET), 'i');
-    private static final IIngredient ingotIron = new ShapedItemIngredient(new ItemStack(Items.IRON_INGOT), 'i');
-    private static final IIngredient blockIron = new ShapedOreIngredient("blockIron", 'i');
-    private static final IIngredient oreIron = new ShapedOreIngredient("oreIron", 'i');
-    private static final IIngredient tinyIron = new ShapedItemIngredient(IC2Items.getItem("dust", "small_iron"), 'i');
-    private static final IIngredient beeIron = new ShapedItemIngredient(ExtraBeeItems.IRON_DUST.get(1), 'i');
+    private static final IIngredient dustIron = new OreIngredient("dustIron");
+    private static final IIngredient nuggetIron = new ItemIngredient(new ItemStack(Items.IRON_NUGGET));
+    private static final IIngredient ingotIron = new ItemIngredient(new ItemStack(Items.IRON_INGOT));
+    private static final IIngredient blockIron = new OreIngredient("blockIron");
+    private static final IIngredient oreIron = new OreIngredient("oreIron");
+    private static final IIngredient tinyIron = new ItemIngredient(IC2Items.getItem("dust", "small_iron"));
+    private static final IIngredient beeIron = new ItemIngredient(ExtraBeeItems.IRON_DUST.get(1));
 
-    private static final IIngredient dustSilver = new ShapedOreIngredient("dustSilver", 's');
-    private static final IIngredient nuggetSilver = new ShapedOreIngredient("nuggetSilver", 's');
-    private static final IIngredient ingotSilver = new ShapedOreIngredient("ingotSilver", 's');
-    private static final IIngredient blockSilver = new ShapedOreIngredient("blockSilver", 's');
-    private static final IIngredient oreSilver = new ShapedOreIngredient("oreSilver", 's');
-    private static final IIngredient tinySilver = new ShapedItemIngredient(IC2Items.getItem("dust", "small_silver"), 's');
-    private static final IIngredient beeSilver = new ShapedItemIngredient(ExtraBeeItems.SILVER_DUST.get(1), 's');
+    private static final IIngredient dustSilver = new OreIngredient("dustSilver");
+    private static final IIngredient nuggetSilver = new OreIngredient("nuggetSilver");
+    private static final IIngredient ingotSilver = new OreIngredient("ingotSilver");
+    private static final IIngredient blockSilver = new OreIngredient("blockSilver");
+    private static final IIngredient oreSilver = new OreIngredient("oreSilver");
+    private static final IIngredient tinySilver = new ItemIngredient(IC2Items.getItem("dust", "small_silver"));
+    private static final IIngredient beeSilver = new ItemIngredient(ExtraBeeItems.SILVER_DUST.get(1));
 
-    private static final IIngredient dustGold = new ShapedOreIngredient("dustGold", 'g');
-    private static final IIngredient nuggetGold = new ShapedItemIngredient(new ItemStack(Items.GOLD_NUGGET), 'g');
-    private static final IIngredient ingotGold = new ShapedItemIngredient(new ItemStack(Items.GOLD_INGOT), 'g');
-    private static final IIngredient blockGold = new ShapedItemIngredient(new ItemStack(Blocks.GOLD_BLOCK), 'g');
-    private static final IIngredient oreGold = new ShapedOreIngredient("oreGold", 'g');
-    private static final IIngredient tinyGold = new ShapedItemIngredient(IC2Items.getItem("dust", "small_gold"), 'g');
-    private static final IIngredient beeGold = new ShapedItemIngredient(ExtraBeeItems.GOLD_DUST.get(1), 'g');
+    private static final IIngredient dustGold = new OreIngredient("dustGold");
+    private static final IIngredient nuggetGold = new ItemIngredient(new ItemStack(Items.GOLD_NUGGET));
+    private static final IIngredient ingotGold = new ItemIngredient(new ItemStack(Items.GOLD_INGOT));
+    private static final IIngredient blockGold = new ItemIngredient(new ItemStack(Blocks.GOLD_BLOCK));
+    private static final IIngredient oreGold = new OreIngredient("oreGold");
+    private static final IIngredient tinyGold = new ItemIngredient(IC2Items.getItem("dust", "small_gold"));
+    private static final IIngredient beeGold = new ItemIngredient(ExtraBeeItems.GOLD_DUST.get(1));
 
-    private static final IIngredient dustAluminum = new ShapedOreIngredient("dustAluminum", 'a');
-    private static final IIngredient nuggetAluminum = new ShapedOreIngredient("nuggetAluminum", 'a');
-    private static final IIngredient dustAluminium = new ShapedOreIngredient("dustAluminium", 'a');
-    private static final IIngredient ingotAluminum = new ShapedOreIngredient("ingotAluminum", 'a');
-    private static final IIngredient ingotAluminium = new ShapedOreIngredient("ingotAluminium", 'a');
-    private static final IIngredient blockAluminum = new ShapedOreIngredient("oreAluminum", 'a');
-    private static final IIngredient blockAluminium = new ShapedOreIngredient("oreAluminium", 'a');
-    private static final IIngredient oreAluminum = new ShapedOreIngredient("oreAluminum", 'a');
-    private static final IIngredient oreAluminium = new ShapedOreIngredient("oreAluminium", 'a');
+    private static final IIngredient dustAluminum = new OreIngredient("dustAluminum");
+    private static final IIngredient nuggetAluminum = new OreIngredient("nuggetAluminum");
+    private static final IIngredient dustAluminium = new OreIngredient("dustAluminium");
+    private static final IIngredient ingotAluminum = new OreIngredient("ingotAluminum");
+    private static final IIngredient ingotAluminium = new OreIngredient("ingotAluminium");
+    private static final IIngredient blockAluminum = new OreIngredient("oreAluminum");
+    private static final IIngredient blockAluminium = new OreIngredient("oreAluminium");
+    private static final IIngredient oreAluminum = new OreIngredient("oreAluminum");
+    private static final IIngredient oreAluminium = new OreIngredient("oreAluminium");
 
-    private static final IIngredient beeCoal = new ShapedItemIngredient(ExtraBeeItems.COAL_DUST.get(1), 'c');
+    private static final IIngredient beeCoal = new ItemIngredient(ExtraBeeItems.COAL_DUST.get(1));
 
     private static CraftingUpdateManager ourInstance = new CraftingUpdateManager();
 
@@ -161,13 +161,13 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.dustAluminum)); //GC aluminum dust
 
         //LAPIS
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("dust", "lapis"), "thermalfoundation")); //lapis dust petrotheum recipe
+        updateActions.add(new RemoveRecipesAction("thermalfoundation", IC2Items.getItem("dust", "lapis"))); //lapis dust petrotheum recipe
 
         //DIAMOND
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("dust", "diamond"), "thermalfoundation")); //diamond dust petrotheum recipe
+        updateActions.add(new RemoveRecipesAction("thermalfoundation", IC2Items.getItem("dust", "diamond"))); //diamond dust petrotheum recipe
 
         //COAL
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("dust", "coal"), "extrabees")); //coal dust from coal grains
+        updateActions.add(new RemoveRecipesAction("extrabees", IC2Items.getItem("dust", "coal"))); //coal dust from coal grains
         updateActions.add(new AddShapelessRecipeAction("beeCoal_compress", Stream.of(beeCoal, beeCoal, beeCoal, beeCoal).collect(Collectors.toList()), ItemMaterial.dustCoal));
 
         //NUGGETS

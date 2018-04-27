@@ -91,11 +91,9 @@ dependencies {
     }
     compile "extreme-reactors:ExtremeReactors:${config.mc_version}:${config.extremereactors_version}"
     compile "zerocore:zerocore:1.12:0.1.2.1"
-    compile "tesla:Tesla:1.12.2:1.0.63"
-    compile "ice-and-fire-dragons-in-a-whole-new-light:iceandfire:1.4.0:1.12.2"
-    compile "llibrary:llibrary:1.7.9:1.12.2"
-    //compile "extreme-reactors:ExtremeReactors:1.12.2:0.4.5.48"
-//    compileOnly "team.chisel.ctm:CTM:MC1.12-0.2.1.5:api"
+    compile "tesla:Tesla:${config.mc_version}:${config.tesla_version}"
+    compile "ice-and-fire-dragons-in-a-whole-new-light:iceandfire:${config.iceandfire_version}:${config.mc_version}"
+    compile "llibrary:llibrary:${config.llibrary_version}:${config.mc_version}"
 
     // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
     //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'

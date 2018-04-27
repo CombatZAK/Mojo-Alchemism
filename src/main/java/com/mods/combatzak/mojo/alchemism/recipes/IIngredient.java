@@ -1,6 +1,7 @@
 package com.mods.combatzak.mojo.alchemism.recipes;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 
 /**
  * An input for a recipe
@@ -9,9 +10,14 @@ import net.minecraft.item.ItemStack;
  */
 public interface IIngredient {
     /**
-     * Retrieves the forge ingredient for the recipe
+     * Retrieves the ingredient object for the recipe
      */
     Object getIngredient();
+
+    /**
+     * Retrives forge ingredient for the recipe
+     */
+    Ingredient getForgeIngredient();
 
     /**
      * Indicates whether an item is a match to the ingredient; ignores count

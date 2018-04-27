@@ -2,6 +2,7 @@ package com.mods.combatzak.mojo.alchemism.recipes;
 
 import com.mods.combatzak.mojo.alchemism.helpers.ItemStackHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class OreIngredient implements IIngredient {
     @Override
     public String getIngredient() {
         return ingredient;
+    }
+
+    @Override
+    public Ingredient getForgeIngredient() {
+        return ingredient == null ? Ingredient.EMPTY : new net.minecraftforge.oredict.OreIngredient(ingredient);
     }
 
     public void setIngredient(String ingredient) {

@@ -19,33 +19,22 @@ import java.util.Set;
  * Created by CombatZAK on 4/21/2018.
  */
 public class RemoveRecipesAction extends CraftingAction {
-    private String resourceLocationGroup = null;
-
     public RemoveRecipesAction(ItemStack output) {
         super(null, output);
     }
 
-    public RemoveRecipesAction(ItemStack output, String resourceLocationGroup) {
-        super(null, output);
-        this.setResourceLocation(resourceLocationGroup);
+    public RemoveRecipesAction(String domain, ItemStack output) {
+        super(domain, null,null, output);
     }
 
     public RemoveRecipesAction()
     {
-        this((ItemStack)null);
-    }
-
-    public String getResourceLocationGroup() {
-        return resourceLocationGroup;
-    }
-
-    public void setResourceLocation(String resourceLocationGroup) {
-        this.resourceLocationGroup = resourceLocationGroup;
+        this(null);
     }
 
     @Override
     public boolean apply() {
-        if (resourceLocationGroup != null) return removeByResourceLocationGroup();
+        if (domain != null) return removeByResourceLocationGroup();
         if (getOutput() == null) throw new IllegalStateException("Remove recipes action must have output initialized");
         ForgeRegistry<IRecipe> recipeList = VanillaRecipeHelper.getCraftingRecipes();
         List<Entry<ResourceLocation, IRecipe>> recipeKeys = new ArrayList<>();
@@ -68,7 +57,7 @@ public class RemoveRecipesAction extends CraftingAction {
         List<ResourceLocation> matches = new ArrayList<>();
 
         for (Entry<ResourceLocation, IRecipe> entry : recipeList.getEntries()) {
-            if (entry.getKey().getResourceDomain().equals(resourceLocationGroup) && ItemStackHelper.isDirectMatch(output, entry.getValue().getRecipeOutput())) {
+            if (entry.getKey().getResourceDomain().equals(domain) && ItemStackHelper.isDirectMatch(output, entry.getValue().getRecipeOutput())) {
                 matches.add(entry.getKey());
             }
         }

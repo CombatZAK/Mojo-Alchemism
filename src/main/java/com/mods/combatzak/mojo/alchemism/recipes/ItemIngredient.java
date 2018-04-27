@@ -2,6 +2,7 @@ package com.mods.combatzak.mojo.alchemism.recipes;
 
 import com.mods.combatzak.mojo.alchemism.helpers.ItemStackHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 
 /**
  * An ItemStack ingredient for a recipe
@@ -22,6 +23,11 @@ public class ItemIngredient implements IIngredient {
     @Override
     public ItemStack getIngredient() {
         return ingredient;
+    }
+
+    @Override
+    public Ingredient getForgeIngredient() {
+        return ingredient == null ? Ingredient.EMPTY : Ingredient.fromStacks(ingredient);
     }
 
     public void setIngredient(ItemStack ingredient) {
