@@ -13,6 +13,15 @@ public class AddOrReplacePulverizerRecipeAction extends PulverizerAction {
         super(energy, input, primaryOutput, secondaryOutput, secondaryChance);
     }
 
+    public AddOrReplacePulverizerRecipeAction(int energy, ItemStack input, ItemStack primaryOutput, int primaryCount, ItemStack secondaryOutput, int secondaryCount, int secondaryChance) {
+        this(energy, input,
+                primaryOutput.getCount() == primaryCount ? primaryOutput : primaryOutput.copy(),
+                secondaryOutput.getCount() == secondaryCount ? secondaryOutput : secondaryOutput.copy(),
+                secondaryChance);
+        this.primaryOutput.setCount(primaryCount);
+        this.secondaryOutput.setCount(secondaryCount);
+    }
+
     public AddOrReplacePulverizerRecipeAction() {
         this(0, null, null, null, 0);
     }

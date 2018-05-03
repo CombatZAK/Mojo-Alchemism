@@ -1,6 +1,9 @@
 package com.mods.combatzak.mojo.alchemism;
 
-import com.mods.combatzak.mojo.alchemism.UpdateManagers.CraftingUpdateManager;
+import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
+import com.mods.combatzak.mojo.alchemism.UpdateManagers.*;
+import com.mods.combatzak.mojo.alchemism.actions.cofh.furnace.RedstoneFurnaceAction;
+import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.MaceratorAction;
 
 /**
  * Handles initialization
@@ -13,5 +16,13 @@ public class CommonProxy {
      */
     public void registerActions() {
         CraftingUpdateManager.getInstance().applyUpdates();
+        FurnaceUpdateManager.getInstance().applyUpdates();
+        PulverizerUpdateManager.getInstance().applyUpdates();
+        RedstoneFurnaceUpdateManager.getInstance().applyUpdates();
+        InductionSmelterUpdateManager.getInstance().applyUpdates();
+
+        MaceratorUpdates.getInstance().applyUpdates();
+
+        TestUpdateManager.getInstance().applyUpdates();
     }
 }

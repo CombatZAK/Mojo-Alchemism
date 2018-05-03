@@ -1,30 +1,57 @@
 package com.mods.combatzak.mojo.alchemism.UpdateManagers;
 
 import binnie.extrabees.items.types.ExtraBeeItems;
+import biomesoplenty.api.block.BOPBlocks;
+import biomesoplenty.api.item.BOPItems;
+import buildcraft.api.BCItems;
+import cofh.thermalfoundation.ThermalFoundation;
 import cofh.thermalfoundation.block.BlockOre;
 import cofh.thermalfoundation.item.ItemMaterial;
 import com.github.alexthe666.iceandfire.core.ModBlocks;
 import com.github.alexthe666.iceandfire.core.ModItems;
+import com.mods.combatzak.mojo.alchemism.actions.vanilla.AddShapedRecipeAction;
 import com.mods.combatzak.mojo.alchemism.actions.vanilla.AddShapelessRecipeAction;
+import com.mods.combatzak.mojo.alchemism.actions.vanilla.CraftingAction;
 import com.mods.combatzak.mojo.alchemism.actions.vanilla.RemoveRecipesAction;
 import com.mods.combatzak.mojo.alchemism.helpers.GCItemsHelper;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
+import com.progwml6.natura.shared.NaturaCommons;
+import com.progwml6.natura.shared.block.clouds.BlockCloud;
+import com.rwtema.extrautils2.backend.entries.XU2Entries;
+import com.rwtema.extrautils2.items.ItemIngredients;
 import erogenousbeef.bigreactors.init.BrBlocks;
 import erogenousbeef.bigreactors.init.BrItems;
+import forestry.arboriculture.ModuleCharcoal;
+import forestry.arboriculture.blocks.BlockRegistryCharcoal;
 import forestry.core.ModuleCore;
 import ic2.api.item.IC2Items;
+import ic2.core.IC2;
+import it.zerono.mods.zerocore.lib.item.ModItem;
+import jdk.internal.org.objectweb.asm.tree.IincInsnNode;
 import mekanism.common.MekanismBlocks;
 import mekanism.common.MekanismItems;
+import mekanism.common.recipe.generation.MekanismToolsRecipes;
+import mekanism.tools.common.MekanismTools;
+import mekanism.tools.common.ToolsItems;
 import micdoodle8.mods.galacticraft.api.item.GCItems;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.items.ItemsTC;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -101,7 +128,26 @@ public class CraftingUpdateManager extends UpdateManager {
     private static final IIngredient oreAluminum = new OreIngredient("oreAluminum");
     private static final IIngredient oreAluminium = new OreIngredient("oreAluminium");
 
+    private static final IIngredient ingotBrass = new OreIngredient("ingotBrass");
+    private static final IIngredient ingotThaumium = new ItemIngredient(new ItemStack(ItemsTC.ingots));
+    private static final IIngredient ingotVoid = new ItemIngredient(new ItemStack(ItemsTC.ingots, 1, 1));
+
+    private static final IIngredient oreCoal = new OreIngredient("oreCoal");
     private static final IIngredient beeCoal = new ItemIngredient(ExtraBeeItems.COAL_DUST.get(1));
+
+    private static final IIngredient oreSulfur = new OreIngredient("oreSulfur");
+    private static final IIngredient tinySulfur = new ItemIngredient(IC2Items.getItem("dust", "small_sulfur"));
+    private static final IIngredient cloudSulfur = new ItemIngredient(new ItemStack(NaturaCommons.clouds, 1, BlockCloud.CloudType.SULFUR.meta));
+
+    private static final IIngredient tinyObsidian = new ItemIngredient(IC2Items.getItem("dust", "small_obsidian"));
+
+    private static final IIngredient oreSapphire = new OreIngredient("oreSapphire");
+    private static final IIngredient beeSapphire = new ItemIngredient(ExtraBeeItems.SAPPHIRE_SHARD.get(1));
+    private static final IIngredient oreAmber = new OreIngredient("oreAmber");
+
+    private static final IIngredient forgeHammer = new ItemIngredient(IC2Items.getItem("forge_hammer").copy()) {{
+        this.getIngredient().setItemDamage(OreDictionary.WILDCARD_VALUE);
+    }};
 
     private static CraftingUpdateManager ourInstance = new CraftingUpdateManager();
 
@@ -167,8 +213,20 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction("thermalfoundation", IC2Items.getItem("dust", "diamond"))); //diamond dust petrotheum recipe
 
         //COAL
-        updateActions.add(new RemoveRecipesAction("extrabees", IC2Items.getItem("dust", "coal"))); //coal dust from coal grains
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("dust", "coal"))); //coal dust from coal grains
+        updateActions.add(new AddShapelessRecipeAction("oreCoal_petrotheum", Stream.of(oreCoal, dustPetrotheum).collect(Collectors.toList()), new ItemStack(Items.COAL, 2)));
         updateActions.add(new AddShapelessRecipeAction("beeCoal_compress", Stream.of(beeCoal, beeCoal, beeCoal, beeCoal).collect(Collectors.toList()), ItemMaterial.dustCoal));
+
+        //SULFUR
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("dust", "sulfur")));
+        updateActions.add(new RemoveRecipesAction(NaturaCommons.sulfurPowder));
+        updateActions.add(new AddShapelessRecipeAction("tinySulfur_compress", Stream.of(tinySulfur, tinySulfur, tinySulfur, tinySulfur, tinySulfur, tinySulfur, tinySulfur, tinySulfur, tinySulfur).collect(Collectors.toList()), ItemMaterial.dustSulfur));
+        updateActions.add(new AddShapelessRecipeAction("oreSulfur_petrotheum", Stream.of(oreSulfur, dustPetrotheum).collect(Collectors.toList()), ItemMaterial.dustSulfur, 2));
+        updateActions.add(new AddShapelessRecipeAction("cloudSulfur_compress", Stream.of(cloudSulfur, cloudSulfur, cloudSulfur, cloudSulfur).collect(Collectors.toList()), ItemMaterial.dustSulfur));
+
+        //OBSIDIAN
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("dust", "obsidian")));
+        updateActions.add(new AddShapelessRecipeAction("tinyObsidian_compress", Stream.of(tinyObsidian, tinyObsidian, tinyObsidian, tinyObsidian, tinyObsidian, tinyObsidian, tinyObsidian, tinyObsidian, tinyObsidian).collect(Collectors.toList()), ItemMaterial.dustObsidian));
 
         //NUGGETS
         //COPPER
@@ -185,6 +243,9 @@ public class CraftingUpdateManager extends UpdateManager {
 
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 4))); //mekanism
+
+        //REDSTONE CRYSTAL
+        updateActions.add(new RemoveRecipesAction("thermalfoundation", ItemIngredients.Type.REDSTONE_CRYSTAL.newStack()));
 
         //INGOTS
         //COPPER
@@ -235,27 +296,27 @@ public class CraftingUpdateManager extends UpdateManager {
         //BLOCKS
         //COPPER
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 12))); //mekanism
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("block", "copper"))); //ic2
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "copper_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(ModuleCore.getBlocks().resourceStorageCopper)); //forestry
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.blockCopper)); //gc
 
         //TIN
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 13))); //mekanism
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("block", "tin"))); //ic2
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "tin_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(ModuleCore.getBlocks().resourceStorageTin)); //forestry
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.blockTin)); //gc
 
         //BRONZE
-        updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1))); //mekanism
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("block", "bronze"))); //ic2
+        updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 1))); //mekanism
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "bronze_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(ModuleCore.getBlocks().resourceStorageBronze)); //forestry
 
         //LEAD
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("block", "lead"))); //ic2
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "lead_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.blockLead)); //gc
 
         //SILVER
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("block", "silver"))); //ic2
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "silver_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModBlocks.silverBlock, 1))); //ice and fire
 
         //ALUMINUM
@@ -263,7 +324,180 @@ public class CraftingUpdateManager extends UpdateManager {
 
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 5))); //mekanism
-        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("block", "steel"))); //ic2
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "steel_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(new ItemStack(BrBlocks.blockMetals, 1, 5))); //extreme reactors
+
+        //CHARCOAL
+        updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 3)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModuleCharcoal.getBlocks().charcoal)));
+
+        //ARMORS
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_helmet, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_chestplate, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_leggings, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_boots, 1)));
+
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeHelmet)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeChestplate)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeLeggings)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeBoots)));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_helmet")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_chestplate")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_leggings")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_boots")));
+
+        //TOOLS
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_axe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_sword)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_pickaxe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_shovel)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_hoe)));
+
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeAxe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeSword)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeShovel)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzePickaxe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeHoe)));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_axe")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_sword")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_pickaxe")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_shovel")));
+        updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_hoe")));
+
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelAxe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelSword)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelPickaxe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelShovel)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelHoe)));
+
+        //PLATES
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ItemsTC.plate)));
+        updateActions.add(new AddShapelessRecipeAction("plateBrass_ic2hammer", Stream.of(ingotBrass, forgeHammer).collect(Collectors.toList()), new ItemStack(ItemsTC.plate)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ItemsTC.plate, 1, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ItemsTC.plate, 1, 2)));
+        updateActions.add(new AddShapelessRecipeAction("plateThaumium_ic2hammer", Stream.of(ingotThaumium, forgeHammer).collect(Collectors.toList()), new ItemStack(ItemsTC.plate, 1, 2)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ItemsTC.plate, 1, 3)));
+        updateActions.add(new AddShapelessRecipeAction("plateVoid_ic2hammer", Stream.of(ingotVoid, forgeHammer).collect(Collectors.toList()), new ItemStack(ItemsTC.plate, 1, 3)));
+
+        //GEARS
+        updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().gearCopper));
+        updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().gearTin));
+        updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().gearBronze));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(BCItems.Core.GEAR_GOLD)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(BCItems.Core.GEAR_IRON)));
+
+        //MATERIALS
+        updateActions.add(new RemoveRecipesAction("natura", new ItemStack(Items.GUNPOWDER)));
+
+        //GEMS
+        updateActions.add(new RemoveRecipesAction(new ItemStack(BOPItems.gem, 1, 6)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(BOPBlocks.gem_block, 1, 6)));
+        updateActions.add(new AddShapelessRecipeAction("oreSapphire_petrotheum", Stream.of(oreSapphire, dustPetrotheum).collect(Collectors.toList()), new ItemStack(ModItems.sapphireGem, 2)));
+        updateActions.add(new AddShapelessRecipeAction("beeSapphire_compress", Stream.of(beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire).collect(Collectors.toList()), new ItemStack(ModItems.sapphireGem)));
+        updateActions.add(new RemoveRecipesAction("thermalfoundation", new ItemStack(BOPItems.gem, 1, 7)));
+        updateActions.add(new AddShapelessRecipeAction("oreAmber_petrotheum", Stream.of(oreAmber, dustPetrotheum).collect(Collectors.toList()), new ItemStack(ItemsTC.amber)));
+
+        //BANNER
+        updateActions.addAll(getBannerFixes());
+
+        //FISSILES
+        updateActions.addAll(getIC2FissileFixes());
+    }
+
+    private Collection<CraftingAction> getBannerFixes() {
+        List<CraftingAction> result = new ArrayList<>();
+
+        final IIngredient stick = new OreIngredient("stickWood");
+        final IIngredient slab = new OreIngredient("slabWood");
+        final IIngredient whiteWool = new ItemIngredient(new ItemStack(Blocks.WOOL));
+        final IIngredient orangeWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 1));
+        final IIngredient magentaWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 2));
+        final IIngredient lightBlueWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 3));
+        final IIngredient yellowWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 4));
+        final IIngredient limeWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 5));
+        final IIngredient pinkWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 6));
+        final IIngredient greyWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 7));
+        final IIngredient lightGreyWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 8));
+        final IIngredient cyanWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 9));
+        final IIngredient purpleWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 10));
+        final IIngredient blueWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 11));
+        final IIngredient brownWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 12));
+        final IIngredient greenWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 13));
+        final IIngredient redWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 14));
+        final IIngredient blackWool = new ItemIngredient(new ItemStack(Blocks.WOOL, 1, 15));
+
+        final ItemStack whiteBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.WHITE));
+        final ItemStack orangeBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.ORANGE));
+        final ItemStack magentaBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.MAGENTA));
+        final ItemStack lightBlueBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.LIGHT_BLUE));
+        final ItemStack yellowBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.YELLOW));
+        final ItemStack limeBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.LIME));
+        final ItemStack pinkBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.PINK));
+        final ItemStack greyBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.GRAY));
+        final ItemStack lightGreyBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.SILVER));
+        final ItemStack cyanBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.CYAN));
+        final ItemStack purpleBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.PURPLE));
+        final ItemStack blueBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.BLUE));
+        final ItemStack brownBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.BROWN));
+        final ItemStack greenBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.GREEN));
+        final ItemStack redBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.RED));
+        final ItemStack blackBanner = new ItemStack(BlocksTC.banners.get(EnumDyeColor.BLACK));
+
+        result.add(new RemoveRecipesAction(whiteBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_white", 2, 3, Stream.of(whiteWool, stick, whiteWool, stick, whiteWool, slab).collect(Collectors.toList()), whiteBanner));
+        result.add(new RemoveRecipesAction(orangeBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_orange", 2, 3, Stream.of(orangeWool, stick, orangeWool, stick, orangeWool, slab).collect(Collectors.toList()), orangeBanner));
+        result.add(new RemoveRecipesAction(magentaBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_magenta", 2, 3, Stream.of(magentaWool, stick, magentaWool, stick, magentaWool, slab).collect(Collectors.toList()), magentaBanner));
+        result.add(new RemoveRecipesAction(lightBlueBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_lightblue", 2, 3, Stream.of(lightBlueWool, stick, lightBlueWool, stick, lightBlueWool, slab).collect(Collectors.toList()), lightBlueBanner));
+        result.add(new RemoveRecipesAction(yellowBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_yellow", 2, 3, Stream.of(yellowWool, stick, yellowWool, stick, yellowWool, slab).collect(Collectors.toList()), yellowBanner));
+        result.add(new RemoveRecipesAction(limeBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_lime", 2, 3, Stream.of(limeWool, stick, limeWool, stick, limeWool, slab).collect(Collectors.toList()), limeBanner));
+        result.add(new RemoveRecipesAction(pinkBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_pink", 2, 3, Stream.of(pinkWool, stick, pinkWool, stick, pinkWool, slab).collect(Collectors.toList()), pinkBanner));
+        result.add(new RemoveRecipesAction(greyBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_grey", 2, 3, Stream.of(greyWool, stick, greyWool, stick, greyWool, slab).collect(Collectors.toList()), greyBanner));
+        result.add(new RemoveRecipesAction(lightGreyBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_lightgrey", 2, 3, Stream.of(lightGreyWool, stick, lightGreyWool, stick, lightGreyWool, slab).collect(Collectors.toList()), lightGreyBanner));
+        result.add(new RemoveRecipesAction(cyanBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_cyan", 2, 3, Stream.of(cyanWool, stick, cyanWool, stick, cyanWool, slab).collect(Collectors.toList()), cyanBanner));
+        result.add(new RemoveRecipesAction(purpleBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_purple", 2, 3, Stream.of(purpleWool, stick, purpleWool, stick, purpleWool, slab).collect(Collectors.toList()), purpleBanner));
+        result.add(new RemoveRecipesAction(blueBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_blue", 2, 3, Stream.of(blueWool, stick, blueWool, stick, blueWool, slab).collect(Collectors.toList()), blueBanner));
+        result.add(new RemoveRecipesAction(brownBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_brown", 2, 3, Stream.of(brownWool, stick, brownWool, stick, brownWool, slab).collect(Collectors.toList()), brownBanner));
+        result.add(new RemoveRecipesAction(greenBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_green", 2, 3, Stream.of(greenWool, stick, greenWool, stick, greenWool, slab).collect(Collectors.toList()), greenBanner));
+        result.add(new RemoveRecipesAction(redBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_red", 2, 3, Stream.of(redWool, stick, redWool, stick, redWool, slab).collect(Collectors.toList()), redBanner));
+        result.add(new RemoveRecipesAction(blackBanner));
+        result.add(new AddShapedRecipeAction("tcbanner_black", 2, 3, Stream.of(blackWool, stick, blackWool, stick, blackWool, slab).collect(Collectors.toList()), blackBanner));
+
+        return result;
+    }
+
+    private Collection<CraftingAction> getIC2FissileFixes() {
+        List<CraftingAction> result = new ArrayList<>();
+
+        final IIngredient u238 = new ItemIngredient(IC2Items.getItem("nuclear", "uranium_238"));
+        final IIngredient u235 = new ItemIngredient(IC2Items.getItem("nuclear", "small_uranium_235"));
+        final IIngredient plutonium = new ItemIngredient(IC2Items.getItem("nuclear", "plutonium"));
+        final IIngredient denseIron = new ItemIngredient(IC2Items.getItem("plate", "dense_iron"));
+
+        result.add(new RemoveRecipesAction(IC2Items.getItem("nuclear", "uranium")));
+        result.add(new RemoveRecipesAction(IC2Items.getItem("nuclear", "mox")));
+        result.add(new RemoveRecipesAction(IC2Items.getItem("resource", "uranium_block")));
+        result.add(new RemoveRecipesAction(IC2Items.getItem("nuclear", "rtg_pellet")));
+
+        result.add(new AddShapelessRecipeAction("u238_compress", Stream.of(u238, u238, u238, u238, u238, u238, u238, u238, u238).collect(Collectors.toList()), IC2Items.getItem("resource", "uranium_block")));
+        result.add(new AddShapedRecipeAction("uraniumfuel", 3, 3, Stream.of(u238, u238, u238, u235, u235, u235, u238, u238, u238).collect(Collectors.toList()), IC2Items.getItem("nuclear", "uranium")));
+        result.add(new AddShapedRecipeAction("moxfuel", 3, 3, Stream.of(u238, u238, u238, plutonium, plutonium, plutonium, u238, u238, u238).collect(Collectors.toList()), IC2Items.getItem("nuclear", "mox")));
+        result.add(new AddShapedRecipeAction("rtgfuel_horizontal", 3, 3, Stream.of(denseIron, denseIron, denseIron, plutonium, plutonium, plutonium, denseIron, denseIron, denseIron).collect(Collectors.toList()), IC2Items.getItem("nuclear", "rtg_pellet")));
+        result.add(new AddShapedRecipeAction("rtgfuel_vertical", 3, 3, Stream.of(denseIron, plutonium, denseIron, denseIron, plutonium, denseIron, denseIron, plutonium, denseIron).collect(Collectors.toList()), IC2Items.getItem("nuclear", "rtg_pellet")));
+
+        return result;
     }
 }

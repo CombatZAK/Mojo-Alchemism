@@ -41,11 +41,11 @@ public class ReplaceInductionSmelterOutputAction extends InductionSmelterAction 
             ItemStack primaryOutput = recipe.getPrimaryOutput();
             ItemStack secondaryOutput = recipe.getSecondaryOutput();
 
-            if (ItemStackHelper.isOreDictMatch(primaryOutput, oreEntry) && !ItemStackHelper.isDirectMatch(primaryOutput, this.primaryInput)) {
+            if (ItemStackHelper.isOreDictMatch(primaryOutput, oreEntry) && !ItemStackHelper.isDirectMatch(primaryOutput, this.primaryOutput)) {
                 primaryMatches.add(new Tuple<>(recipe.getPrimaryInput(), recipe.getSecondaryInput()));
             }
 
-            if (ItemStackHelper.isOreDictMatch(secondaryOutput, oreEntry) && !ItemStackHelper.isDirectMatch(secondaryOutput, this.secondaryOutput)) {
+            if (ItemStackHelper.isOreDictMatch(secondaryOutput, oreEntry) && !ItemStackHelper.isDirectMatch(secondaryOutput, this.primaryOutput)) {
                 secondaryMatches.add(new Tuple<>(recipe.getPrimaryInput(), recipe.getSecondaryInput()));
             }
         }

@@ -35,7 +35,8 @@ public class RemoveRecipesAction extends CraftingAction {
     @Override
     public boolean apply() {
         if (domain != null) return removeByResourceLocationGroup();
-        if (getOutput() == null) throw new IllegalStateException("Remove recipes action must have output initialized");
+        if (getOutput() == null)
+            throw new IllegalStateException("Remove recipes action must have output initialized");
         ForgeRegistry<IRecipe> recipeList = VanillaRecipeHelper.getCraftingRecipes();
         List<Entry<ResourceLocation, IRecipe>> recipeKeys = new ArrayList<>();
 

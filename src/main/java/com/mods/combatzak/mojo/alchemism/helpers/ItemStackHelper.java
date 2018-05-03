@@ -1,7 +1,9 @@
 package com.mods.combatzak.mojo.alchemism.helpers;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.items.ItemsTC;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +14,15 @@ import java.util.List;
  * Created by CombatZAK on 4/21/2018.
  */
 public class ItemStackHelper {
+    public static final ItemStack clusterCopper = new ItemStack(ItemsTC.clusters, 1, 2);
+    public static final ItemStack clusterTin = new ItemStack(ItemsTC.clusters, 1, 3);
+    public static final ItemStack clusterLead = new ItemStack(ItemsTC.clusters, 1, 5);
+    public static final ItemStack clusterSilver = new ItemStack(ItemsTC.clusters, 1, 4);
+    public static final ItemStack clusterIron = new ItemStack(ItemsTC.clusters);
+    public static final ItemStack clusterGold = new ItemStack(ItemsTC.clusters, 1, 1);
+    public static final ItemStack clusterCinnabar = new ItemStack(ItemsTC.clusters, 1, 6);
+    public static final ItemStack clusterQuartz = new ItemStack(ItemsTC.clusters, 1, 7);
+
     /**
      * Compares two item stacks for simple equivalence (no NBT or durability comparison)
      *
