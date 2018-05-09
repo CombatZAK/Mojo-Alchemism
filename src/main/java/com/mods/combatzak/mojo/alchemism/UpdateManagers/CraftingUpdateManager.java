@@ -131,6 +131,7 @@ public class CraftingUpdateManager extends UpdateManager {
     private static final IIngredient ingotBrass = new OreIngredient("ingotBrass");
     private static final IIngredient ingotThaumium = new ItemIngredient(new ItemStack(ItemsTC.ingots));
     private static final IIngredient ingotVoid = new ItemIngredient(new ItemStack(ItemsTC.ingots, 1, 1));
+    private static final IIngredient ingotSteel = new OreIngredient("ingotSteel");
 
     private static final IIngredient oreCoal = new OreIngredient("oreCoal");
     private static final IIngredient beeCoal = new ItemIngredient(ExtraBeeItems.COAL_DUST.get(1));
@@ -148,6 +149,8 @@ public class CraftingUpdateManager extends UpdateManager {
     private static final IIngredient forgeHammer = new ItemIngredient(IC2Items.getItem("forge_hammer").copy()) {{
         this.getIngredient().setItemDamage(OreDictionary.WILDCARD_VALUE);
     }};
+
+    private static final IIngredient bone = new ItemIngredient(new ItemStack(Items.BONE));
 
     private static CraftingUpdateManager ourInstance = new CraftingUpdateManager();
 
@@ -336,6 +339,10 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_chestplate, 1)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_leggings, 1)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_boots, 1)));
+        updateActions.add(new AddShapedRecipeAction("silverHelmet_replace", 3, 2, true, Stream.of(ingotSilver, ingotSilver, ingotSilver, ingotSteel, null, ingotSteel).collect(Collectors.toList()), new ItemStack(ModItems.silver_helmet)));
+        updateActions.add(new AddShapedRecipeAction("silverChestplate_replace", 3, 3, true, Stream.of(ingotSilver, null, ingotSilver, ingotSilver, ingotSteel, ingotSilver, ingotSilver, ingotSteel, ingotSilver).collect(Collectors.toList()), new ItemStack(ModItems.silver_chestplate)));
+        updateActions.add(new AddShapedRecipeAction("silverLeggings_replace", 3, 3, true, Stream.of(ingotSteel, ingotSilver, ingotSteel, ingotSilver, null, ingotSilver, ingotSilver, null, ingotSilver).collect(Collectors.toList()), new ItemStack(ModItems.silver_leggings)));
+        updateActions.add(new AddShapedRecipeAction("silverBoots_replace", 3, 2, true, Stream.of(ingotSilver, null, ingotSilver, ingotSteel, null, ingotSteel).collect(Collectors.toList()), new ItemStack(ModItems.silver_boots)));
 
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeHelmet)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeChestplate)));
@@ -352,6 +359,11 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_pickaxe)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_shovel)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_hoe)));
+        updateActions.add(new AddShapedRecipeAction("silverAxe_replace", 2, 3, true, Stream.of(ingotSilver, ingotSilver, ingotSilver, bone, null, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_axe)));
+        updateActions.add(new AddShapedRecipeAction("silverSword_replace", 1, 3, true, Stream.of(ingotSilver, ingotSilver, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_sword)));
+        updateActions.add(new AddShapedRecipeAction("silverPickaxe_replace", 3, 3, true, Stream.of(ingotSilver, ingotSilver, ingotSilver, null, bone, null, null, bone, null).collect(Collectors.toList()), new ItemStack(ModItems.silver_pickaxe)));
+        updateActions.add(new AddShapedRecipeAction("silverShovel_replace", 1, 3, true, Stream.of(ingotSilver, bone, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_shovel)));
+        updateActions.add(new AddShapedRecipeAction("silverHoe_replace", 2, 3, true, Stream.of(ingotSilver, ingotSilver, null, bone, null, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_hoe)));
 
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeAxe)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeSword)));

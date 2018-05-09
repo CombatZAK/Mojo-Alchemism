@@ -1,5 +1,6 @@
 package com.mods.combatzak.mojo.alchemism.actions.ic2.macerator;
 
+import com.mods.combatzak.mojo.alchemism.helpers.IRecipeInputHelper;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.MachineRecipe;
 import ic2.api.recipe.Recipes;
@@ -35,7 +36,7 @@ public class RemoveMaceratorRecipeAction extends MaceratorAction {
         while (iterator.hasNext()) {
             MachineRecipe<IRecipeInput, Collection<ItemStack>> curRecipe = iterator.next();
             IRecipeInput curInput = curRecipe.getInput();
-            if (curInput.equals(input)) {
+            if (IRecipeInputHelper.isMatch(input, curInput)) {
                 iterator.remove();
             }
         }
