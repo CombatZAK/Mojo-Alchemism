@@ -99,6 +99,7 @@ dependencies {
     compile "buildcraft:buildcraft:7.99.16"
     compile "magic-bees:MagicBees:${config.mc_version}:3.1.9"
     compile "extra-utilities:extrautils2:1.12:1.7.6"
+    compile "applied-energistics-2:appliedenergistics2-rv5:stable:11"
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

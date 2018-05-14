@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 public class Alchemism {
     public static final String MODID = "mojo-alchemism";
 
-    private static Logger logger;
+    public static Logger logger;
 
     @SidedProxy(serverSide = "com.mods.combatzak.mojo.alchemism.CommonProxy", clientSide = "com.mods.combatzak.mojo.alchemism.client.ClientProxy")
     public static CommonProxy proxy;

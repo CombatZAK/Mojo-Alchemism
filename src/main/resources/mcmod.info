@@ -1,16 +1,18 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "modid": "mojo-alchemism",
+  "name": "Mojo Alchemism",
+  "description": "Modifies recipes for ZakRealms",
+  "version": "2.0.0",
+  "mcversion": "1.12.2",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["CombatZAK"],
+  "credits": "All the dependency mod developers",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "useDependencyInformation": true,
+  "dependencies": [],
+  "dependants": ["jei"]
 }
 ]

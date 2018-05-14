@@ -5,6 +5,7 @@ import com.mods.combatzak.mojo.alchemism.UpdateManagers.*;
 import com.mods.combatzak.mojo.alchemism.actions.cofh.furnace.RedstoneFurnaceAction;
 import com.mods.combatzak.mojo.alchemism.actions.forestry.squeezer.SqueezerAction;
 import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.MaceratorAction;
+import org.apache.logging.log4j.Level;
 
 /**
  * Handles initialization
@@ -16,6 +17,7 @@ public class CommonProxy {
      * Occurs during post-load; applies all action categories
      */
     public void registerActions() {
+        System.out.println("LOADING UPDATES");
         CraftingUpdateManager.getInstance().applyUpdates();
         FurnaceUpdateManager.getInstance().applyUpdates();
         PulverizerUpdateManager.getInstance().applyUpdates();
@@ -30,6 +32,12 @@ public class CommonProxy {
 
         ForestryCentrifugeUpdateManager.getInstance().applyUpdates();
         SqueezerUpdateManager.getInstance().applyUpdates();
+
+        CrusherUpdateManager.getInstance().applyUpdates();
+        EnrichmentChamberUpdateManager.getInstance().applyUpdates();
+        MetallurgicInfuserUpdateManager.getInstance().applyUpdates();
+
+        GrinderUpdateManager.getInstance().applyUpdates();
 
         TestUpdateManager.getInstance().applyUpdates();
     }
