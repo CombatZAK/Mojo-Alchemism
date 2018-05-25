@@ -1,6 +1,5 @@
 package com.mods.combatzak.mojo.alchemism.recipes;
 
-import com.sun.istack.internal.NotNull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTBase;
@@ -16,7 +15,7 @@ import javax.annotation.Nullable;
  */
 public class EnchantmentForgeIngredient extends Ingredient {
     ItemStack stack;
-    public EnchantmentForgeIngredient(@NotNull ItemStack stack) {
+    public EnchantmentForgeIngredient(ItemStack stack) {
         super(stack);
         this.stack = stack;
     }

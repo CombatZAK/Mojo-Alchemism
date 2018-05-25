@@ -21,7 +21,6 @@ import erogenousbeef.bigreactors.init.BrItems;
 import forestry.arboriculture.ModuleCharcoal;
 import forestry.core.ModuleCore;
 import ic2.api.item.IC2Items;
-import jdk.internal.org.objectweb.asm.tree.IincInsnNode;
 import mekanism.common.MekanismBlocks;
 import mekanism.common.MekanismItems;
 import mekanism.tools.common.ToolsItems;

@@ -39,7 +39,7 @@ public class ReplaceArcFurnaceOutputAction extends ArcFurnaceAction {
             ArcFurnaceRecipe.addRecipe(newOutput, oldRecipe.input, oldRecipe.slag,
                     (int)Math.ceil(oldRecipe.getTotalProcessTime() / ArcFurnaceRecipe.timeModifier),
                     (int)Math.ceil(oldRecipe.getTotalProcessEnergy() / ArcFurnaceRecipe.timeModifier / oldRecipe.getTotalProcessEnergy()),
-                    oldRecipe.additives);
+                    (Object[])oldRecipe.additives);
         }
 
         setApplied();
