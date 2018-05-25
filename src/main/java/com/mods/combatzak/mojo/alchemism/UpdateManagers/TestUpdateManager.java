@@ -20,6 +20,6 @@ public class TestUpdateManager extends UpdateManager {
 
     private TestUpdateManager() {
         //updateActions.add(new RemoveMaceratorRecipeAction("ingotCopper"));
-        updateActions.add(new RemoveOreEntryAction("ingotUranium", IC2Items.getItem("ingot", "uranium")));
+        //updateActions.add(new RemoveOreEntryAction("ingotUranium", IC2Items.getItem("ingot", "uranium")));
     }
 }

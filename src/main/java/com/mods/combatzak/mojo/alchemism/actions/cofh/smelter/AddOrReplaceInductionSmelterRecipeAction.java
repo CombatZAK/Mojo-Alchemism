@@ -8,6 +8,20 @@ public class AddOrReplaceInductionSmelterRecipeAction extends InductionSmelterAc
         super(energy, primaryInput, secondaryInput, primaryOutput, secondaryOutput, secondaryOutputChance);
     }
 
+    public AddOrReplaceInductionSmelterRecipeAction(int energy, ItemStack primaryInput, ItemStack secondaryInput, ItemStack primaryOutput, int primaryCount, ItemStack secondaryOutput, int secondaryCount, int secondaryOutputChance) {
+        super(energy,
+                primaryInput,
+                secondaryInput,
+                primaryOutput.getCount() == primaryCount ? primaryOutput : primaryOutput.copy(),
+                secondaryOutput == null || secondaryOutput.getCount() == secondaryCount ? secondaryOutput : secondaryOutput.copy(),
+                secondaryOutputChance);
+
+        this.primaryOutput.setCount(primaryCount);
+        if (secondaryOutput != null) {
+            this.secondaryOutput.setCount(secondaryCount);
+        }
+    }
+
     public AddOrReplaceInductionSmelterRecipeAction() {
         this(0, null, null, null, null, 0);
     }

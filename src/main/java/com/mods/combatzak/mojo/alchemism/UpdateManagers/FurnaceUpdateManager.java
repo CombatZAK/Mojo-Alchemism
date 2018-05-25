@@ -1,7 +1,11 @@
 package com.mods.combatzak.mojo.alchemism.UpdateManagers;
 
+import cofh.thermalfoundation.block.BlockOre;
+import cofh.thermalfoundation.init.TFBlocks;
 import cofh.thermalfoundation.item.ItemMaterial;
 import com.mods.combatzak.mojo.alchemism.actions.vanilla.ReplaceFurnaceOutputAction;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 
 /**
  * Manages the updates to furnace recipes
@@ -28,5 +32,15 @@ public class FurnaceUpdateManager extends UpdateManager {
         //NUGGETS
         updateActions.add(new ReplaceFurnaceOutputAction(ItemMaterial.nuggetBronze, "nuggetBronze"));
         updateActions.add(new ReplaceFurnaceOutputAction(ItemMaterial.nuggetSteel, "nuggetSteel"));
+
+        //ORES
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreCopper, "oreCopper"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreTin, "oreTin"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreLead, "oreLead"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreSilver, "oreSilver"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreNickel, "oreNickel"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreAluminum, "oreAluminum"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.orePlatinum, "orePlatinum"));
+        updateActions.add(new ReplaceFurnaceOutputAction(BlockOre.oreIridium, "oreIridium"));
     }
 }

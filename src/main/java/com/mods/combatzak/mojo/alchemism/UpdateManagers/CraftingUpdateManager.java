@@ -3,15 +3,13 @@ package com.mods.combatzak.mojo.alchemism.UpdateManagers;
 import binnie.extrabees.items.types.ExtraBeeItems;
 import biomesoplenty.api.block.BOPBlocks;
 import biomesoplenty.api.item.BOPItems;
-import buildcraft.api.BCItems;
+import blusunrize.immersiveengineering.common.IEContent;
 import cofh.thermalfoundation.item.ItemMaterial;
 import com.github.alexthe666.iceandfire.core.ModBlocks;
 import com.github.alexthe666.iceandfire.core.ModItems;
-import com.mods.combatzak.mojo.alchemism.actions.vanilla.AddShapedRecipeAction;
-import com.mods.combatzak.mojo.alchemism.actions.vanilla.AddShapelessRecipeAction;
-import com.mods.combatzak.mojo.alchemism.actions.vanilla.CraftingAction;
-import com.mods.combatzak.mojo.alchemism.actions.vanilla.RemoveRecipesAction;
+import com.mods.combatzak.mojo.alchemism.actions.vanilla.*;
 import com.mods.combatzak.mojo.alchemism.helpers.GCItemsHelper;
+import com.mods.combatzak.mojo.alchemism.recipes.EnchantedIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.IIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.ItemIngredient;
 import com.mods.combatzak.mojo.alchemism.recipes.OreIngredient;
@@ -23,14 +21,17 @@ import erogenousbeef.bigreactors.init.BrItems;
 import forestry.arboriculture.ModuleCharcoal;
 import forestry.core.ModuleCore;
 import ic2.api.item.IC2Items;
+import jdk.internal.org.objectweb.asm.tree.IincInsnNode;
 import mekanism.common.MekanismBlocks;
 import mekanism.common.MekanismItems;
 import mekanism.tools.common.ToolsItems;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import slimeknights.tconstruct.shared.TinkerCommons;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
 
@@ -219,6 +220,7 @@ public class CraftingUpdateManager extends UpdateManager {
         //NUGGETS
         //COPPER
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 5))); //mekanism
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 20)));
 
         //TIN
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 6))); //mekanism
@@ -228,9 +230,32 @@ public class CraftingUpdateManager extends UpdateManager {
 
         //SILVER
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silverNugget, 1))); //ice and fire
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 23)));
 
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 4))); //mekanism
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1,28)));
+
+        //ALUMINUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 21)));
+
+        //LEAD
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 22)));
+
+        //NICKEL
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 24)));
+
+        //URANIUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 25)));
+
+        //CONSTANTAN
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 26)));
+
+        //ELECTRUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 27)));
+
+        //IRON
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 29)));
 
         //REDSTONE CRYSTAL
         updateActions.add(new RemoveRecipesAction("thermalfoundation", ItemIngredients.Type.REDSTONE_CRYSTAL.newStack()));
@@ -244,6 +269,7 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new AddShapelessRecipeAction("dustCopper_pyrotheum", Stream.of(ingotCopper, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotCopper)); //from dust+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreCopper_pyrotheum", Stream.of(oreCopper, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotCopper)); //from ore+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreCopper_smelt", Stream.of(oreCopper, dustPetrotheum, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotCopper, 2)); //from dust+petrotheum+pyrotheum
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal)));
 
         //TIN
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Ingot, 1, 6))); //mekanism
@@ -265,6 +291,7 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new AddShapelessRecipeAction("dustLead_pyrotheum", Stream.of(dustLead, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotLead)); //from dust+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreLead_pyrotheum", Stream.of(oreLead, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotLead)); //from ore+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreLead_smelt", Stream.of(oreLead, dustPetrotheum, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotLead, 2)); //from ore+petrotheum+pyrotheum
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 2)));
 
         //SILVER
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("ingot", "silver"))); //ic2
@@ -272,14 +299,29 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new AddShapelessRecipeAction("dustSilver_pyrotheum", Stream.of(dustSilver, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotSilver)); //from dust+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreSilver_pyrotheum", Stream.of(oreSilver, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotSilver)); //from ore+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreSilver_smelt", Stream.of(oreSilver, dustPetrotheum, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotSilver, 2)); //from ore+petrotheum+pyrotheum
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 3)));
 
         //ALUMINUM
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.ingotAluminum)); //gc
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 1)));
 
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Ingot, 1, 4))); //mekanism
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("ingot", "steel"))); //ic2
         updateActions.add(new RemoveRecipesAction(new ItemStack(BrItems.ingotMetals, 1, 5))); //extreme reactors
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 8)));
+
+        //NICKEL
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 4)));
+
+        //URANIUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 5)));
+
+        //CONSTANTAN
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 6)));
+
+        //ELECTRUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 7)));
 
         //BLOCKS
         //COPPER
@@ -287,6 +329,7 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "copper_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(ModuleCore.getBlocks().resourceStorageCopper)); //forestry
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.blockCopper)); //gc
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage)));
 
         //TIN
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 13))); //mekanism
@@ -302,22 +345,38 @@ public class CraftingUpdateManager extends UpdateManager {
         //LEAD
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "lead_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.blockLead)); //gc
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 2)));
 
         //SILVER
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "silver_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModBlocks.silverBlock, 1))); //ice and fire
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 3)));
 
         //ALUMINUM
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.blockAluminum)); //gc
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 1)));
 
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 5))); //mekanism
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "steel_block"))); //ic2
         updateActions.add(new RemoveRecipesAction(new ItemStack(BrBlocks.blockMetals, 1, 5))); //extreme reactors
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 8)));
+
+        //URANIUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 5)));
+
+        //CONSTANTAN
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 6)));
+
+        //ELECTRUM
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 7)));
 
         //CHARCOAL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 3)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModuleCharcoal.getBlocks().charcoal)));
+
+        //COAL COKE
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStoneDecoration, 1, 3)));
 
         //ARMORS
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_helmet, 1)));
@@ -380,8 +439,6 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().gearCopper));
         updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().gearTin));
         updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().gearBronze));
-        updateActions.add(new RemoveRecipesAction(new ItemStack(BCItems.Core.GEAR_GOLD)));
-        updateActions.add(new RemoveRecipesAction(new ItemStack(BCItems.Core.GEAR_IRON)));
 
         //MATERIALS
         updateActions.add(new RemoveRecipesAction("natura", new ItemStack(Items.GUNPOWDER)));
@@ -399,6 +456,9 @@ public class CraftingUpdateManager extends UpdateManager {
 
         //FISSILES
         updateActions.addAll(getIC2FissileFixes());
+
+        //Silky jew
+        updateActions.addAll(getSilkyJewelRecipeFixes());
     }
 
     private Collection<CraftingAction> getBannerFixes() {
@@ -494,6 +554,23 @@ public class CraftingUpdateManager extends UpdateManager {
         result.add(new AddShapedRecipeAction("moxfuel", 3, 3, Stream.of(u238, u238, u238, plutonium, plutonium, plutonium, u238, u238, u238).collect(Collectors.toList()), IC2Items.getItem("nuclear", "mox")));
         result.add(new AddShapedRecipeAction("rtgfuel_horizontal", 3, 3, Stream.of(denseIron, denseIron, denseIron, plutonium, plutonium, plutonium, denseIron, denseIron, denseIron).collect(Collectors.toList()), IC2Items.getItem("nuclear", "rtg_pellet")));
         result.add(new AddShapedRecipeAction("rtgfuel_vertical", 3, 3, Stream.of(denseIron, plutonium, denseIron, denseIron, plutonium, denseIron, denseIron, plutonium, denseIron).collect(Collectors.toList()), IC2Items.getItem("nuclear", "rtg_pellet")));
+
+        return result;
+    }
+
+    private Collection<CraftingAction> getSilkyJewelRecipeFixes() {
+        List<CraftingAction> result = new ArrayList<>();
+
+        final IIngredient silkyBlock = new ItemIngredient(TinkerCommons.blockSilkyJewel);
+        final IIngredient silkyCloth = new ItemIngredient(TinkerCommons.matSilkyCloth);
+        ItemStack silkTouchBook = new ItemStack(Items.ENCHANTED_BOOK);
+        silkTouchBook.addEnchantment(Enchantments.SILK_TOUCH, 1);
+        final IIngredient silkyBook = new EnchantedIngredient(silkTouchBook);
+        final IIngredient emerald = new ItemIngredient(new ItemStack(Items.EMERALD));
+
+        result.add(new RemoveRecipesAction(TinkerCommons.matSilkyJewel));
+        result.add(new AddShapelessRecipeAction("silkyBlock_break", Stream.of(silkyBlock).collect(Collectors.toList()), TinkerCommons.matSilkyJewel, 9));
+        result.add(new AddShapedRecipeAction("silkyJewel_create", 3, 3, Stream.of(silkyBook, silkyCloth, ItemIngredient.EMPTY, silkyCloth, emerald, silkyCloth, ItemIngredient.EMPTY, silkyCloth, silkyBook).collect(Collectors.toList()), TinkerCommons.matSilkyJewel));
 
         return result;
     }

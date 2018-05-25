@@ -1,8 +1,10 @@
 package com.mods.combatzak.mojo.alchemism.helpers;
 
+import micdoodle8.mods.galacticraft.planets.mars.items.ItemSchematicTier2;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import org.icannt.netherendingores.common.registry.BlockRegistry;
 import thaumcraft.api.items.ItemsTC;
 
 import java.util.Arrays;
@@ -22,6 +24,50 @@ public class ItemStackHelper {
     public static final ItemStack clusterGold = new ItemStack(ItemsTC.clusters, 1, 1);
     public static final ItemStack clusterCinnabar = new ItemStack(ItemsTC.clusters, 1, 6);
     public static final ItemStack clusterQuartz = new ItemStack(ItemsTC.clusters, 1, 7);
+
+    public static final ItemStack oreNetherCoal = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA);
+    public static final ItemStack oreNetherDiamond = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 1);
+    public static final ItemStack oreNetherEmerald = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 2);
+    public static final ItemStack oreNetherGold = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 3);
+    public static final ItemStack oreNetherIron = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 4);
+    public static final ItemStack oreNetherLapis = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 5);
+    public static final ItemStack oreNetherRedstone = new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 6);
+
+    public static final ItemStack oreNetherAluminum = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1);
+    public static final ItemStack oreNetherCopper = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 1);
+    public static final ItemStack oreNetherIridium = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 2);
+    public static final ItemStack oreNetherLead = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 3);
+    public static final ItemStack oreNetherNickel = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 5);
+    public static final ItemStack oreNetherPlatinum = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 6);
+    public static final ItemStack oreNetherSilver = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 7);
+    public static final ItemStack oreNetherTin = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 8);
+    public static final ItemStack oreNetherCertus = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 9);
+    public static final ItemStack oreNetherCertusCharged = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 10);
+    public static final ItemStack oreNetherOsmium = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 11);
+    public static final ItemStack oreNetherUranium = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 12);
+    public static final ItemStack oreNetherYellorite = new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, 13);
+
+    public static final ItemStack oreEndCoal = new ItemStack(BlockRegistry.ORE_END_VANILLA);
+    public static final ItemStack oreEndDiamond = new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 1);
+    public static final ItemStack oreEndEmerald = new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 2);
+    public static final ItemStack oreEndGold = new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 3);
+    public static final ItemStack oreEndIron = new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 4);
+    public static final ItemStack oreEndLapis = new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 5);
+    public static final ItemStack oreEndRedstone = new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 6);
+
+    public static final ItemStack oreEndAluminum = new ItemStack(BlockRegistry.ORE_END_MODDED_1);
+    public static final ItemStack oreEndCopper = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 1);
+    public static final ItemStack oreEndIridium = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 2);
+    public static final ItemStack oreEndLead = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 3);
+    public static final ItemStack oreEndNickel = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 5);
+    public static final ItemStack oreEndPlatinum = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 6);
+    public static final ItemStack oreEndSilver = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 7);
+    public static final ItemStack oreEndTin = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 8);
+    public static final ItemStack oreEndCertus = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 9);
+    public static final ItemStack oreEndCertusCharged = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 10);
+    public static final ItemStack oreEndOsmium = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 11);
+    public static final ItemStack oreEndUranium = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 12);
+    public static final ItemStack oreEndYellorite = new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, 13);
 
     /**
      * Compares two item stacks for simple equivalence (no NBT or durability comparison)

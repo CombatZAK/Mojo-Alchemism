@@ -96,15 +96,16 @@ dependencies {
     compile "biomes-o-plenty:BiomesOPlenty-${config.mc_version}:7.0.1.2387:universal"
     compile "baubles:Baubles:1.12:1.5.2"
     compile "thaumcraft:Thaumcraft:${config.mc_version}:6.1.BETA11"
-    compile "buildcraft:buildcraft:7.99.16"
     compile "magic-bees:MagicBees:${config.mc_version}:3.1.9"
     compile "extra-utilities:extrautils2:1.12:1.7.6"
     compile "applied-energistics-2:appliedenergistics2-rv5:stable:11"
+    compile "netherending-ores:Netherending-Ores:1.12.2:1.1.1"
+    compile "immersive-engineering:ImmersiveEngineering:0.12:82"
+    compile "immersive-petroleum:immersivepetroleum:1.12.2:1.1.9"
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
 }
 
 processResources {

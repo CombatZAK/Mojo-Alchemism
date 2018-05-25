@@ -1,11 +1,11 @@
 package com.mods.combatzak.mojo.alchemism;
 
-import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
+import blusunrize.immersiveengineering.api.IEApi;
+import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import com.mods.combatzak.mojo.alchemism.UpdateManagers.*;
-import com.mods.combatzak.mojo.alchemism.actions.cofh.furnace.RedstoneFurnaceAction;
-import com.mods.combatzak.mojo.alchemism.actions.forestry.squeezer.SqueezerAction;
-import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.MaceratorAction;
-import org.apache.logging.log4j.Level;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Handles initialization
@@ -13,6 +13,10 @@ import org.apache.logging.log4j.Level;
  * Created by CombatZAK on 4/19/2018.
  */
 public class CommonProxy {
+    public void registerInitActions() {
+        OreDictionaryUpdateManager.getInstance().applyUpdates();
+    }
+
     /**
      * Occurs during post-load; applies all action categories
      */
@@ -24,8 +28,9 @@ public class CommonProxy {
         RedstoneFurnaceUpdateManager.getInstance().applyUpdates();
         InductionSmelterUpdateManager.getInstance().applyUpdates();
         CentrifugalSeperatorUpdateManager.getInstance().applyUpdates();
+        EnsorcellatorUpdateManager.getInstance().applyUpdates();
 
-        MaceratorUpdates.getInstance().applyUpdates();
+        MaceratorUpdateManager.getInstance().applyUpdates();
         CompressorUpdateManager.getInstance().applyUpdates();
         ThermalCentrifugeUpdateManager.getInstance().applyUpdates();
         BlastFurnaceUpdateManager.getInstance().applyUpdates();
@@ -38,6 +43,11 @@ public class CommonProxy {
         MetallurgicInfuserUpdateManager.getInstance().applyUpdates();
 
         GrinderUpdateManager.getInstance().applyUpdates();
+
+        AlloyKilnUpdateManager.getInstance().applyUpdates();
+        ArcFurnaceUpdateManager.getInstance().applyUpdates();
+        CokeOvenUpdateManager.getInstance().applyUpdates();
+        IeBlastFurnaceUpdateManager.getInstance().applyUpdates();
 
         TestUpdateManager.getInstance().applyUpdates();
     }

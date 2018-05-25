@@ -10,6 +10,8 @@ import net.minecraft.item.crafting.Ingredient;
  * Created by CombatZAK on 4/21/2018.
  */
 public class ItemIngredient implements IIngredient {
+    public static final ItemIngredient EMPTY = new ItemIngredient(null);
+
     private ItemStack ingredient;
 
     public ItemIngredient(ItemStack ingredient) {

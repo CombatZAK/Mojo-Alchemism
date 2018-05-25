@@ -30,12 +30,11 @@ public class Alchemism {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-
+        proxy.registerInitActions();
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-
     }
 
     @EventHandler
