@@ -19,7 +19,7 @@ public class RemoveFurnaceRecipeAction extends FurnaceAction {
 
     @Override
     public boolean apply() {
-        if (input == null) throw new IllegalStateException("RemoveVurnaceRecipeAction requires valid input ingredient");
+        if (input == null) throw new IllegalStateException("RemoveFurnaceRecipeAction requires valid input ingredient");
 
         if (input instanceof ItemIngredient) {
             FurnaceRecipes.instance().getSmeltingList().remove(((ItemIngredient)input).getIngredient());

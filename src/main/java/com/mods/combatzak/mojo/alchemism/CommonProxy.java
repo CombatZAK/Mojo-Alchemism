@@ -3,6 +3,11 @@ package com.mods.combatzak.mojo.alchemism;
 import blusunrize.immersiveengineering.api.IEApi;
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import com.mods.combatzak.mojo.alchemism.UpdateManagers.*;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,7 +27,7 @@ public class CommonProxy {
      */
     public void registerActions() {
         System.out.println("LOADING UPDATES");
-        CraftingUpdateManager.getInstance().applyUpdates();
+        //CraftingUpdateManager.getInstance().applyUpdates();
         FurnaceUpdateManager.getInstance().applyUpdates();
         PulverizerUpdateManager.getInstance().applyUpdates();
         RedstoneFurnaceUpdateManager.getInstance().applyUpdates();
@@ -50,5 +55,13 @@ public class CommonProxy {
         IeBlastFurnaceUpdateManager.getInstance().applyUpdates();
 
         TestUpdateManager.getInstance().applyUpdates();
+    }
+
+    @Mod.EventBusSubscriber(modid=Alchemism.MODID)
+    public static class CommonSubscriber {
+        @SubscribeEvent(priority = EventPriority.LOWEST)
+        public static void registerCrafting(final RegistryEvent.Register<IRecipe> event) {
+            CraftingUpdateManager.getInstance().applyUpdates();
+        }
     }
 }

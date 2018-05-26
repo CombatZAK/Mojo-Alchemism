@@ -2,11 +2,17 @@ package com.mods.combatzak.mojo.alchemism.actions.vanilla;
 
 import com.mods.combatzak.mojo.alchemism.helpers.ItemStackHelper;
 import com.mods.combatzak.mojo.alchemism.helpers.VanillaRecipeHelper;
+import com.mods.combatzak.mojo.alchemism.recipes.DummyRecipe;
+import it.zerono.mods.zerocore.lib.crafting.RecipeHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryModifiable;
+import zero.temp.RecipeHelper2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +60,7 @@ public class RemoveRecipesAction extends CraftingAction {
     }
 
     private boolean removeByResourceLocationGroup() {
-        ForgeRegistry<IRecipe> recipeList = VanillaRecipeHelper.getCraftingRecipes();
+        IForgeRegistryModifiable<IRecipe> recipeList = VanillaRecipeHelper.getCraftingRecipes();
         List<ResourceLocation> matches = new ArrayList<>();
 
         for (Entry<ResourceLocation, IRecipe> entry : recipeList.getEntries()) {
@@ -64,7 +70,7 @@ public class RemoveRecipesAction extends CraftingAction {
         }
 
         for (ResourceLocation match : matches) {
-            recipeList.remove(match);
+            recipeList.register(new DummyRecipe().setRegistryName(match));
         }
 
         setApplied();
