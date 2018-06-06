@@ -62,7 +62,7 @@ public class MaceratorUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterQuartz, new ItemStack(Items.QUARTZ, 4)));
 
         //MetalOres
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreNetherCopper, IC2Items.getItem("crushed", "copper"), 4));
+        /*updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreNetherCopper, IC2Items.getItem("crushed", "copper"), 4));
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreNetherTin, IC2Items.getItem("crushed", "tin"), 4));
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreNetherIron, IC2Items.getItem("crushed", "iron"), 4));
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreNetherLead, IC2Items.getItem("crushed", "lead"), 4));
@@ -106,6 +106,6 @@ public class MaceratorUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreEndLapis, lapis));
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreEndRedstone, redstone));
         updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreEndDiamond, diamond));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreEndEmerald, emerald));
+        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreEndEmerald, emerald));*/
     }
 }
