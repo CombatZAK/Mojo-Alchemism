@@ -1,7 +1,6 @@
 package com.mods.combatzak.mojo.alchemism.UpdateManagers;
 
 import cofh.thermalfoundation.item.ItemMaterial;
-import com.github.alexthe666.iceandfire.core.ModItems;
 import com.mods.combatzak.mojo.alchemism.actions.cofh.pulverizer.AddOrReplacePulverizerRecipeAction;
 import com.mods.combatzak.mojo.alchemism.actions.cofh.pulverizer.ReplacePulverizerOutputAction;
 import com.mods.combatzak.mojo.alchemism.helpers.ItemStackHelper;
@@ -37,7 +36,6 @@ public class PulverizerUpdateManager extends UpdateManager {
         updateActions.add(new ReplacePulverizerOutputAction("dustSteel", ItemMaterial.dustSteel));
         updateActions.add(new ReplacePulverizerOutputAction("dustDiamond", new ItemStack(MekanismItems.OtherDust)));
         updateActions.add(new ReplacePulverizerOutputAction("gemAmber", new ItemStack(ItemsTC.amber)));
-        updateActions.add(new ReplacePulverizerOutputAction("gemSapphire", new ItemStack(ModItems.sapphireGem)));
         updateActions.add(new ReplacePulverizerOutputAction("dustCoal", ItemMaterial.dustCoal));
 
         updateActions.add(new AddOrReplacePulverizerRecipeAction(7000, ItemStackHelper.oreNetherCoal, coal, null, 0));
