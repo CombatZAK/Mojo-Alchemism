@@ -34,7 +34,7 @@ public class ReplaceAlloyKilnOutputAction extends AlloyKilnAction {
             ItemStack newOutput = output.getCount() == oldRecipe.output.getCount()
                     ? output
                     : output.copy();
-            output.setCount(oldRecipe.output.getCount());
+            newOutput.setCount(oldRecipe.output.getCount());
 
             AlloyRecipe.recipeList.remove(oldRecipe);
             AlloyRecipe.addRecipe(newOutput, oldRecipe.input0, oldRecipe.input1, oldRecipe.time);
