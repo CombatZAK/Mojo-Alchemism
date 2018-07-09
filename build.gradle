@@ -88,6 +88,9 @@ dependencies {
     compile("binnie:binnie-mods-${config.mc_version}:${config.binnie_version}") {
         transitive = false
     }
+    compile "net.ilexiconn:llibrary:1.7.14-1.12.2:dev"
+    compile "ice-and-fire-dragons-in-a-whole-new-light:iceandfire:${config.iceandfire_version}:${config.mc_version}"
+    compile "mantle:Mantle:1.12:1.3.2.24"
     compile "extreme-reactors:ExtremeReactors:${config.mc_version}:${config.extremereactors_version}"
     compile "zerocore:zerocore:1.12:0.1.2.1"
     compile "tesla:Tesla:${config.mc_version}:${config.tesla_version}"

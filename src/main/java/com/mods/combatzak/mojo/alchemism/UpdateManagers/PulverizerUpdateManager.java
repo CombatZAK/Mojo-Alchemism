@@ -8,6 +8,7 @@ import mekanism.common.MekanismItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.items.ItemsTC;
+import com.github.alexthe666.iceandfire.core.ModItems;
 
 /**
  * Created by CombatZAK on 4/30/2018.
@@ -45,6 +46,8 @@ public class PulverizerUpdateManager extends UpdateManager {
         updateActions.add(new AddOrReplacePulverizerRecipeAction(7000, ItemStackHelper.oreEndCoal, coal, null, 0));
         updateActions.add(new AddOrReplacePulverizerRecipeAction(7000, ItemStackHelper.oreEndRedstone, redstone, null, 0));
         updateActions.add(new AddOrReplacePulverizerRecipeAction(7000, ItemStackHelper.oreEndLapis, lapis, null, 0));
+
+        updateActions.add(new ReplacePulverizerOutputAction("gemSapphire", new ItemStack(ModItems.sapphireGem)));
 
         /*updateActions.add(new AddOrReplacePulverizerRecipeAction(5000, new ItemStack(ItemsTC.clusters, 1, 2), ItemMaterial.dustCopper, 3, ItemMaterial.dustCopper, 1, 25));
         updateActions.add(new AddOrReplacePulverizerRecipeAction(5000, new ItemStack(ItemsTC.clusters, 1, 3), ItemMaterial.dustTin, 3, ItemMaterial.dustTin, 1, 25));

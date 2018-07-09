@@ -31,6 +31,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
+import com.github.alexthe666.iceandfire.core.ModBlocks;
+import com.github.alexthe666.iceandfire.core.ModItems;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -226,6 +228,7 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 2))); //mekanism
 
         //SILVER
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silverNugget, 1))); //ice and fire
         updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 23)));
 
         //STEEL
@@ -294,6 +297,7 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new AddShapelessRecipeAction("dustSilver_pyrotheum", Stream.of(dustSilver, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotSilver)); //from dust+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreSilver_pyrotheum", Stream.of(oreSilver, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotSilver)); //from ore+pyrotheum
         updateActions.add(new AddShapelessRecipeAction("oreSilver_smelt", Stream.of(oreSilver, dustPetrotheum, dustPyrotheum).collect(Collectors.toList()), ItemMaterial.ingotSilver, 2)); //from ore+petrotheum+pyrotheum
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silverIngot, 1))); //ice and fire
         updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 3)));
 
         //ALUMINUM
@@ -344,6 +348,7 @@ public class CraftingUpdateManager extends UpdateManager {
 
         //SILVER
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "silver_block"))); //ic2
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModBlocks.silverBlock, 1))); //ice and fire
         updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 3)));
 
         //ALUMINUM
@@ -381,6 +386,14 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_chestplate")));
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_leggings")));
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("bronze_boots")));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_helmet, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_chestplate, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_leggings, 1)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_boots, 1)));
+        updateActions.add(new AddShapedRecipeAction("silverHelmet_replace", 3, 2, true, Stream.of(ingotSilver, ingotSilver, ingotSilver, ingotSteel, null, ingotSteel).collect(Collectors.toList()), new ItemStack(ModItems.silver_helmet)));
+        updateActions.add(new AddShapedRecipeAction("silverChestplate_replace", 3, 3, true, Stream.of(ingotSilver, null, ingotSilver, ingotSilver, ingotSteel, ingotSilver, ingotSilver, ingotSteel, ingotSilver).collect(Collectors.toList()), new ItemStack(ModItems.silver_chestplate)));
+        updateActions.add(new AddShapedRecipeAction("silverLeggings_replace", 3, 3, true, Stream.of(ingotSteel, ingotSilver, ingotSteel, ingotSilver, null, ingotSilver, ingotSilver, null, ingotSilver).collect(Collectors.toList()), new ItemStack(ModItems.silver_leggings)));
+        updateActions.add(new AddShapedRecipeAction("silverBoots_replace", 3, 2, true, Stream.of(ingotSilver, null, ingotSilver, ingotSteel, null, ingotSteel).collect(Collectors.toList()), new ItemStack(ModItems.silver_boots)));
 
         //TOOLS
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.BronzeAxe)));
@@ -399,6 +412,17 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelPickaxe)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelShovel)));
         updateActions.add(new RemoveRecipesAction(new ItemStack(ToolsItems.SteelHoe)));
+
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_axe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_sword)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_pickaxe)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_shovel)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silver_hoe)));
+        updateActions.add(new AddShapedRecipeAction("silverAxe_replace", 2, 3, true, Stream.of(ingotSilver, ingotSilver, ingotSilver, bone, null, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_axe)));
+        updateActions.add(new AddShapedRecipeAction("silverSword_replace", 1, 3, true, Stream.of(ingotSilver, ingotSilver, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_sword)));
+        updateActions.add(new AddShapedRecipeAction("silverPickaxe_replace", 3, 3, true, Stream.of(ingotSilver, ingotSilver, ingotSilver, null, bone, null, null, bone, null).collect(Collectors.toList()), new ItemStack(ModItems.silver_pickaxe)));
+        updateActions.add(new AddShapedRecipeAction("silverShovel_replace", 1, 3, true, Stream.of(ingotSilver, bone, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_shovel)));
+        updateActions.add(new AddShapedRecipeAction("silverHoe_replace", 2, 3, true, Stream.of(ingotSilver, ingotSilver, null, bone, null, bone).collect(Collectors.toList()), new ItemStack(ModItems.silver_hoe)));
 
         //PLATES
         updateActions.add(new RemoveRecipesAction(new ItemStack(ItemsTC.plate)));
@@ -422,6 +446,8 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(new ItemStack(BOPBlocks.gem_block, 1, 6)));
         updateActions.add(new RemoveRecipesAction("thermalfoundation", new ItemStack(BOPItems.gem, 1, 7)));
         updateActions.add(new AddShapelessRecipeAction("oreAmber_petrotheum", Stream.of(oreAmber, dustPetrotheum).collect(Collectors.toList()), new ItemStack(ItemsTC.amber)));
+        updateActions.add(new AddShapelessRecipeAction("oreSapphire_petrotheum", Stream.of(oreSapphire, dustPetrotheum).collect(Collectors.toList()), new ItemStack(ModItems.sapphireGem, 2)));
+        updateActions.add(new AddShapelessRecipeAction("beeSapphire_compress", Stream.of(beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire, beeSapphire).collect(Collectors.toList()), new ItemStack(ModItems.sapphireGem)));
 
         //BANNER
         updateActions.addAll(getBannerFixes());
