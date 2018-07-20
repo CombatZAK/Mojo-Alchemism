@@ -23,7 +23,7 @@ public class PulverizerUpdateManager extends UpdateManager {
     private PulverizerUpdateManager() {
         final ItemStack quartz = new ItemStack(Items.QUARTZ, 1);
         final ItemStack coal = new ItemStack(Items.COAL, 6);
-        final ItemStack lapis = new ItemStack(Items.DIAMOND, 12, 4);
+        final ItemStack lapis = new ItemStack(Items.DYE, 12, 4);
         final ItemStack redstone = new ItemStack(Items.REDSTONE, 12);
 
         updateActions.add(new ReplacePulverizerOutputAction("dustCopper", ItemMaterial.dustCopper));
