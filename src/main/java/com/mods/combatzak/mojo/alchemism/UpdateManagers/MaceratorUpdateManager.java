@@ -31,7 +31,7 @@ public class MaceratorUpdateManager extends UpdateManager{
     }
 
     private MaceratorUpdateManager() {
-        ItemStack yelloriumDust = new ItemStack(BrItems.dustMetals, 4);
+        ItemStack yelloriumDust = new ItemStack(BrItems.dustYellorium);
         ItemStack osmiumDust = new ItemStack(MekanismItems.Dust, 4, 2);
         ItemStack coal = new ItemStack(Items.COAL, 6);
         ItemStack lapis = new ItemStack(Items.DYE, 12, 4);

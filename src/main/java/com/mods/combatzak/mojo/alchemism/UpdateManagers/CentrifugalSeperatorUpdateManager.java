@@ -19,6 +19,6 @@ public class CentrifugalSeperatorUpdateManager extends UpdateManager {
     }
 
     private CentrifugalSeperatorUpdateManager() {
-        updateActions.add(new AddOrReplaceSeparatorRecipeAction(8000, new ItemStack(BrItems.dustMetals, 1, 1), null, new Tuple<>(ExtraBeeItems.BLUTONIUM_DUST.get(1), null), new Tuple<>(ExtraBeeItems.BLUTONIUM_DUST.get(1), 33)));
+        updateActions.add(new AddOrReplaceSeparatorRecipeAction(8000, new ItemStack(BrItems.dustBlutonium, 1), null, new Tuple<>(ExtraBeeItems.BLUTONIUM_DUST.get(1), null), new Tuple<>(ExtraBeeItems.BLUTONIUM_DUST.get(1), 33)));
     }
 }

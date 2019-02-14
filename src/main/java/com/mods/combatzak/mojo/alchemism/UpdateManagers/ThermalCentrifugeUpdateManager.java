@@ -30,6 +30,6 @@ public class ThermalCentrifugeUpdateManager extends UpdateManager {
         updateActions.add(new ReplaceCentrifugeOutputAction("dustCoal", ItemMaterial.dustCopper));
 
         //Cyanite Reprocessing
-        updateActions.add(new AddOrReplaceCentrifugeRecipeAction((short)1500, new ItemStack(BrItems.dustMetals, 2, 1), new ItemStack(BrItems.dustMetals, 1, 3)));
+        updateActions.add(new AddOrReplaceCentrifugeRecipeAction((short)1500, new ItemStack(BrItems.dustCyanite, 2), new ItemStack(BrItems.dustBlutonium)));
     }
 }

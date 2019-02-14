@@ -307,7 +307,7 @@ public class CraftingUpdateManager extends UpdateManager {
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Ingot, 1, 4))); //mekanism
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("ingot", "steel"))); //ic2
-        updateActions.add(new RemoveRecipesAction(new ItemStack(BrItems.ingotMetals, 1, 5))); //extreme reactors
+        updateActions.add(new RemoveRecipesAction(new ItemStack(BrItems.ingotSteel))); //extreme reactors
         updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 8)));
 
         //NICKEL
@@ -358,7 +358,7 @@ public class CraftingUpdateManager extends UpdateManager {
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismBlocks.BasicBlock, 1, 5))); //mekanism
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("resource", "steel_block"))); //ic2
-        updateActions.add(new RemoveRecipesAction(new ItemStack(BrBlocks.blockMetals, 1, 5))); //extreme reactors
+        updateActions.add(new RemoveRecipesAction(new ItemStack(BrBlocks.blockSteel))); //extreme reactors
         updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.blockStorage, 1, 8)));
 
         //URANIUM

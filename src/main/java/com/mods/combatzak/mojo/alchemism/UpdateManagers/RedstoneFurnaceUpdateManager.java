@@ -23,7 +23,7 @@ public class RedstoneFurnaceUpdateManager extends UpdateManager {
         updateActions.add(new ReplaceRedstoneFurnaceOutputAction("ingotTin", ItemMaterial.ingotTin));
         updateActions.add(new ReplaceRedstoneFurnaceOutputAction("ingotLead", ItemMaterial.ingotLead));
         updateActions.add(new ReplaceRedstoneFurnaceOutputAction("ingotSilver", ItemMaterial.ingotSilver));
-        updateActions.add(new ReplaceRedstoneFurnaceOutputAction("ingotUranium", new ItemStack(BrItems.ingotMetals)));
+        updateActions.add(new ReplaceRedstoneFurnaceOutputAction("ingotUranium", new ItemStack(BrItems.ingotYellorium)));
 
         //DUSTS
         updateActions.add(new ReplaceRedstoneFurnaceOutputAction("dustCoal", ItemMaterial.dustCoal));

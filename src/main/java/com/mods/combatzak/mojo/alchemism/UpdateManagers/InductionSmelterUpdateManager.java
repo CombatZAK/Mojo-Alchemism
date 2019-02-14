@@ -47,7 +47,7 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         ItemStack oreCertusCharged = new ItemStack(AEApi.instance().definitions().blocks().quartzOreCharged().maybeBlock().get());
         ItemStack oreOsmium = new ItemStack(MekanismBlocks.OreBlock);
         ItemStack oreUranium = IC2Items.getItem("resource", "uranium_ore");
-        ItemStack oreYellorite = new ItemStack(BrBlocks.brOre);
+        ItemStack oreYellorite = new ItemStack(BrBlocks.oreYellorite);
 
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCopper, sand, BlockOre.oreCopper, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherTin, sand, BlockOre.oreTin, 2, ItemMaterial.crystalSlagRich, 1, 15));
