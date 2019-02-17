@@ -191,6 +191,9 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new AddShapelessRecipeAction("tinyGold_compress", Stream.of(tinyGold, tinyGold, tinyGold, tinyGold, tinyGold, tinyGold, tinyGold, tinyGold, tinyGold).collect(Collectors.toList()), ItemMaterial.dustGold)); //from tiny gold
         updateActions.add(new AddShapelessRecipeAction("beeGold_compress", Stream.of(beeGold, beeGold, beeGold, beeGold).collect(Collectors.toList()), ItemMaterial.dustGold)); //from gold grains
 
+        //CONSTANTAN
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 15)));
+
         //ALUMINUM
         updateActions.add(new RemoveRecipesAction(GCItemsHelper.dustAluminum)); //GC aluminum dust
 
@@ -219,7 +222,7 @@ public class CraftingUpdateManager extends UpdateManager {
         //NUGGETS
         //COPPER
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 5))); //mekanism
-        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 20)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 20)));
 
         //TIN
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 6))); //mekanism
@@ -229,7 +232,7 @@ public class CraftingUpdateManager extends UpdateManager {
 
         //SILVER
         updateActions.add(new RemoveRecipesAction(new ItemStack(ModItems.silverNugget, 1))); //ice and fire
-        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 23)));
+        updateActions.add(new RemoveRecipesAction(new ItemStack(IEContent.itemMetal, 1, 23)));
 
         //STEEL
         updateActions.add(new RemoveRecipesAction(new ItemStack(MekanismItems.Nugget, 1, 4))); //mekanism

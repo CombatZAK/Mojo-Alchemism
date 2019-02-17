@@ -27,7 +27,7 @@ public class ThermalCentrifugeUpdateManager extends UpdateManager {
         updateActions.add(new ReplaceCentrifugeOutputAction("dustSilver", ItemMaterial.dustSilver));
         updateActions.add(new ReplaceCentrifugeOutputAction("dustGold", ItemMaterial.dustGold));
         updateActions.add(new ReplaceCentrifugeOutputAction("dustAluminum", ItemMaterial.dustAluminum));
-        updateActions.add(new ReplaceCentrifugeOutputAction("dustCoal", ItemMaterial.dustCopper));
+        updateActions.add(new ReplaceCentrifugeOutputAction("dustCoal", ItemMaterial.dustCoal));
 
         //Cyanite Reprocessing
         updateActions.add(new AddOrReplaceCentrifugeRecipeAction((short)1500, new ItemStack(BrItems.dustCyanite, 2), new ItemStack(BrItems.dustBlutonium)));
