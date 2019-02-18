@@ -4,6 +4,7 @@ import cofh.thermalfoundation.block.BlockOre;
 import cofh.thermalfoundation.init.TFBlocks;
 import cofh.thermalfoundation.item.ItemMaterial;
 import com.mods.combatzak.mojo.alchemism.actions.vanilla.ReplaceFurnaceOutputAction;
+import erogenousbeef.bigreactors.init.BrItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -28,6 +29,7 @@ public class FurnaceUpdateManager extends UpdateManager {
         updateActions.add(new ReplaceFurnaceOutputAction(ItemMaterial.ingotSilver, "ingotSilver"));
         updateActions.add(new ReplaceFurnaceOutputAction(ItemMaterial.ingotAluminum, "ingotAluminum"));
         updateActions.add(new ReplaceFurnaceOutputAction(ItemMaterial.ingotSteel, "ingotSteel"));
+        updateActions.add(new ReplaceFurnaceOutputAction(new ItemStack(BrItems.ingotYellorium), "ingotUranium"));
 
         //NUGGETS
         updateActions.add(new ReplaceFurnaceOutputAction(ItemMaterial.nuggetBronze, "nuggetBronze"));
