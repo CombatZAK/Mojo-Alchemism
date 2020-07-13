@@ -9,7 +9,8 @@ import com.mods.combatzak.mojo.alchemism.actions.forestry.squeezer.AddOrReplaceS
 import com.mods.combatzak.mojo.alchemism.helpers.ItemStackHelper;
 import erogenousbeef.bigreactors.init.BrBlocks;
 import ic2.api.item.IC2Items;
-import mekanism.common.MekanismBlocks;
+import mods.railcraft.common.blocks.RailcraftBlocks;
+import mods.railcraft.common.blocks.ore.EnumOreMetal;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -45,11 +46,11 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         ItemStack oreDiamond = new ItemStack(Blocks.DIAMOND_ORE);
         ItemStack oreCertus = new ItemStack(AEApi.instance().definitions().blocks().quartzOre().maybeBlock().get());
         ItemStack oreCertusCharged = new ItemStack(AEApi.instance().definitions().blocks().quartzOreCharged().maybeBlock().get());
-        ItemStack oreOsmium = new ItemStack(MekanismBlocks.OreBlock);
         ItemStack oreUranium = IC2Items.getItem("resource", "uranium_ore");
         ItemStack oreYellorite = new ItemStack(BrBlocks.oreYellorite);
+        ItemStack oreZinc = EnumOreMetal.ZINC.getStack();
 
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCopper, sand, BlockOre.oreCopper, 2, ItemMaterial.crystalSlagRich, 1, 15));
+        /*updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCopper, sand, BlockOre.oreCopper, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherTin, sand, BlockOre.oreTin, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherIron, sand, oreIron, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherLead, sand, BlockOre.oreLead, 2, ItemMaterial.crystalSlagRich, 1, 15));
@@ -59,7 +60,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherPlatinum, sand, BlockOre.orePlatinum, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherIridium, sand, BlockOre.oreIridium, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherAluminum, sand, BlockOre.oreAluminum, 2, ItemMaterial.crystalSlagRich, 1, 15));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherOsmium, sand, oreOsmium, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherUranium, sand, oreUranium, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherYellorite, sand, oreYellorite, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCoal, sand, oreCoal, 2, ItemMaterial.crystalSlagRich, 1, 15));
@@ -69,6 +69,7 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCertusCharged, sand, oreCertusCharged, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherDiamond, sand, oreDiamond, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherEmerald, sand, oreEmerald, 2, ItemMaterial.crystalSlagRich, 1, 15));
+        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherZinc, sand, oreZinc, 2, ItemMaterial.crystalSlagRich, 1, 15));
 
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCopper, sand, BlockOre.oreCopper, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndTin, sand, BlockOre.oreTin, 2, ItemMaterial.crystalSlagRich, 1, 15));
@@ -80,7 +81,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndPlatinum, sand, BlockOre.orePlatinum, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndIridium, sand, BlockOre.oreIridium, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndAluminum, sand, BlockOre.oreAluminum, 2, ItemMaterial.crystalSlagRich, 1, 15));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndOsmium, sand, oreOsmium, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndUranium, sand, oreUranium, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndYellorite, sand, oreYellorite, 2, ItemMaterial.crystalSlagRich, 1, 15));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCoal, sand, oreCoal, 2, ItemMaterial.crystalSlagRich, 1, 15));
@@ -102,7 +102,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherPlatinum, ItemMaterial.dustPyrotheum, BlockOre.orePlatinum, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherIridium, ItemMaterial.dustPyrotheum, BlockOre.oreIridium, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherAluminum, ItemMaterial.dustPyrotheum, BlockOre.oreAluminum, 2, ItemMaterial.crystalSlagRich, 1, 20));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherOsmium, ItemMaterial.dustPyrotheum, oreOsmium, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherUranium, ItemMaterial.dustPyrotheum, oreUranium, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherYellorite, ItemMaterial.dustPyrotheum, oreYellorite, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCoal, ItemMaterial.dustPyrotheum, oreCoal, 2, ItemMaterial.crystalSlagRich, 1, 20));
@@ -123,7 +122,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndPlatinum, ItemMaterial.dustPyrotheum, BlockOre.orePlatinum, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndIridium, ItemMaterial.dustPyrotheum, BlockOre.oreIridium, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndAluminum, ItemMaterial.dustPyrotheum, BlockOre.oreAluminum, 2, ItemMaterial.crystalSlagRich, 1, 20));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndOsmium, ItemMaterial.dustPyrotheum, oreOsmium, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndUranium, ItemMaterial.dustPyrotheum, oreUranium, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndYellorite, ItemMaterial.dustPyrotheum, oreYellorite, 2, ItemMaterial.crystalSlagRich, 1, 20));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCoal, ItemMaterial.dustPyrotheum, oreCoal, 2, ItemMaterial.crystalSlagRich, 1, 20));
@@ -145,7 +143,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherPlatinum, ItemMaterial.crystalSlagRich, BlockOre.orePlatinum, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherIridium, ItemMaterial.crystalSlagRich, BlockOre.oreIridium, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherAluminum, ItemMaterial.crystalSlagRich, BlockOre.oreAluminum, 3, ItemMaterial.crystalSlag, 1, 100));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherOsmium, ItemMaterial.crystalSlagRich, oreOsmium, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherUranium, ItemMaterial.crystalSlagRich, oreUranium, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherYellorite, ItemMaterial.crystalSlagRich, oreYellorite, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCoal, ItemMaterial.crystalSlagRich, oreCoal, 3, ItemMaterial.crystalSlag, 1, 100));
@@ -166,7 +163,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndPlatinum, ItemMaterial.crystalSlagRich, BlockOre.orePlatinum, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndIridium, ItemMaterial.crystalSlagRich, BlockOre.oreIridium, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndAluminum, ItemMaterial.crystalSlagRich, BlockOre.oreAluminum, 3, ItemMaterial.crystalSlag, 1, 100));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndOsmium, ItemMaterial.crystalSlagRich, oreOsmium, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndUranium, ItemMaterial.crystalSlagRich, oreUranium, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndYellorite, ItemMaterial.crystalSlagRich, oreYellorite, 3, ItemMaterial.crystalSlag, 1, 100));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCoal, ItemMaterial.crystalSlagRich, oreCoal, 3, ItemMaterial.crystalSlag, 1, 100));
@@ -188,7 +184,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherPlatinum, ItemMaterial.crystalCinnabar, BlockOre.orePlatinum, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherIridium, ItemMaterial.crystalCinnabar, BlockOre.oreIridium, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherAluminum, ItemMaterial.crystalCinnabar, BlockOre.oreAluminum, 3, ItemMaterial.crystalSlagRich, 1, 75));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherOsmium, ItemMaterial.crystalCinnabar, oreOsmium, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherUranium, ItemMaterial.crystalCinnabar, oreUranium, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherYellorite, ItemMaterial.crystalCinnabar, oreYellorite, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreNetherCoal, ItemMaterial.crystalCinnabar, oreCoal, 3, ItemMaterial.crystalSlagRich, 1, 75));
@@ -209,7 +204,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndPlatinum, ItemMaterial.crystalCinnabar, BlockOre.orePlatinum, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndIridium, ItemMaterial.crystalCinnabar, BlockOre.oreIridium, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndAluminum, ItemMaterial.crystalCinnabar, BlockOre.oreAluminum, 3, ItemMaterial.crystalSlagRich, 1, 75));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndOsmium, ItemMaterial.crystalCinnabar, oreOsmium, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndUranium, ItemMaterial.crystalCinnabar, oreUranium, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndYellorite, ItemMaterial.crystalCinnabar, oreYellorite, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCoal, ItemMaterial.crystalCinnabar, oreCoal, 3, ItemMaterial.crystalSlagRich, 1, 75));
@@ -218,6 +212,6 @@ public class InductionSmelterUpdateManager extends UpdateManager{
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCertus, ItemMaterial.crystalCinnabar, oreCertus, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndCertusCharged, ItemMaterial.crystalCinnabar, oreCertusCharged, 3, ItemMaterial.crystalSlagRich, 1, 75));
         updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndDiamond, ItemMaterial.crystalCinnabar, oreDiamond, 3, ItemMaterial.crystalSlagRich, 1, 75));
-        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndEmerald, ItemMaterial.crystalCinnabar, oreEmerald, 3, ItemMaterial.crystalSlagRich, 1, 75));
+        updateActions.add(new AddOrReplaceInductionSmelterRecipeAction(7500, ItemStackHelper.oreEndEmerald, ItemMaterial.crystalCinnabar, oreEmerald, 3, ItemMaterial.crystalSlagRich, 1, 75));*/
     }
 }

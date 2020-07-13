@@ -11,7 +11,6 @@ import forestry.arboriculture.FruitProviderPod;
 import forestry.core.ModuleCore;
 import forestry.core.ModuleFluids;
 import forestry.core.fluids.Fluids;
-import mekanism.common.MekanismFluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -34,7 +33,6 @@ public class SqueezerUpdateManager extends UpdateManager {
 
     private SqueezerUpdateManager() {
         updateActions.add(new AddOrReplaceSqueezerRecipeAction(10, Stream.of(EnumHoneyDrop.SEED.get(1)).collect(Collectors.toList()), ItemStack.EMPTY, 0, Fluids.SEED_OIL.getFluid(200)));
-        updateActions.add(new AddOrReplaceSqueezerRecipeAction(10, Stream.of(EnumHoneyDrop.ACID.get(1)).collect(Collectors.toList()), ItemStack.EMPTY, 0, new FluidStack(MekanismFluids.SulfuricAcid.getFluid(), 200)));
         updateActions.add(new AddOrReplaceSqueezerRecipeAction(10, Stream.of(EnumHoneyDrop.ICE.get(1)).collect(Collectors.toList()), ItemStack.EMPTY, 0, Fluids.ICE.getFluid(200)));
         updateActions.add(new AddOrReplaceSqueezerRecipeAction(20, Stream.of(EnumPropolis.FUEL.get(1)).collect(Collectors.toList()), ItemStack.EMPTY, 0, new FluidStack(TFFluids.fluidFuel, 500)));
         updateActions.add(new AddOrReplaceSqueezerContainerRecipeAction(20, ModuleFluids.getItems().canEmpty.getItemStack(), ItemMaterial.ingotTin, 5));

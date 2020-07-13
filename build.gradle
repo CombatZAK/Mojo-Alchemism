@@ -1,133 +1,153 @@
 buildscript {
     repositories {
+        maven { url = 'https://files.minecraftforge.net/maven' }
         jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
+        mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
     }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+        
+apply plugin: 'net.minecraftforge.gradle'
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
-ext.configFile = file "build.properties"
+version = "${mod_version}"
+group = "${mod_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${archive_name}-${mc_version}"
 
-configFile.withReader {
-    def prop = new Properties()
-    prop.load(it)
-    project.ext.config = new ConfigSlurper().parse prop
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
+minecraft {
+    // The mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   Snapshot are built nightly.
+    // stable_#            Stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not always work.
+    // Simply re-run your setup task after changing the mappings to update your workspace.
+    //mappings channel: 'snapshot', version: '20171003-1.12'
+    mappings channel: 'snapshot', version: '20171003-1.12'
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // Default run configurations.
+    // These can be tweaked, removed, or duplicated as needed.
+    runs {
+        client {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+        }
+
+        server {
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
 }
 
 repositories {
     maven {
-        name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
-    }
-    maven {
-        name = "ChickenBones Maven"
-        url = "http://chickenbones.net/maven/"
-    }
-    maven {
-        name = "JEI Maven"
-        url = "http://dvs1.progwml6.com/files/maven"
-    }
-    maven {
-        name = "LLibrary"
-        url = "https://maven.mcmoddev.com/"
-    }
-    maven {
-        name 'thiakil'
-        url 'http://maven.thiakil.com'
-    }
-    maven {
-        name = "ic2 and forestry"
-        url = "http://maven.ic2.player.to"
-    }
-    maven {
-        name = "DVS1" //tconstruct, natura
-        url = "http://dvs1.progwml6.com/files/maven/"
-    }
-    maven {
         name = "CurseForge"
-        url = "http://minecraft.curseforge.com/api/maven/"
+        url = "https://minecraft.curseforge.com/api/maven/"
     }
-}
-
-version = "${config.mod_version}"
-group = "${config.mod_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "${config.archive_name}-${config.mc_version}"
-
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
-}
-
-minecraft {
-    version = "${config.mc_version}-14.23.4.2705"
-    runDir = "run"
-
-    // the mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   snapshot are built nightly.
-    // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20171003"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    maven {
+        name = "CurseMaven"
+        url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
-    compile "cofh:ThermalFoundation:${config.mc_version}-${config.tf_version}:deobf"
-    compile "cofh:ThermalExpansion:${config.mc_version}-${config.te_version}:deobf"
-    compile "mekanism:Mekanism:1.12.2:9.4.10.345"
-    compile "mekanism-tools:MekanismTools:1.12.2:9.4.10.345"
-    compile "net.industrial-craft:industrialcraft-2:${config.ic2_version}:dev"
-    compile "net.sengir.forestry:forestry_${config.mc_version}:${config.forestry_version}"
-    compile("binnie:binnie-mods-${config.mc_version}:${config.binnie_version}") {
-        transitive = false
-    }
-    compile "net.ilexiconn:llibrary:1.7.14-1.12.2:dev"
-    compile "ice-and-fire-dragons-in-a-whole-new-light:iceandfire:${config.iceandfire_version}:${config.mc_version}"
-    compile "mantle:Mantle:1.12:1.3.2.24"
-    compile "extreme-reactors:ExtremeReactors:${config.mc_version}:${config.extremereactors_version}"
-    compile "zerocore:zerocore:1.12:0.1.2.1"
-    compile "tesla:Tesla:${config.mc_version}:${config.tesla_version}"
-    compile "mantle:Mantle:1.12:1.3.2.24"
-    compile "natura:natura:${config.mc_version}:4.3.2.49"
-    compile "tinkers-construct:TConstruct:${config.mc_version}:2.9.1.65"
-    compile "biomes-o-plenty:BiomesOPlenty-${config.mc_version}:7.0.1.2387:universal"
-    compile "baubles:Baubles:1.12:1.5.2"
-    compile "thaumcraft:Thaumcraft:${config.mc_version}:6.1.BETA16"
-    compile "magic-bees:MagicBees:${config.mc_version}:3.1.9"
-    compile "extra-utilities:extrautils2:1.12:1.7.6"
-    compile "applied-energistics-2:appliedenergistics2-rv5:stable:11"
-    compile "netherending-ores:Netherending-Ores:1.12.2:1.2"
-    compile "immersive-engineering:ImmersiveEngineering:0.12:82"
-    compile "immersive-petroleum:immersivepetroleum:1.12.2:1.1.9"
-    compile "foamfix-for-minecraft:foamfix-0.9.9.1:1.12.2:anarchy"
+    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
+    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
+    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2854'
 
-    // for more info...
+    // You may put jars on which you depend on in ./libs or you may define them like so..
+    // compile "some.group:artifact:version:classifier"
+    // compile "some.group:artifact:version"
+
+    // Real examples
+    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
+    // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+
+    // These dependencies get remapped to your current MCP mappings
+    // deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+
+    // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+	compile "cofh-core:CoFHCore-${mc_version}:${cofhcore_version}:universal"
+	compile "cofh-world:CoFHWorld-${mc_version}:${cofhworld_version}:universal"
+	compile "codechicken-lib-1-8:CodeChickenLib-${mc_version}:${ccl_version}:universal"
+	compile "thermal-foundation:ThermalFoundation-${mc_version}:${tf_version}:universal"
+    compile "thermal-expansion:ThermalExpansion-${mc_version}:${te_version}:universal"
+    compile "industrial-craft:industrialcraft-2-${ic2_version}:ex112:dev"
+    compile "forestry:forestry_${mc_version}:${forestry_version}"
+    compile "llibrary:llibrary-${llibrary_version}:${mc_version}:dev"
+    compile "ice-and-fire-dragons:iceandfire:${iceandfire_version}:${mc_version}"
+    compile "extreme-reactors:ExtremeReactors:${mc_version}:${extremereactors_version}"
+    compile "zerocore:zerocore:${mc_version}:${zerocore_version}"
+    compile "tesla:Tesla:${mc_version}:${tesla_version}"
+    compile "mantle:Mantle:1.12:${mantle_version}"
+    compile "natura:natura:${mc_version}:${natura_version}"
+    compile "tinkers-construct:TConstruct:${mc_version}:${tconstruct_version}"
+    compile "biomes-o-plenty:BiomesOPlenty-${mc_version}:${bop_version}:universal"
+    compile "baubles:Baubles:1.12:${baubles_version}"
+    compile "applied-energistics-2:appliedenergistics2-rv6:stable:7"
+    compile "netherending-ores:Netherending-Ores:${mc_version}:${netherendingores_version}"
+    compile "immersive-engineering:ImmersiveEngineering:0.12:${ie_version}"
+    compile "immersive-petroleum:immersivepetroleum:${mc_version}:${immersivepetroleum_version}"
+    compile "binnies-mods:binnie-mods:${mc_version}:${binnie_version}"
+    compile "bewitchment:bewitchment:${mc_version}:${bewitchment_version}"
+    compile "curse.maven:railcraft:2687757"
+    compile "curse.maven:foamfix-optimization-mod:2845668"
 }
 
-processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+// Example for how to get properties into the manifest for reading by the runtime..
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "examplemod",
+            "Specification-Vendor": "examplemodsareus",
+            "Specification-Version": "1", // We are version 1 of ourselves
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"examplemodsareus",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
-        
-    // copy everything else except the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+}
+
+// Example configuration to allow publishing using the maven-publish task
+// This is the preferred method to reobfuscate your jar file
+jar.finalizedBy('reobfJar') 
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
+//publish.dependsOn('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
     }
 }

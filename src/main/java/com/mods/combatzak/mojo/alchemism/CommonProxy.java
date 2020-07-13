@@ -43,16 +43,13 @@ public class CommonProxy {
         ForestryCentrifugeUpdateManager.getInstance().applyUpdates();
         SqueezerUpdateManager.getInstance().applyUpdates();
 
-        CrusherUpdateManager.getInstance().applyUpdates();
-        EnrichmentChamberUpdateManager.getInstance().applyUpdates();
-        MetallurgicInfuserUpdateManager.getInstance().applyUpdates();
-
         GrinderUpdateManager.getInstance().applyUpdates();
 
         AlloyKilnUpdateManager.getInstance().applyUpdates();
         ArcFurnaceUpdateManager.getInstance().applyUpdates();
         CokeOvenUpdateManager.getInstance().applyUpdates();
         IeBlastFurnaceUpdateManager.getInstance().applyUpdates();
+        MetalPressUpdateManager.getInstance().applyUpdates();
 
         TestUpdateManager.getInstance().applyUpdates();
     }

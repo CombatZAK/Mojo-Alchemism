@@ -24,7 +24,7 @@ public class OreDictionaryUpdateManager extends UpdateManager {
         updateActions.add(new RemoveOreEntryAction("ingotUranium", new ItemStack(IEContent.itemMetal, 1, 5)));
         updateActions.add(new RemoveOreEntryAction("dustUranium", new ItemStack(IEContent.itemMetal, 1, 14)));
 
-        updateActions.add(new AddOreEntryAction(ItemStackHelper.oreNetherCoal, "oreNetherCoal"));
+        /*updateActions.add(new AddOreEntryAction(ItemStackHelper.oreNetherCoal, "oreNetherCoal"));
         updateActions.add(new AddOreEntryAction(ItemStackHelper.oreNetherDiamond, "oreNetherDiamond"));
         updateActions.add(new AddOreEntryAction(ItemStackHelper.oreNetherEmerald, "oreNetherEmerald"));
         updateActions.add(new AddOreEntryAction(ItemStackHelper.oreNetherGold, "oreNetherGold"));
@@ -64,6 +64,6 @@ public class OreDictionaryUpdateManager extends UpdateManager {
         updateActions.add(new AddOreEntryAction(ItemStackHelper.oreEndCertusCharged, "oreEndCertusCharged"));
         updateActions.add(new AddOreEntryAction(ItemStackHelper.oreEndOsmium, "oreEndOsmium"));
         updateActions.add(new AddOreEntryAction(ItemStackHelper.oreEndUranium, "oreEndUranium"));
-        updateActions.add(new AddOreEntryAction(ItemStackHelper.oreEndYellorite, "oreEndYellorite"));
+        updateActions.add(new AddOreEntryAction(ItemStackHelper.oreEndYellorite, "oreEndYellorite"));*/
     }
 }

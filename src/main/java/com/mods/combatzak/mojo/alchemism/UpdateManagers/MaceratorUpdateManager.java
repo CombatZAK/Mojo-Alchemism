@@ -6,13 +6,10 @@ import com.mods.combatzak.mojo.alchemism.actions.cofh.smelter.AddOrReplaceInduct
 import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.AddOrReplaceMaceratorRecipeAction;
 import com.mods.combatzak.mojo.alchemism.actions.ic2.macerator.ReplaceMaceratorOutputAction;
 import com.mods.combatzak.mojo.alchemism.actions.vanilla.AddOreEntryAction;
-import com.mods.combatzak.mojo.alchemism.helpers.GCItemsHelper;
+//import com.mods.combatzak.mojo.alchemism.helpers.GCItemsHelper;
 import com.mods.combatzak.mojo.alchemism.helpers.ItemStackHelper;
 import erogenousbeef.bigreactors.init.BrItems;
 import ic2.api.item.IC2Items;
-import mekanism.common.MekanismItems;
-import mekanism.common.item.ItemDust;
-import micdoodle8.mods.galacticraft.planets.mars.items.ItemSchematicTier2;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,7 +29,6 @@ public class MaceratorUpdateManager extends UpdateManager{
 
     private MaceratorUpdateManager() {
         ItemStack yelloriumDust = new ItemStack(BrItems.dustYellorium);
-        ItemStack osmiumDust = new ItemStack(MekanismItems.Dust, 4, 2);
         ItemStack coal = new ItemStack(Items.COAL, 6);
         ItemStack lapis = new ItemStack(Items.DYE, 12, 4);
         ItemStack redstone = new ItemStack(Items.REDSTONE, 12);
@@ -52,14 +48,6 @@ public class MaceratorUpdateManager extends UpdateManager{
         updateActions.add(new ReplaceMaceratorOutputAction("dustAluminum", ItemMaterial.dustAluminum));
 
         //CLUSTERS
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterCopper, IC2Items.getItem("purified", "copper"), 3));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterTin, IC2Items.getItem("purified", "tin"), 3));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterLead, IC2Items.getItem("purified", "lead"), 3));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterSilver, IC2Items.getItem("purified", "silver"), 3));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterIron, IC2Items.getItem("purified", "iron"), 3));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterGold, IC2Items.getItem("purified", "gold"), 3));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterCinnabar, new ItemStack(ItemsTC.quicksilver, 3)));
-        updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.clusterQuartz, new ItemStack(Items.QUARTZ, 4)));
 
         //MetalOres
         /*updateActions.add(new AddOrReplaceMaceratorRecipeAction(ItemStackHelper.oreNetherCopper, IC2Items.getItem("crushed", "copper"), 4));
