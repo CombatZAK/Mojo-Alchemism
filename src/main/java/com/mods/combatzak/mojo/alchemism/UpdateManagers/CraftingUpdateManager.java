@@ -308,6 +308,9 @@ public class CraftingUpdateManager extends UpdateManager {
         updateActions.add(new RemoveRecipesAction(ModuleCore.getItems().ingotBronze)); //forestry
         updateActions.add(new RemoveRecipesAction(Metal.BRONZE.getStack(Metal.Form.INGOT)));
 
+        //BRASS
+        updateActions.add(new RemoveRecipesAction(Metal.BRASS.getStack(Metal.Form.INGOT)));
+
         //LEAD
         updateActions.add(new RemoveRecipesAction(IC2Items.getItem("ingot", "lead"))); //ic2
         //updateActions.add(new RemoveRecipesAction(GCItemsHelper.ingotLead)); //gc

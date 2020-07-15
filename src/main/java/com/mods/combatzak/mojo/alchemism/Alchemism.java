@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
  * Main Mod Class - does the recipe resolutions
  * Created by CombatZAK on 4/19/2018.
  */
-@Mod(modid = Alchemism.MODID, useMetadata = true)
+@Mod(modid = Alchemism.MODID, dependencies = "after:tconstruct", useMetadata = true)
 public class Alchemism {
     public static final String MODID = "mojo-alchemism";
 

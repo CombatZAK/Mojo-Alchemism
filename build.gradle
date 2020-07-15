@@ -114,6 +114,8 @@ dependencies {
     compile "immersive-petroleum:immersivepetroleum:${mc_version}:${immersivepetroleum_version}"
     compile "binnies-mods:binnie-mods:${mc_version}:${binnie_version}"
     compile "bewitchment:bewitchment:${mc_version}:${bewitchment_version}"
+    compile "curse.maven:patchouli:2992184"
+    compile "curse.maven:redstone-flux:2920436"
     compile "curse.maven:railcraft:2687757"
     compile "curse.maven:foamfix-optimization-mod:2845668"
 }

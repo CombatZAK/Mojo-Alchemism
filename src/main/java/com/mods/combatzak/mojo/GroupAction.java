@@ -18,6 +18,10 @@ public class GroupAction extends MojoAction {
         return this.actions.addAll(actions);
     }
 
+    public List<MojoAction> getActions() {
+        return actions;
+    }
+
     @Override
     public boolean apply() {
         boolean success = true;
